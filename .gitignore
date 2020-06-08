@@ -1,0 +1,5 @@
+﻿*.suo
+*.log
+obj/
+[Bb]in
+[Dd]ebug*/

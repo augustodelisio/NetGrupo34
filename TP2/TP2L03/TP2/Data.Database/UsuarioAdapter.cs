@@ -58,9 +58,6 @@ namespace Data.Database
             }
         }
         #endregion
-        private UsuarioAdapter _UsuarioData;
-        public UsuarioAdapter UsuarioData { get; set; }
-
 
         public List<Usuario> GetAll()
         {

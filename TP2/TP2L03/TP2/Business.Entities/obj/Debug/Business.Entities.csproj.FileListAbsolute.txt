@@ -1,5 +1,0 @@
-C:\NET\Labs\TP2L02\TP2\Business.Entities\bin\Debug\Business.Entities.dll
-C:\NET\Labs\TP2L02\TP2\Business.Entities\bin\Debug\Business.Entities.pdb
-C:\NET\Labs\TP2L02\TP2\Business.Entities\obj\Debug\Business.Entities.csprojAssemblyReference.cache
-C:\NET\Labs\TP2L02\TP2\Business.Entities\obj\Debug\Business.Entities.dll
-C:\NET\Labs\TP2L02\TP2\Business.Entities\obj\Debug\Business.Entities.pdb

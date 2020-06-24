@@ -21,7 +21,6 @@ namespace UI.Desktop
         }
         public UsuarioDesktop(ModoForm modo) : this()
         {
-            InitializeComponent();
         }
         public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
@@ -99,15 +98,15 @@ namespace UI.Desktop
         public override bool Validar()
         {
             bool correcto = true;
-            /*if (String.IsNullOrEmpty(this.txtNombre.Text) || String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtEmail.Text) || String.IsNullOrEmpty(this.txtClave.Text) || String.IsNullOrEmpty(this.txtUsuario.Text))
-                correcto = false;*/
+            if (String.IsNullOrEmpty(this.txtNombre.Text) || String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtEmail.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
+                correcto = false;
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 correcto = false;
-            /*if (ChequeaMail(this.txtEmail.Text) == false)
-                correcto = false;*/
+            if (ChequeaMail(this.txtEmail.Text) == false)
+                correcto = false;
 
             if (correcto == false)
-                this.Notificar("Error, datos mal ingresados, verifique la contraseña y el mail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Notificar("Error, campos incompletos / clave<8 o mal repetida / formato mail no reconocido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             return correcto;
         }

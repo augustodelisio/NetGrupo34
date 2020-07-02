@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Especialidad:BusinessEntity
+    public class Especialidad:BusinessEntity
     {
+        private int _ID;
+        public int ID
+        {
+            get { return _ID; }
+            set { _ID = value; }
+        }
+
         private string _Descripcion;
         public string Descripcion
         {

@@ -88,6 +88,7 @@ namespace Data.Database
                 }
 
                 drUsuarios.Close();
+
             }
             catch(Exception Ex)
             {
@@ -98,16 +99,18 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
+            
             return usuarios;
         }
 
-        public Usuario GetOne(int ID)
+        public Business.Entities.Usuario GetOne(int ID)
         {
             Usuario usr = new Usuario();
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where id_usuario @id", SqlConn);
+                
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where id_usuario = @id", SqlConn);
                 cmdUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 if (drUsuarios.Read())
@@ -139,7 +142,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete usuario where id_usuario=@id", SqlConn);
+                SqlCommand cmdDelete = new SqlCommand("Delete usuarios where id_usuario=@id", SqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -168,32 +171,10 @@ namespace Data.Database
             {
                 this.Update(usuario);
             }
-
-            usuario.State = BusinessEntity.States.Unmodified;
-            /*
-            if (usuario.State == BusinessEntity.States.New)
+            else
             {
-                int NextID = 0;
-                foreach (Usuario usr in Usuarios)
-                {
-                    if (usr.ID > NextID)
-                    {
-                        NextID = usr.ID;
-                    }
-                }
-                usuario.ID = NextID + 1;
-                Usuarios.Add(usuario);
+                usuario.State = BusinessEntity.States.Unmodified;
             }
-            else if (usuario.State == BusinessEntity.States.Deleted)
-            {
-                this.Delete(usuario.ID);
-            }
-            else if (usuario.State == BusinessEntity.States.Modified)
-            {
-                Usuarios[Usuarios.FindIndex(delegate(Usuario u) { return u.ID == usuario.ID; })]=usuario;
-            }
-            usuario.State = BusinessEntity.States.Unmodified;
-            */
         }
         protected void Update(Usuario usuario)
         {
@@ -202,7 +183,7 @@ namespace Data.Database
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                     "UPDATE usuarios SET nombre_usuario = @nombre_usuario, clave = @clave," +
-                    "habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email" +
+                    "habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email " +
                     "WHERE id_usuario=@id", SqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
@@ -239,7 +220,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.EMail;
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
-                cmdSave.ExecuteNonQuery();
+                //cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {

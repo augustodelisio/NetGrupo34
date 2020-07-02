@@ -13,8 +13,12 @@ using System.Text.RegularExpressions;
 
 namespace UI.Desktop
 {
+    
     public partial class UsuarioDesktop : ApplicationForm
     {
+        private Usuario _UsuarioActual;
+        public Usuario UsuarioActual { set; get; }
+
         public UsuarioDesktop()
         {
             InitializeComponent();
@@ -22,15 +26,14 @@ namespace UI.Desktop
         public UsuarioDesktop(ModoForm modo) : this()
         {
         }
-        public UsuarioDesktop(int ID, ModoForm modo) : this()
+        public UsuarioDesktop(int ID, ModoForm modo) : this()    
         {
             UsuarioLogic ul = new UsuarioLogic();
-            this.UsuarioActual = ul.GetOne(ID);
-            this.MapearDeDatos();
+            this.Modo = modo;                               //Setea el valor en el que se encuentra el formulario (A/B/M/C)   
+            this.UsuarioActual = ul.GetOne(ID);             //Obtiene el usuario que tenga el ID pasado por parametro desde la capa de datos
+            this.MapearDeDatos();                           //Setea los valores correspondientes al estado del formulario en el form "UsuarioDesktop"
         }
 
-        private Usuario _UsuarioActual;
-        public Usuario UsuarioActual { set; get; }
         public override void MapearDeDatos()
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
@@ -54,15 +57,24 @@ namespace UI.Desktop
                 this.btnAceptar.Text = "Aceptar";
             }
         }
+
         public override void MapearADatos()
         {
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)         //Aca deberia entrar en ModoForm.Modificacion pero no lo hace
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try { this.UsuarioActual.ID = int.Parse(this.txtID.Text); }
-                    catch {}
-                    UsuarioActual.State = BusinessEntity.States.Modified;
+                    try 
+                    { 
+                        this.UsuarioActual.ID = int.Parse(this.txtID.Text);
+                        UsuarioActual.State = BusinessEntity.States.Modified;
+
+                    }
+                    catch(Exception Ex)
+                    {
+                        Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
+                    }
+                    
 
                 }
                 else

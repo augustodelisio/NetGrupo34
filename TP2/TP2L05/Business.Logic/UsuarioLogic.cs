@@ -40,7 +40,7 @@ namespace Business.Logic
         }
         public void Save(Usuario usu)
         {
-            UsuarioData.Save(usu);
+            UsuarioData.Save(usu); //Cuando llega acá el usuario tiene .State = New y deberia tener .State = Modified
         }
     }
 }

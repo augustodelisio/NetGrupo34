@@ -11,10 +11,15 @@ namespace Business.Logic
     public class UsuarioLogic:BusinessLogic
     {
         private UsuarioAdapter _UsuarioData;
-        public UsuarioAdapter UsuarioData { get; set; }
+        public UsuarioAdapter UsuarioData 
+        {
+            get { return _UsuarioData; }
+            set { _UsuarioData = value; } 
+        }  
+
         public UsuarioLogic()
         {
-            UsuarioData = new UsuarioAdapter();
+            UsuarioData = new UsuarioAdapter();               
         }
         public List<Usuario> GetAll()
         {
@@ -40,7 +45,7 @@ namespace Business.Logic
         }
         public void Save(Usuario usu)
         {
-            UsuarioData.Save(usu); //Cuando llega acá el usuario tiene .State = New y deberia tener .State = Modified
+            UsuarioData.Save(usu);
         }
     }
 }

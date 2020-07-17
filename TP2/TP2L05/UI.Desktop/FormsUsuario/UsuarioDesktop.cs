@@ -138,6 +138,11 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        private void UsuarioDesktop_Load(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+        }
     }
     
 }

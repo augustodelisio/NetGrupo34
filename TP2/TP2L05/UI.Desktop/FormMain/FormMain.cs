@@ -31,5 +31,16 @@ namespace UI.Desktop
             }
         }
 
+        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios ABMUsuarios = new Usuarios();
+            ABMUsuarios.ShowDialog();
+        }
+
+        private void administrarEspecialidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Especialidades ABMEspecialiddes = new Especialidades();
+            ABMEspecialiddes.ShowDialog();
+        }
     }
 }

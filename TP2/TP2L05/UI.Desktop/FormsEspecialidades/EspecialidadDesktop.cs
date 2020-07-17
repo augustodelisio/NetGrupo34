@@ -123,6 +123,11 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        private void EspecialidadDesktop_Load(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+        }
     }
     
 }

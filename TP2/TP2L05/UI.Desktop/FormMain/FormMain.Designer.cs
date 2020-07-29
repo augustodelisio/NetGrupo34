@@ -35,6 +35,8 @@
             this.administrarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarEspecialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +46,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuArchivo,
             this.usuariosToolStripMenuItem,
-            this.especialidadesToolStripMenuItem});
+            this.especialidadesToolStripMenuItem,
+            this.planesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -97,6 +100,21 @@
             this.administrarEspecialidadesToolStripMenuItem.Text = "Administrar Especialidades";
             this.administrarEspecialidadesToolStripMenuItem.Click += new System.EventHandler(this.administrarEspecialidadesToolStripMenuItem_Click);
             // 
+            // planesToolStripMenuItem
+            // 
+            this.planesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administrarPlanesToolStripMenuItem});
+            this.planesToolStripMenuItem.Name = "planesToolStripMenuItem";
+            this.planesToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.planesToolStripMenuItem.Text = "Planes";
+            // 
+            // administrarPlanesToolStripMenuItem
+            // 
+            this.administrarPlanesToolStripMenuItem.Name = "administrarPlanesToolStripMenuItem";
+            this.administrarPlanesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.administrarPlanesToolStripMenuItem.Text = "Administrar Planes";
+            this.administrarPlanesToolStripMenuItem.Click += new System.EventHandler(this.administrarPlanesToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,5 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem administrarUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarEspecialidadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarPlanesToolStripMenuItem;
     }
 }

@@ -39,8 +39,14 @@ namespace UI.Desktop
 
         private void administrarEspecialidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Especialidades ABMEspecialiddes = new Especialidades();
-            ABMEspecialiddes.ShowDialog();
+            Especialidades ABMEspecialidades = new Especialidades();
+            ABMEspecialidades.ShowDialog();
+        }
+
+        private void administrarPlanesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planes ABMPlanes = new Planes();
+            ABMPlanes.ShowDialog();
         }
     }
 }

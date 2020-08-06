@@ -40,12 +40,6 @@ namespace Business.Entities
             get { return _IDPlan; }
             set { _IDPlan = value; }
         }
-        private int _Legajo;
-        public int Legajo
-        {
-            get { return _Legajo; }
-            set { _Legajo = value; }
-        }
         private string _Nombre;
         public string Nombre
         {
@@ -59,15 +53,6 @@ namespace Business.Entities
             set { _Telefono = value; }
         }
 
-        private TiposPersonas _TipoPersona;
-        public TiposPersonas TipoPersona
-        {
-            get { return _TipoPersona; }
-            set { _TipoPersona = value; }
-        }
     }
 
-    public class TiposPersonas
-    {
-    }
 }

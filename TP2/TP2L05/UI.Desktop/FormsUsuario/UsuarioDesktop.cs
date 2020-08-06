@@ -39,9 +39,9 @@ namespace UI.Desktop
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtNombre.Text = this.UsuarioActual.Nombre;
-            this.txtApellido.Text = this.UsuarioActual.Apellido;
-            this.txtEmail.Text = this.UsuarioActual.EMail;
+            this.txtLegajo.Text = this.UsuarioActual.Legajo.ToString();
+            this.txtIdTipoUsuario.Text = this.UsuarioActual.IdTipoUsuario.ToString();
+            this.txtIdPersona.Text = this.UsuarioActual.IdPersona.ToString();
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;
             this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
@@ -86,9 +86,9 @@ namespace UI.Desktop
                 }
                 
                 this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
-                this.UsuarioActual.Nombre = this.txtNombre.Text;
-                this.UsuarioActual.Apellido = this.txtApellido.Text;
-                this.UsuarioActual.EMail = this.txtEmail.Text;
+                this.UsuarioActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
+                this.UsuarioActual.IdTipoUsuario = Convert.ToInt32(this.txtIdTipoUsuario.Text);
+                this.UsuarioActual.IdPersona = Convert.ToInt32(this.txtIdPersona.Text);
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
             }
@@ -111,15 +111,15 @@ namespace UI.Desktop
         public override bool Validar()
         {
             bool correcto = true;
-            if (String.IsNullOrEmpty(this.txtNombre.Text) || String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtEmail.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
+            if (String.IsNullOrEmpty(this.txtIdPersona.Text) || String.IsNullOrEmpty(this.txtLegajo.Text) || String.IsNullOrEmpty(this.txtIdTipoUsuario.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
                 correcto = false;
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 correcto = false;
-            if (Validaciones.EsMailCorrecto(this.txtEmail.Text) == false)
-                correcto = false;
+            //if (Validaciones.EsMailCorrecto(this.txtIdTipoUsuario.Text) == false)
+            //    correcto = false;
 
             if (correcto == false)
-                this.Notificar("Error, campos incompletos / clave<8 o mal repetida / formato mail no reconocido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Notificar("Error, campos incompletos / clave<8 o mal repetida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             return correcto;
         }

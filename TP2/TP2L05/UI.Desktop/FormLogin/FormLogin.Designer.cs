@@ -40,10 +40,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(144, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(108, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 34);
+            this.label1.Size = new System.Drawing.Size(202, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido al sistema!\r\nPor favor digite su información de Ingreso";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,46 +50,41 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 100);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(41, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 17);
+            this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre de Usuario:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(104, 156);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(78, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 17);
+            this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Contraseña:";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(208, 96);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Location = new System.Drawing.Point(156, 78);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(204, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(154, 20);
             this.txtUsuario.TabIndex = 3;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(208, 153);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPass.Location = new System.Drawing.Point(156, 124);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(204, 22);
+            this.txtPass.Size = new System.Drawing.Size(154, 20);
             this.txtPass.TabIndex = 4;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(264, 206);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIngresar.Location = new System.Drawing.Point(198, 167);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(149, 39);
+            this.btnIngresar.Size = new System.Drawing.Size(112, 32);
             this.btnIngresar.TabIndex = 5;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -99,10 +93,9 @@
             // lnkOlvidaPass
             // 
             this.lnkOlvidaPass.AutoSize = true;
-            this.lnkOlvidaPass.Location = new System.Drawing.Point(16, 273);
-            this.lnkOlvidaPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lnkOlvidaPass.Location = new System.Drawing.Point(12, 222);
             this.lnkOlvidaPass.Name = "lnkOlvidaPass";
-            this.lnkOlvidaPass.Size = new System.Drawing.Size(141, 17);
+            this.lnkOlvidaPass.Size = new System.Drawing.Size(106, 13);
             this.lnkOlvidaPass.TabIndex = 6;
             this.lnkOlvidaPass.TabStop = true;
             this.lnkOlvidaPass.Text = "Olvidé mi contraseña";
@@ -111,9 +104,9 @@
             // FormLogin
             // 
             this.AcceptButton = this.btnIngresar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 300);
+            this.ClientSize = new System.Drawing.Size(432, 244);
             this.Controls.Add(this.lnkOlvidaPass);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPass);
@@ -122,7 +115,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogin";

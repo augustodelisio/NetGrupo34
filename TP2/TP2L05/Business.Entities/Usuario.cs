@@ -21,26 +21,6 @@ namespace Business.Entities
             get { return _Clave; }
             set { _Clave = value; }
         }
-        private string _Nombre;
-        public string Nombre
-        {
-            get { return _Nombre; }
-            set { _Nombre = value; }
-        }
-
-        private string _Apellido;
-        public string Apellido
-        {
-            get { return _Apellido; }
-            set { _Apellido = value; }
-        }
-
-        private string _EMail;
-        public string EMail
-        {
-            get { return _EMail; }
-            set { _EMail = value; }
-        }
 
         private bool _Habilitado;
         public bool Habilitado
@@ -48,5 +28,27 @@ namespace Business.Entities
             get { return _Habilitado; }
             set { _Habilitado = value; }
         }
+
+        private int _Legajo;
+        public int Legajo
+        {
+            get { return _Legajo; }
+            set { _Legajo = value; }
+        }
+
+        private int _IdTipoUsuario;
+        public int IdTipoUsuario
+        {
+            get { return _IdTipoUsuario; }
+            set { _IdTipoUsuario = value; }
+        }
+
+        private int _IdPersona;
+        public int IdPersona
+        {
+            get { return _IdPersona; }
+            set { _IdPersona = value; }
+        }
+
     }
 }

@@ -20,14 +20,14 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-        private Usuario ValidarUsuario(string nombre, string clave)
+        private Usuario ValidarUsuario(string nombreUsu, string clave)
 
         //Valida que los datos proporcionados por el usuario se correspondan a un usuario en la DB
         //si lo encuentra devuelve el objeto usuario, sino devuelve null
 
         {
             Usuario usuAValidar = new Usuario();
-            usuAValidar.Nombre = nombre;
+            usuAValidar.NombreUsuario = nombreUsu;
             usuAValidar.Clave = clave;
 
             List<Usuario> usuariosObtenidos = new List<Usuario>();
@@ -38,7 +38,7 @@ namespace UI.Desktop
 
             foreach (var usuario in usuariosObtenidos)
             {
-                if (usuario.NombreUsuario == usuAValidar.Nombre)
+                if (usuario.NombreUsuario == usuAValidar.NombreUsuario)
                 {
                     if (usuario.Clave == usuAValidar.Clave)
                     {

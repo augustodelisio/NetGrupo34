@@ -39,7 +39,7 @@ namespace UI.Desktop
         {
             this.txtID.Text = this.PlanActual.ID.ToString();
             this.txtDescripcion.Text = this.PlanActual.Descripcion;
-            this.txtIdEspecialidad.Text = this.PlanActual.IDEspecialidad.ToString();
+            this.txtIdEspecialidad.Text = this.PlanActual.IdEspecialidad.ToString();
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
             {
                 this.btnAceptar.Text = "Guardar";
@@ -81,7 +81,7 @@ namespace UI.Desktop
                 }
                 
                 this.PlanActual.Descripcion = this.txtDescripcion.Text;
-                this.PlanActual.IDEspecialidad = int.Parse(this.txtIdEspecialidad.Text);
+                this.PlanActual.IdEspecialidad = int.Parse(this.txtIdEspecialidad.Text);
 
             }
             else if (Modo == ModoForm.Baja)

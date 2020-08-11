@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Materia:BusinessEntity
+    public class Materia:BusinessEntity
     {
+        private int _IdMateria;
+        public int IdMateria
+        {
+            get { return _IdMateria; }
+            set { _IdMateria = value; }
+        }
+
         private string _Descripcion;
         public string Descripcion
         {
@@ -15,25 +22,32 @@ namespace Business.Entities
             set { _Descripcion = value; }
         }
 
-        private int _HSSemanales;
-        public int HSSemanales
+        private int _HsSemanales;
+        public int HsSemanales
         {
-            get { return _HSSemanales; }
-            set { _HSSemanales = value; }
+            get { return _HsSemanales; }
+            set { _HsSemanales = value; }
         }
 
-        private int _HSTotales;
-        public int HSTotales
+        private int _HsTotales;
+        public int HsTotales
         {
-            get { return _HSTotales; }
-            set { _HSTotales = value; }
+            get { return _HsTotales; }
+            set { _HsTotales = value; }
         }
 
-        private int _IDPlan;
-        public int IDPlan
+        private bool _Habilitado;
+        public bool Habilitado
         {
-            get { return _IDPlan; }
-            set { _IDPlan = value; }
+            get { return _Habilitado; }
+            set { _Habilitado = value; }
+        }
+
+        private int _IdPlan;
+        public int IdPlan
+        {
+            get { return _IdPlan; }
+            set { _IdPlan = value; }
         }
     }
 }

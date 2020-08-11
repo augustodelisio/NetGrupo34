@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Curso:BusinessEntity
+    public class Curso:BusinessEntity
     {
+        private int _IdCurso;
+        public int IdCurso
+        {
+            get { return _IdCurso; }
+            set { _IdCurso = value; }
+        }
+
         private int _AnioCalendario;
         public int AnioCalendario
         {
@@ -29,18 +36,18 @@ namespace Business.Entities
             set { _Descripcion = value; }
         }
 
-        private int _IDComision;
-        public int IDComision
+        private int _IdComision;
+        public int IdComision
         {
-            get { return _IDComision; }
-            set { _IDComision = value; }
+            get { return _IdComision; }
+            set { _IdComision = value; }
         }
 
-        private int _IDMateria;
-        public int IDMateria
+        private int _IdMateria;
+        public int IdMateria
         {
-            get { return _IDMateria; }
-            set { _IDMateria = value; }
+            get { return _IdMateria; }
+            set { _IdMateria = value; }
         }
     }
 }

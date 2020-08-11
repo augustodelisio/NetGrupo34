@@ -28,7 +28,7 @@ namespace Data.Database
 
                     pl.ID = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];
-                    pl.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    pl.IdEspecialidad = (int)drPlanes["id_especialidad"];
 
                     planes.Add(pl);
                 }
@@ -63,7 +63,7 @@ namespace Data.Database
                 {
                     pl.ID = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];
-                    pl.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    pl.IdEspecialidad = (int)drPlanes["id_especialidad"];
                 }
                 drPlanes.Close();
             }
@@ -128,7 +128,7 @@ namespace Data.Database
                     "WHERE id_plan=@id", SqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
                 cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
+                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IdEspecialidad;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -151,7 +151,7 @@ namespace Data.Database
                     "values(@desc_plan, @id_especialidad) " +
                     "select @@identity", SqlConn);
                 cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
+                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IdEspecialidad;
                 plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)

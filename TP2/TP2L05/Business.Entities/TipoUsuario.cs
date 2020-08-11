@@ -6,20 +6,13 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class ModuloUsuario:BusinessEntity
+    public class TipoUsuario:BusinessEntity
     {
-        private int _IdUsuario;
-        public int IdUsuario
+        private int _IdTipoUsuario;
+        public int IdTipoUsuario
         {
-            get { return _IdUsuario; }
-            set { _IdUsuario = value; }
-        }
-
-        private int _IdModulo;
-        public int IdModulo
-        {
-            get { return _IdModulo; }
-            set { _IdModulo = value; }
+            get { return _IdTipoUsuario; }
+            set { _IdTipoUsuario = value; }
         }
 
         private bool _PermiteAlta;

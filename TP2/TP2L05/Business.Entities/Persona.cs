@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Personas:BusinessEntity
+    public class Persona:BusinessEntity
     {
+        private int _IdPersona;
+        public int IdPersona
+        {
+            get { return _IdPersona; }
+            set { _IdPersona = value; }
+        }
+
         private string _Apellido;
         public string Apellido
         {
@@ -34,11 +41,11 @@ namespace Business.Entities
             get { return _FechaNacimiento; }
             set { _FechaNacimiento = value; }
         }
-        private int _IDPlan;
-        public int IDPlan
+        private int _IdPlan;
+        public int IdPlan
         {
-            get { return _IDPlan; }
-            set { _IDPlan = value; }
+            get { return _IdPlan; }
+            set { _IdPlan = value; }
         }
         private string _Nombre;
         public string Nombre
@@ -51,6 +58,13 @@ namespace Business.Entities
         {
             get { return _Telefono; }
             set { _Telefono = value; }
+        }
+
+        private bool _Habilitado;
+        public bool Habilitado
+        {
+            get { return _Habilitado; }
+            set { _Habilitado = value; }
         }
 
     }

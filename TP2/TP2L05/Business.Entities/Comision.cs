@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class Comision:BusinessEntity
+    public class Comision:BusinessEntity
     {
+        private int _IdComision;
+        public int IdComision
+        {
+            get { return _IdComision; }
+            set { _IdComision = value; }
+        }
+
         private int _AnioEspecialidad;
         public int AnioEspecialidad
         {
@@ -22,11 +29,11 @@ namespace Business.Entities
             set { _Descripcion = value; }
         }
 
-        private int _IDPlan;
-        public int IDPlan
+        private bool _Habilitado;
+        public bool Habilitado
         {
-            get { return _IDPlan; }
-            set { _IDPlan = value; }
+            get { return _Habilitado; }
+            set { _Habilitado = value; }
         }
     }
 }

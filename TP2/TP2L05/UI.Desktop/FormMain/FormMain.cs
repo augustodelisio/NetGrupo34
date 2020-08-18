@@ -48,5 +48,11 @@ namespace UI.Desktop
             Planes ABMPlanes = new Planes();
             ABMPlanes.ShowDialog();
         }
+
+        private void administrarPersonasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Personas ABMPersonas = new Personas();
+            ABMPersonas.ShowDialog();
+        }
     }
 }

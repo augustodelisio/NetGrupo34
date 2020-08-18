@@ -40,11 +40,11 @@ namespace UI.Desktop
             this.txtID.Text = this.UsuarioActual.ID.ToString();
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
             this.txtLegajo.Text = this.UsuarioActual.Legajo.ToString();
-            this.txtIdTipoUsuario.Text = this.UsuarioActual.IdTipoUsuario.ToString();
-            this.txtIdPersona.Text = this.UsuarioActual.IdPersona.ToString();
+            this.txtIdTipoUsuario.Text = this.UsuarioActual.IdTipoUsuario.ToString();            
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;
             this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
+            //El combobox persona se rellena despues, en el load del formulario
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
             {
                 this.btnAceptar.Text = "Guardar";
@@ -83,14 +83,21 @@ namespace UI.Desktop
                     Usuario usu = new Usuario();
                     UsuarioActual = usu;
                     UsuarioActual.State = BusinessEntity.States.New;
+
                 }
                 
                 this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
                 this.UsuarioActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
                 this.UsuarioActual.IdTipoUsuario = Convert.ToInt32(this.txtIdTipoUsuario.Text);
-                this.UsuarioActual.IdPersona = Convert.ToInt32(this.txtIdPersona.Text);
+                
+                int fid;
+                fid = Convert.ToInt32(cbPersonas.SelectedValue.GetHashCode());
+                this.UsuarioActual.IdPersona = fid;
+                
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
+
+
             }
             else if (Modo == ModoForm.Baja)
             {
@@ -111,7 +118,7 @@ namespace UI.Desktop
         public override bool Validar()
         {
             bool correcto = true;
-            if (String.IsNullOrEmpty(this.txtIdPersona.Text) || String.IsNullOrEmpty(this.txtLegajo.Text) || String.IsNullOrEmpty(this.txtIdTipoUsuario.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
+            if (String.IsNullOrEmpty(this.txtLegajo.Text) || String.IsNullOrEmpty(this.txtIdTipoUsuario.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
                 correcto = false;
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 correcto = false;
@@ -139,9 +146,37 @@ namespace UI.Desktop
             this.Close();
         }
 
+        private void CargarCombobox()
+        {
+            //Rellenar ComboBox Personas
+            this.cbPersonas.DataSource = null;
+            PersonaLogic perLogic = new PersonaLogic();
+            this.cbPersonas.DataSource = perLogic.GetAll();
+            this.cbPersonas.DisplayMember = "NombreYApellido";
+            this.cbPersonas.ValueMember = "IdPersona";
+        }
+
         private void UsuarioDesktop_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            CargarCombobox();
+
+            if (this.Modo != ModoForm.Alta)//Si NO es una alta, cargo el nombre de la persona que estamos editando.
+            {
+                PersonaLogic pl = new PersonaLogic();
+                string nomPer = pl.GetOne(UsuarioActual.IdPersona).NombreYApellido;//Busco el nombre de la persona de dicho usuario.
+                this.cbPersonas.SelectedIndex = cbPersonas.FindStringExact(nomPer);//Esta funcion busca el indice que tiene asiganda la persona dentro del combo
+            }
+
+            
+        }
+
+        private void btnCrearPersona_Click(object sender, EventArgs e)
+        {
+            PersonaDesktop edicionPersonas = new PersonaDesktop(ModoForm.Alta);
+            edicionPersonas.ShowDialog();
+            CargarCombobox();//Vuelve a cargar el combo por si se creo la persona.
         }
     }
     

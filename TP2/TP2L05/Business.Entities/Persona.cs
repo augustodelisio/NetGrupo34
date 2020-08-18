@@ -66,7 +66,14 @@ namespace Business.Entities
             get { return _Habilitado; }
             set { _Habilitado = value; }
         }
-
+        private string _NombreYApellido;
+        public string NombreYApellido
+        {
+            get
+            {
+                return Nombre + " " + Apellido;
+            }
+        }
     }
 
 }

@@ -37,6 +37,8 @@
             this.administrarEspecialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarPersonasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +47,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuArchivo,
+            this.personasToolStripMenuItem,
             this.usuariosToolStripMenuItem,
             this.especialidadesToolStripMenuItem,
             this.planesToolStripMenuItem});
@@ -111,9 +114,24 @@
             // administrarPlanesToolStripMenuItem
             // 
             this.administrarPlanesToolStripMenuItem.Name = "administrarPlanesToolStripMenuItem";
-            this.administrarPlanesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.administrarPlanesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.administrarPlanesToolStripMenuItem.Text = "Administrar Planes";
             this.administrarPlanesToolStripMenuItem.Click += new System.EventHandler(this.administrarPlanesToolStripMenuItem_Click);
+            // 
+            // personasToolStripMenuItem
+            // 
+            this.personasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administrarPersonasToolStripMenuItem});
+            this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
+            this.personasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.personasToolStripMenuItem.Text = "Personas";
+            // 
+            // administrarPersonasToolStripMenuItem
+            // 
+            this.administrarPersonasToolStripMenuItem.Name = "administrarPersonasToolStripMenuItem";
+            this.administrarPersonasToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.administrarPersonasToolStripMenuItem.Text = "Administrar Personas";
+            this.administrarPersonasToolStripMenuItem.Click += new System.EventHandler(this.administrarPersonasToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -146,5 +164,7 @@
         private System.Windows.Forms.ToolStripMenuItem administrarEspecialidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarPlanesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarPersonasToolStripMenuItem;
     }
 }

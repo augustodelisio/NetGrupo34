@@ -93,6 +93,9 @@ namespace UI.Desktop
                 int fid;
                 fid = Convert.ToInt32(cbPersonas.SelectedValue.GetHashCode());
                 this.UsuarioActual.IdPersona = fid;
+
+                fid = Convert.ToInt32(cbTipoUsuario.SelectedValue.GetHashCode());
+                this.UsuarioActual.IdTipoUsuario = fid;
                 
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
@@ -154,6 +157,12 @@ namespace UI.Desktop
             this.cbPersonas.DataSource = perLogic.GetAll();
             this.cbPersonas.DisplayMember = "NombreYApellido";
             this.cbPersonas.ValueMember = "IdPersona";
+
+            this.cbTipoUsuario.DataSource = null;
+            TipoUsuarioLogic tipoUsuLogic = new TipoUsuarioLogic();
+            this.cbTipoUsuario.DataSource = tipoUsuLogic.GetAll();
+            this.cbTipoUsuario.DisplayMember = "Descripcion";
+            this.cbTipoUsuario.ValueMember = "IdTipoUsuario";
         }
 
         private void UsuarioDesktop_Load(object sender, EventArgs e)
@@ -168,6 +177,9 @@ namespace UI.Desktop
                 string nomPer = pl.GetOne(UsuarioActual.IdPersona).NombreYApellido;//Busco el nombre de la persona de dicho usuario.
                 this.cbPersonas.SelectedIndex = cbPersonas.FindStringExact(nomPer);//Esta funcion busca el indice que tiene asiganda la persona dentro del combo
 
+                TipoUsuarioLogic tul = new TipoUsuarioLogic();
+                string descTipo = tul.GetOne(UsuarioActual.IdTipoUsuario).Descripcion;
+                this.cbTipoUsuario.SelectedIndex = cbTipoUsuario.FindStringExact(descTipo);
             }
 
             

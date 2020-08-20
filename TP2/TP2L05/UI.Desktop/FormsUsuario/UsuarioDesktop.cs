@@ -167,6 +167,7 @@ namespace UI.Desktop
                 PersonaLogic pl = new PersonaLogic();
                 string nomPer = pl.GetOne(UsuarioActual.IdPersona).NombreYApellido;//Busco el nombre de la persona de dicho usuario.
                 this.cbPersonas.SelectedIndex = cbPersonas.FindStringExact(nomPer);//Esta funcion busca el indice que tiene asiganda la persona dentro del combo
+
             }
 
             

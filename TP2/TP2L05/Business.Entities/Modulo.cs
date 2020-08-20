@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class TipoUsuario
+    public class Modulo
     {
-        private int _IdTipoUsuario;
-        public int IdTipoUsuario
+        private int _IdModulo;
+        public int IdModulo
         {
-            get { return _IdTipoUsuario; }
-            set { _IdTipoUsuario = value; }
+            get { return _IdModulo; }
+            set { _IdModulo = value; }
         }
 
         private string _Descripcion;
@@ -28,5 +28,6 @@ namespace Business.Entities
             get { return _Habilitado; }
             set { _Habilitado = value; }
         }
+
     }
 }

@@ -16,7 +16,7 @@ namespace UI.Desktop
             {
                 for (int i = 0; i < dgv.RowCount; i++)
                 {
-                    int hab = Convert.ToInt16(dgv.Rows[i].Cells[2].Value);
+                    int hab = Convert.ToInt16(dgv.Rows[i].Cells["Habilitado"].Value);
                     if (hab != 1)
                     {
                         dgv.Rows[i].DefaultCellStyle.ForeColor = Color.DarkGray;

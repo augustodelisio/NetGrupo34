@@ -32,18 +32,18 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.tsUsuarios = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idTipoUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.tsUsuarios = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -111,6 +111,57 @@
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(697, 369);
             this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvUsuarios_RowStateChanged);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "NombreUsuario";
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.MinimumWidth = 6;
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            // 
+            // legajo
+            // 
+            this.legajo.DataPropertyName = "Legajo";
+            this.legajo.HeaderText = "Legajo";
+            this.legajo.MinimumWidth = 6;
+            this.legajo.Name = "legajo";
+            this.legajo.ReadOnly = true;
+            // 
+            // idTipoUsuario
+            // 
+            this.idTipoUsuario.DataPropertyName = "IdTipoUsuario";
+            this.idTipoUsuario.HeaderText = "Tipo de Usuario";
+            this.idTipoUsuario.MinimumWidth = 6;
+            this.idTipoUsuario.Name = "idTipoUsuario";
+            this.idTipoUsuario.ReadOnly = true;
+            // 
+            // IdPersona
+            // 
+            this.IdPersona.DataPropertyName = "IdPersona";
+            this.IdPersona.HeaderText = "Persona";
+            this.IdPersona.Name = "IdPersona";
+            this.IdPersona.ReadOnly = true;
+            // 
+            // habilitado
+            // 
+            this.habilitado.DataPropertyName = "Habilitado";
+            this.habilitado.HeaderText = "Habilitado";
+            this.habilitado.MinimumWidth = 6;
+            this.habilitado.Name = "habilitado";
+            this.habilitado.ReadOnly = true;
+            this.habilitado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.habilitado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.habilitado.Visible = false;
             // 
             // btnActualizar
             // 
@@ -179,55 +230,6 @@
             this.tsbEliminar.Text = "toolStripButton1";
             this.tsbEliminar.ToolTipText = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "ID";
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "NombreUsuario";
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.MinimumWidth = 6;
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            // 
-            // legajo
-            // 
-            this.legajo.DataPropertyName = "Legajo";
-            this.legajo.HeaderText = "Legajo";
-            this.legajo.MinimumWidth = 6;
-            this.legajo.Name = "legajo";
-            this.legajo.ReadOnly = true;
-            // 
-            // idTipoUsuario
-            // 
-            this.idTipoUsuario.DataPropertyName = "IdTipoUsuario";
-            this.idTipoUsuario.HeaderText = "Tipo de Usuario";
-            this.idTipoUsuario.MinimumWidth = 6;
-            this.idTipoUsuario.Name = "idTipoUsuario";
-            this.idTipoUsuario.ReadOnly = true;
-            // 
-            // IdPersona
-            // 
-            this.IdPersona.DataPropertyName = "IdPersona";
-            this.IdPersona.HeaderText = "Persona";
-            this.IdPersona.Name = "IdPersona";
-            this.IdPersona.ReadOnly = true;
-            // 
-            // habilitado
-            // 
-            this.habilitado.DataPropertyName = "Habilitado";
-            this.habilitado.HeaderText = "Habilitado";
-            this.habilitado.MinimumWidth = 6;
-            this.habilitado.Name = "habilitado";
-            this.habilitado.ReadOnly = true;
-            this.habilitado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.habilitado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Usuarios
             // 

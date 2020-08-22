@@ -38,9 +38,7 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
-            this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-            this.txtLegajo.Text = this.UsuarioActual.Legajo.ToString();
-            this.txtIdTipoUsuario.Text = this.UsuarioActual.IdTipoUsuario.ToString();            
+            this.txtLegajo.Text = this.UsuarioActual.Legajo.ToString();          
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;
             this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
@@ -51,7 +49,11 @@ namespace UI.Desktop
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                this.btnAceptar.Text = "Deshabilitar";
+            }
+            else if (Modo == ModoForm.CancelaBaja)
+            {
+                this.btnAceptar.Text = "Habilitar";
             }
             else if (Modo == ModoForm.Consulta)
             {
@@ -83,12 +85,10 @@ namespace UI.Desktop
                     Usuario usu = new Usuario();
                     UsuarioActual = usu;
                     UsuarioActual.State = BusinessEntity.States.New;
-
+                    UsuarioActual.Habilitado = true;
                 }
                 
-                this.UsuarioActual.Habilitado = this.chkHabilitado.Checked;
                 this.UsuarioActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
-                this.UsuarioActual.IdTipoUsuario = Convert.ToInt32(this.txtIdTipoUsuario.Text);
                 
                 int fid;
                 fid = Convert.ToInt32(cbPersonas.SelectedValue.GetHashCode());
@@ -100,11 +100,14 @@ namespace UI.Desktop
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
 
-
             }
             else if (Modo == ModoForm.Baja)
             {
                 UsuarioActual.State = BusinessEntity.States.Deleted;
+            }
+            else if (Modo == ModoForm.CancelaBaja)
+            {
+                UsuarioActual.State = BusinessEntity.States.Undeleted;
             }
             else if (Modo == ModoForm.Consulta)
             {
@@ -121,7 +124,7 @@ namespace UI.Desktop
         public override bool Validar()
         {
             bool correcto = true;
-            if (String.IsNullOrEmpty(this.txtLegajo.Text) || String.IsNullOrEmpty(this.txtIdTipoUsuario.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
+            if (String.IsNullOrEmpty(this.txtLegajo.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
                 correcto = false;
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 correcto = false;

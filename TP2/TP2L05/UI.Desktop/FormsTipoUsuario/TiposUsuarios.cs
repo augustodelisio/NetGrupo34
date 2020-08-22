@@ -21,9 +21,16 @@ namespace UI.Desktop
         }
         public void Listar()
         {
-            TipoUsuarioLogic tul = new TipoUsuarioLogic();
-            this.dgvTiposUsuarios.DataSource = tul.GetAll();
-            FormatoDGV.ActualizaColor(dgvTiposUsuarios);
+            try
+            {
+                TipoUsuarioLogic tul = new TipoUsuarioLogic();
+                this.dgvTiposUsuarios.DataSource = tul.GetAll();
+                FormatoDGV.ActualizaColor(dgvTiposUsuarios);
+            }
+            catch (Exception Ex)
+            {
+                Notificar("Error de carga de tipos", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -63,9 +70,7 @@ namespace UI.Desktop
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID = ((TipoUsuario)this.dgvTiposUsuarios.SelectedRows[0].DataBoundItem).IdTipoUsuario;
-            //bool hab = ((TipoUsuario)this.dgvTiposUsuarios.SelectedRows[0].DataBoundItem).Habilitado;
-            TipoUsuarioLogic tul = new TipoUsuarioLogic();
-            bool hab = tul.GetOne(ID).Habilitado;
+            bool hab = ((TipoUsuario)this.dgvTiposUsuarios.SelectedRows[0].DataBoundItem).Habilitado;
 
             TipoUsuarioDesktop formTipoUsuario;
             if (hab == true)
@@ -77,23 +82,11 @@ namespace UI.Desktop
             this.Listar();
         }
 
-        private void dgvTiposUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dgvTiposUsuarios_CurrentCellChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void dgvTiposUsuarios_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             if (this.dgvTiposUsuarios.SelectedRows.Count > 0)
             {
-                int ID = ((TipoUsuario)this.dgvTiposUsuarios.SelectedRows[0].DataBoundItem).IdTipoUsuario;
-                TipoUsuarioLogic tul = new TipoUsuarioLogic();
-                bool hab = tul.GetOne(ID).Habilitado;
+                bool hab = ((TipoUsuario)this.dgvTiposUsuarios.SelectedRows[0].DataBoundItem).Habilitado;
                 if (hab == false)
                 { tsbEliminar.Image = Properties.Resources.apply.ToBitmap(); }
                 else

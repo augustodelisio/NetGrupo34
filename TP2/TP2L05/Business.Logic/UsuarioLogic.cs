@@ -29,23 +29,47 @@ namespace Business.Logic
             }
             catch(Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;
             }
         }
 
         public Usuario GetOne(int id)
         {
-            return UsuarioData.GetOne(id);
+            try
+            {
+                return UsuarioData.GetOne(id);
+            }
+            catch(Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
-        public void Delete(int id)
+        public void Delete(Usuario usu, BusinessEntity.States est)
         {
-            UsuarioData.Delete(id);
+            try
+            {
+                UsuarioData.Delete(usu, est);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
         }
         public void Save(Usuario usu)
         {
-            UsuarioData.Save(usu);
-        }
+            try
+            {
+                UsuarioData.Save(usu);
+            }
+            catch(Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
+}
     }
 }

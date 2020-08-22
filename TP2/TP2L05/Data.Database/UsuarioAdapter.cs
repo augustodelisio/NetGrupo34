@@ -137,14 +137,26 @@ namespace Data.Database
             return usr;
         }
 
-        public void Delete(int ID)
+        public void Delete(Usuario usuario, BusinessEntity.States estado)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("Delete usuarios where id_usuario=@id", SqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
-                cmdDelete.ExecuteNonQuery();
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE usuarios SET nombre_usuario = @nombre_usuario, clave = @clave," +
+                    "habilitado = @habilitado, legajo = @legajo, id_tipo_usuario = @id_tipo_usuario, id_persona = @id_persona " +
+                    "WHERE id_usuario=@id", SqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
+                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
+                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = usuario.Legajo;
+                cmdSave.Parameters.Add("@id_tipo_usuario", SqlDbType.Int).Value = usuario.IdTipoUsuario;
+                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+                if (estado == BusinessEntity.States.Deleted)
+                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
+                else
+                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
@@ -159,9 +171,9 @@ namespace Data.Database
 
         public void Save(Usuario usuario)
         {
-            if (usuario.State == BusinessEntity.States.Deleted)
+            if ((usuario.State == BusinessEntity.States.Deleted) || (usuario.State == BusinessEntity.States.Undeleted))
             {
-                this.Delete(usuario.ID);
+                this.Delete(usuario, usuario.State);
             }
             else if (usuario.State == BusinessEntity.States.New)
             {

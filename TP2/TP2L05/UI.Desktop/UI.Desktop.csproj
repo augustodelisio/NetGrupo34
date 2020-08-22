@@ -208,9 +208,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\imgHabilitar.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\apply.ico" />
   </ItemGroup>
   <ItemGroup>

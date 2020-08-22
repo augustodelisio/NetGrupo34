@@ -39,12 +39,13 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 22);
+            this.label1.Location = new System.Drawing.Point(162, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 26);
+            this.label1.Size = new System.Drawing.Size(138, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Bienvenido al sistema!\r\nPor favor digite su información de Ingreso";
+            this.label1.Text = "¡Bienvenido al Systemardo!\r\nPor favor ingrese su usuario";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -84,7 +85,7 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(198, 167);
+            this.btnIngresar.Location = new System.Drawing.Point(177, 165);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(112, 32);
             this.btnIngresar.TabIndex = 5;

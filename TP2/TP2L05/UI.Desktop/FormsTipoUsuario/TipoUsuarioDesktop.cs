@@ -45,7 +45,7 @@ namespace UI.Desktop
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                this.btnAceptar.Text = "Deshabilitar";
             }
             else if (Modo == ModoForm.CancelaBaja)
             {

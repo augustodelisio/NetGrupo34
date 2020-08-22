@@ -20,6 +20,7 @@ namespace UI.Desktop
         {
             Alta,
             Baja,
+            CancelaBaja,
             Modificacion,
             Consulta
         }

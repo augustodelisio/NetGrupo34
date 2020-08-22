@@ -79,18 +79,25 @@ namespace Data.Database
             return tu;
         }
 
-        public void Delete(int ID)
+        public void Delete(TipoUsuario tipo_usuario, BusinessEntity.States estado)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("Delete tipos_usuarios where id_tipo_usuario=@id", SqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
-                cmdDelete.ExecuteNonQuery();
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE tipos_usuarios SET descripcion = @descripcion, habilitado = @habilitado " +
+                    "WHERE id_tipo_usuario=@id", SqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = tipo_usuario.IdTipoUsuario;
+                cmdSave.Parameters.Add("@descripcion", SqlDbType.VarChar, 50).Value = tipo_usuario.Descripcion;
+                if (estado == BusinessEntity.States.Deleted)
+                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
+                else
+                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al eliminar tipo_usuario", Ex);
+                Exception ExcepcionManejada = new Exception("Error al eliminar tipo de usuario", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -101,9 +108,9 @@ namespace Data.Database
 
         public void Save(TipoUsuario tipo_usuario)
         {
-            if (tipo_usuario.State == BusinessEntity.States.Deleted)
+            if ((tipo_usuario.State == BusinessEntity.States.Deleted) || (tipo_usuario.State == BusinessEntity.States.Undeleted))
             {
-                this.Delete(tipo_usuario.ID);
+                this.Delete(tipo_usuario, tipo_usuario.State);
             }
             else if (tipo_usuario.State == BusinessEntity.States.New)
             {

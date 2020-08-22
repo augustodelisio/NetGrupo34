@@ -39,9 +39,9 @@ namespace Business.Logic
             return TipoUsuarioData.GetOne(id);
         }
 
-        public void Delete(int id)
+        public void Delete(TipoUsuario tus, BusinessEntity.States est)
         {
-            TipoUsuarioData.Delete(id);
+            TipoUsuarioData.Delete(tus, est);
         }
         public void Save(TipoUsuario tus)
         {

@@ -54,5 +54,11 @@ namespace UI.Desktop
             Personas ABMPersonas = new Personas();
             ABMPersonas.ShowDialog();
         }
+
+        private void tiposDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TiposUsuarios ABMTiposUsu = new TiposUsuarios();
+            ABMTiposUsu.ShowDialog();
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Business.Entities
 
         public enum States
         {
-            Deleted, New, Modified, Unmodified
+            Deleted, Undeleted, New, Modified, Unmodified
         }
     }
 

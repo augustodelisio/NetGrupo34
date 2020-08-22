@@ -55,6 +55,7 @@
     <Compile Include="ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormatoDGV.cs" />
     <Compile Include="FormLogin\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +97,18 @@
     </Compile>
     <Compile Include="FormsPersona\Personas.Designer.cs">
       <DependentUpon>Personas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsTipoUsuario\TipoUsuarioDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsTipoUsuario\TipoUsuarioDesktop.Designer.cs">
+      <DependentUpon>TipoUsuarioDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsTipoUsuario\TiposUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsTipoUsuario\TiposUsuarios.Designer.cs">
+      <DependentUpon>TiposUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsUsuario\UsuarioDesktop.cs">
       <SubType>Form</SubType>
@@ -141,6 +154,12 @@
     <EmbeddedResource Include="FormsPersona\Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsTipoUsuario\TipoUsuarioDesktop.resx">
+      <DependentUpon>TipoUsuarioDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsTipoUsuario\TiposUsuarios.resx">
+      <DependentUpon>TiposUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsUsuario\UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +177,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -187,6 +207,14 @@
       <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\imgHabilitar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

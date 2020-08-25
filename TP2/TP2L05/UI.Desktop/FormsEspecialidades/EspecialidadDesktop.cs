@@ -30,14 +30,14 @@ namespace UI.Desktop
         public EspecialidadDesktop(int ID, ModoForm modo) : this()    
         {
             EspecialidadLogic el = new EspecialidadLogic();
-            this.Modo = modo;                               //Setea el valor en el que se encuentra el formulario (A/B/M/C)   
-            this.EspecialidadActual = el.GetOne(ID);             //Obtiene el usuario que tenga el ID pasado por parametro desde la capa de datos
-            this.MapearDeDatos();                           //Setea los valores correspondientes al estado del formulario en el form "UsuarioDesktop"
+            this.Modo = modo;
+            this.EspecialidadActual = el.GetOne(ID);
+            this.MapearDeDatos();
         }
 
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.EspecialidadActual.ID.ToString();
+            this.txtID.Text = this.EspecialidadActual.IdEspecialidad.ToString();
             this.txtDescripcion.Text = this.EspecialidadActual.Descripcion;
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
             {
@@ -45,7 +45,11 @@ namespace UI.Desktop
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                this.btnAceptar.Text = "Deshabilitar";
+            }
+            else if (Modo == ModoForm.CancelaBaja)
+            {
+                this.btnAceptar.Text = "Habilitar";
             }
             else if (Modo == ModoForm.Consulta)
             {
@@ -61,22 +65,20 @@ namespace UI.Desktop
                 {
                     try 
                     { 
-                        this.EspecialidadActual.ID = int.Parse(this.txtID.Text);
+                        this.EspecialidadActual.IdEspecialidad = int.Parse(this.txtID.Text);
                         EspecialidadActual.State = BusinessEntity.States.Modified;
-
                     }
                     catch(Exception Ex)
                     {
                         Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
                     }
-                    
-
                 }
                 else
                 {
                     Especialidad esp = new Especialidad();
                     EspecialidadActual = esp;
                     EspecialidadActual.State = BusinessEntity.States.New;
+                    EspecialidadActual.Habilitado = true;
                 }
                 
                 this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
@@ -84,6 +86,10 @@ namespace UI.Desktop
             else if (Modo == ModoForm.Baja)
             {
                 EspecialidadActual.State = BusinessEntity.States.Deleted;
+            }
+            else if (Modo == ModoForm.CancelaBaja)
+            {
+                EspecialidadActual.State = BusinessEntity.States.Undeleted;
             }
             else if (Modo == ModoForm.Consulta)
             {

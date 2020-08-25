@@ -30,15 +30,14 @@ namespace UI.Desktop
         public PersonaDesktop(int ID, ModoForm modo) : this()    
         {
             PersonaLogic pl = new PersonaLogic();
-            this.Modo = modo;                               //Setea el valor en el que se encuentra el formulario (A/B/M/C)   
-            this.PersonaActual = pl.GetOne(ID);             //Obtiene el usuario que tenga el ID pasado por parametro desde la capa de datos
-            this.MapearDeDatos();                           //Setea los valores correspondientes al estado del formulario en el form "PersonaDesktop"
+            this.Modo = modo;
+            this.PersonaActual = pl.GetOne(ID);
+            this.MapearDeDatos();
         }
 
         public override void MapearDeDatos()
         {
             this.txtID.Text = this.PersonaActual.IdPersona.ToString();
-            this.chkHabilitado.Checked = this.PersonaActual.Habilitado;
             this.txtTelefono.Text = this.PersonaActual.Telefono;
             this.txtEmail.Text = this.PersonaActual.Email;
             this.txtNombre.Text = this.PersonaActual.Nombre;
@@ -51,7 +50,11 @@ namespace UI.Desktop
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                this.btnAceptar.Text = "Deshabilitar";
+            }
+            else if (Modo == ModoForm.CancelaBaja)
+            {
+                this.btnAceptar.Text = "Habilitar";
             }
             else if (Modo == ModoForm.Consulta)
             {
@@ -83,10 +86,10 @@ namespace UI.Desktop
                     Persona per = new Persona();
                     PersonaActual = per;
                     PersonaActual.State = BusinessEntity.States.New;
+                    PersonaActual.Habilitado = true;
 
                 }
 
-                this.PersonaActual.Habilitado = this.chkHabilitado.Checked;
                 this.PersonaActual.Telefono = this.txtTelefono.Text;
                 this.PersonaActual.Email = this.txtEmail.Text;
                 this.PersonaActual.Nombre = this.txtNombre.Text;
@@ -97,6 +100,10 @@ namespace UI.Desktop
             else if (Modo == ModoForm.Baja)
             {
                 PersonaActual.State = BusinessEntity.States.Deleted;
+            }
+            else if (Modo == ModoForm.CancelaBaja)
+            {
+                PersonaActual.State = BusinessEntity.States.Undeleted;
             }
             else if (Modo == ModoForm.Consulta)
             {
@@ -115,8 +122,8 @@ namespace UI.Desktop
             bool correcto = true;
             if (String.IsNullOrEmpty(this.txtEmail.Text) || String.IsNullOrEmpty(this.txtNombre.Text) || String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtDireccion.Text) || String.IsNullOrEmpty(this.txtTelefono.Text) || String.IsNullOrEmpty(this.txtFechaNac.Text))
                 correcto = false;
-            //if (Validaciones.EsMailCorrecto(this.txtEmail.Text) == false)
-            //    correcto = false;
+            if (Validaciones.EsMailCorrecto(this.txtEmail.Text) == false)
+                correcto = false;
 
             if (correcto == false)
                 this.Notificar("Error, campos incompletos o mail erroneo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

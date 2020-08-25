@@ -24,23 +24,47 @@ namespace Business.Logic
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de especialidades", Ex);
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;
             }
         }
 
         public Especialidad GetOne(int id)
         {
-            return EspecialidadData.GetOne(id);
+            try
+            {
+                return EspecialidadData.GetOne(id);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
-        public void Delete(int id)
+        public void Delete(Especialidad esp, BusinessEntity.States est)
         {
-            EspecialidadData.Delete(id);
+            try
+            {
+                EspecialidadData.Delete(esp, est);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
         }
         public void Save(Especialidad esp)
         {
-            EspecialidadData.Save(esp); //Cuando llega acá el usuario tiene .State = New y deberia tener .State = Modified
+            try
+            {
+                EspecialidadData.Save(esp);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
         }
     }
 }

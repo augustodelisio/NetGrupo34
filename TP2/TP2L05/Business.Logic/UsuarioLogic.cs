@@ -70,6 +70,6 @@ namespace Business.Logic
                 Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;
             }
-}
+        }
     }
 }

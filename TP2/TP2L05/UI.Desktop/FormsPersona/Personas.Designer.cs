@@ -115,6 +115,7 @@
             this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonas.Size = new System.Drawing.Size(697, 369);
             this.dgvPersonas.TabIndex = 0;
+            this.dgvPersonas.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvPersonas_RowStateChanged);
             // 
             // btnActualizar
             // 
@@ -246,6 +247,7 @@
             this.habilitado.ReadOnly = true;
             this.habilitado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.habilitado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.habilitado.Visible = false;
             // 
             // Personas
             // 

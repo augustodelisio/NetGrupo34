@@ -26,8 +26,9 @@ namespace Data.Database
                 {
                     Especialidad esp = new Especialidad();
 
-                    esp.ID = (int)drEspecialidades["id_especialidad"];
+                    esp.IdEspecialidad = (int)drEspecialidades["id_especialidad"];
                     esp.Descripcion = (string)drEspecialidades["desc_especialidad"];
+                    esp.Habilitado = (bool)drEspecialidades["habilitado"];
 
                     especialidades.Add(esp);
                 }
@@ -60,8 +61,9 @@ namespace Data.Database
                 SqlDataReader drEspecialidades = cmdEspecialidades.ExecuteReader();
                 if (drEspecialidades.Read())
                 {
-                    esp.ID = (int)drEspecialidades["id_especialidad"];
+                    esp.IdEspecialidad = (int)drEspecialidades["id_especialidad"];
                     esp.Descripcion = (string)drEspecialidades["desc_especialidad"];
+                    esp.Habilitado = (bool)drEspecialidades["habilitado"];
                 }
                 drEspecialidades.Close();
             }
@@ -77,14 +79,21 @@ namespace Data.Database
             return esp;
         }
 
-        public void Delete(int ID)
+        public void Delete(Especialidad especialidad, BusinessEntity.States estado)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("Delete especialidades where id_especialidad=@id", SqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
-                cmdDelete.ExecuteNonQuery();
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE especialidades SET desc_especialidad = @desc_especialidad, habilitado = @habilitado " +
+                    "WHERE id_especialidad=@id", SqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.IdEspecialidad;
+                cmdSave.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = especialidad.Descripcion;
+                if (estado == BusinessEntity.States.Deleted)
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
+                else
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
@@ -99,9 +108,9 @@ namespace Data.Database
 
         public void Save(Especialidad especialidad)
         {
-            if (especialidad.State == BusinessEntity.States.Deleted)
+            if ((especialidad.State == BusinessEntity.States.Deleted) || (especialidad.State == BusinessEntity.States.Undeleted))
             {
-                this.Delete(especialidad.ID);
+                this.Delete(especialidad, especialidad.State);
             }
             else if (especialidad.State == BusinessEntity.States.New)
             {
@@ -122,10 +131,11 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "UPDATE especialidades SET desc_especialidad = @desc_especialidad " +
+                    "UPDATE especialidades SET desc_especialidad = @desc_especialidad, habilitado = @habilitado " +
                     "WHERE id_especialidad=@id", SqlConn);
-                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.ID;
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.IdEspecialidad;
                 cmdSave.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = especialidad.Descripcion;
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = especialidad.Habilitado;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -144,11 +154,12 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "INSERT INTO especialidades(desc_especialidad) " +
-                    "values(@desc_especialidad) " +
+                    "INSERT INTO especialidades(desc_especialidad, habilitado) " +
+                    "values(@desc_especialidad, @habilitado) " +
                     "select @@identity", SqlConn);
                 cmdSave.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = especialidad.Descripcion;
-                especialidad.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = especialidad.Habilitado;
+                especialidad.IdEspecialidad = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 //cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)

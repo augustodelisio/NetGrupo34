@@ -77,8 +77,6 @@ namespace UI.Desktop
                     {
                         Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
                     }
-                    
-
                 }
                 else
                 {
@@ -128,8 +126,6 @@ namespace UI.Desktop
                 correcto = false;
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 correcto = false;
-            //if (Validaciones.EsMailCorrecto(this.txtIdTipoUsuario.Text) == false)
-            //    correcto = false;
 
             if (correcto == false)
                 this.Notificar("Error, campos incompletos / clave<8 o mal repetida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -184,8 +180,6 @@ namespace UI.Desktop
                 string descTipo = tul.GetOne(UsuarioActual.IdTipoUsuario).Descripcion;
                 this.cbTipoUsuario.SelectedIndex = cbTipoUsuario.FindStringExact(descTipo);
             }
-
-            
         }
 
         private void btnCrearPersona_Click(object sender, EventArgs e)

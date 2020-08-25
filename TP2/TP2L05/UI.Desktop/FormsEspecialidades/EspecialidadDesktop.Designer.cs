@@ -59,21 +59,24 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(321, 96);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(321, 102);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lbDescripcion
             // 
+            this.lbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(3, 26);
+            this.lbDescripcion.Location = new System.Drawing.Point(15, 38);
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lbDescripcion.TabIndex = 1;
             this.lbDescripcion.Text = "Descripcion";
+            this.lbDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(84, 3);
+            this.txtID.Location = new System.Drawing.Point(84, 5);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(130, 20);
@@ -81,25 +84,29 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(84, 29);
+            this.txtDescripcion.Location = new System.Drawing.Point(84, 35);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(225, 20);
             this.txtDescripcion.TabIndex = 5;
             // 
             // lbID
             // 
+            this.lbID.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbID.AutoSize = true;
-            this.lbID.Location = new System.Drawing.Point(3, 0);
+            this.lbID.Location = new System.Drawing.Point(60, 8);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(18, 13);
             this.lbID.TabIndex = 0;
             this.lbID.Text = "ID";
+            this.lbID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(3, 55);
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAceptar.Location = new System.Drawing.Point(3, 70);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(75, 29);
             this.btnAceptar.TabIndex = 15;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -107,9 +114,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(84, 55);
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.Location = new System.Drawing.Point(84, 70);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 29);
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -119,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(321, 96);
+            this.ClientSize = new System.Drawing.Size(321, 102);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

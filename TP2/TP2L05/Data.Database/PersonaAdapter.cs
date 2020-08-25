@@ -11,8 +11,6 @@ namespace Data.Database
 {
     public class PersonaAdapter:Adapter
     {
-        private static List<Persona> _Personas;
-
         public List<Persona> GetAll()
         {
             List<Persona> personas = new List<Persona>();
@@ -91,14 +89,27 @@ namespace Data.Database
             return per;
         }
 
-        public void Delete(int ID)
+        public void Delete(Persona persona, BusinessEntity.States estado)
         {
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("Delete personas where id_persona=@id", SqlConn);
-                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
-                cmdDelete.ExecuteNonQuery();
+                SqlCommand cmdSave = new SqlCommand(
+                    "UPDATE personas SET nombre = @nombre, apellido = @apellido, direccion = @direccion," +
+                    "habilitado = @habilitado, email = @email, telefono = @telefono, fecha_nac = @fecha_nac " +
+                    "WHERE id_persona=@id", SqlConn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.IdPersona;
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
+                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = persona.Apellido;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = persona.Direccion;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = persona.Email;
+                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
+                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.FechaNacimiento;
+                if (estado == BusinessEntity.States.Deleted)
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
+                else
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
+                cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
@@ -113,9 +124,9 @@ namespace Data.Database
 
         public void Save(Persona persona)
         {
-            if (persona.State == BusinessEntity.States.Deleted)
+            if ((persona.State == BusinessEntity.States.Deleted) || (persona.State == BusinessEntity.States.Undeleted))
             {
-                this.Delete(persona.ID);
+                this.Delete(persona, persona.State);
             }
             else if (persona.State == BusinessEntity.States.New)
             {

@@ -12,20 +12,20 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class Planes : ApplicationForm
+    public partial class Materias : ApplicationForm
     {
-        public Planes()
+        public Materias()
         {
             InitializeComponent();
-            dgvPlanes.AutoGenerateColumns = false;
+            dgvMaterias.AutoGenerateColumns = false;
         }
         public void Listar()
         {
             try
             {
-                PlanLogic el = new PlanLogic();
-                this.dgvPlanes.DataSource = el.GetAll();
-                FormatoDGV.ActualizaColor(dgvPlanes);
+                MateriaLogic ml = new MateriaLogic();
+                this.dgvMaterias.DataSource = ml.GetAll();
+                FormatoDGV.ActualizaColor(dgvMaterias);
             }
             catch (Exception Ex)
             {
@@ -33,7 +33,7 @@ namespace UI.Desktop
             }
         }
 
-        private void Planes_Load(object sender, EventArgs e)
+        private void Materias_Load(object sender, EventArgs e)
         {
             this.Listar();
         }
@@ -50,42 +50,42 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            PlanDesktop formPlan = new PlanDesktop(ApplicationForm.ModoForm.Alta);
-            formPlan.ShowDialog();
+            MateriaDesktop formMateria = new MateriaDesktop(ApplicationForm.ModoForm.Alta);
+            formMateria.ShowDialog();
             this.Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvPlanes.SelectedRows.Count>0)
+            if (this.dgvMaterias.SelectedRows.Count>0)
             {
-                int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).IdPlan;
-                PlanDesktop formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.Modificacion);
-                formPlan.ShowDialog();
+                int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).IdMateria;
+                MateriaDesktop formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+                formMateria.ShowDialog();
                 this.Listar();
             }
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).IdPlan;
-            bool hab = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).Habilitado;
+            int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).IdMateria;
+            bool hab = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).Habilitado;
 
-            PlanDesktop formPlan;
+            MateriaDesktop formMateria;
             if (hab == true)
-                { formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.Baja); }
+                { formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Baja); }
             else
-                { formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
+                { formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
 
-            formPlan.ShowDialog();
+            formMateria.ShowDialog();
             this.Listar();
         }
 
-        private void dgvPlanes_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void dgvMaterias_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (this.dgvPlanes.SelectedRows.Count > 0)
+            if (this.dgvMaterias.SelectedRows.Count > 0)
             {
-                bool hab = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).Habilitado;
+                bool hab = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).Habilitado;
                 if (hab == false)
                 { tsbEliminar.Image = Properties.Resources.apply.ToBitmap(); }
                 else

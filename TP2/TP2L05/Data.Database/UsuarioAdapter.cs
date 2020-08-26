@@ -27,10 +27,10 @@ namespace Data.Database
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
-                    usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Legajo = (int)drUsuarios["legajo"];
                     usr.IdTipoUsuario = (int)drUsuarios["id_tipo_usuario"];
                     usr.IdPersona = (int)drUsuarios["id_persona"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
 
                     usuarios.Add(usr);
                 }
@@ -51,7 +51,7 @@ namespace Data.Database
             return usuarios;
         }
 
-        public Business.Entities.Usuario GetOne(int ID)
+        public Usuario GetOne(int ID)
         {
             Usuario usr = new Usuario();
             try
@@ -66,10 +66,10 @@ namespace Data.Database
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
-                    usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Legajo = (int)drUsuarios["legajo"];
                     usr.IdTipoUsuario = (int)drUsuarios["id_tipo_usuario"];
                     usr.IdPersona = (int)drUsuarios["id_persona"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
                 }
                 drUsuarios.Close();
             }
@@ -91,7 +91,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "UPDATE usuarios SET nombre_usuario = @nombre_usuario, clave = @clave," +
+                    "UPDATE usuarios SET nombre_usuario = @nombre_usuario, clave = @clave, " +
                     "habilitado = @habilitado, legajo = @legajo, id_tipo_usuario = @id_tipo_usuario, id_persona = @id_persona " +
                     "WHERE id_usuario=@id", SqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
@@ -148,10 +148,10 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = usuario.Legajo;
                 cmdSave.Parameters.Add("@id_tipo_usuario", SqlDbType.Int).Value = usuario.IdTipoUsuario;
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -175,10 +175,10 @@ namespace Data.Database
                     "select @@identity", SqlConn);
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
-                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = usuario.Legajo;
                 cmdSave.Parameters.Add("@id_tipo_usuario", SqlDbType.Int).Value = usuario.IdTipoUsuario;
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 //cmdSave.ExecuteNonQuery();
             }

@@ -60,5 +60,11 @@ namespace UI.Desktop
             TiposUsuarios ABMTiposUsu = new TiposUsuarios();
             ABMTiposUsu.ShowDialog();
         }
+
+        private void administrarMateriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Materias ABMMaterias = new Materias();
+            ABMMaterias.ShowDialog();
+        }
     }
 }

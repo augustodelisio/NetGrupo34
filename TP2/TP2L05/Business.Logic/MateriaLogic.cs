@@ -8,32 +8,32 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    public class PlanLogic : BusinessLogic
+    public class MateriaLogic : BusinessLogic
     {
-        private PlanAdapter _PlandData;
-        public PlanAdapter PlanData { get; set; }
-        public PlanLogic()
+        private MateriaAdapter _MateriaData;
+        public MateriaAdapter MateriaData { get; set; }
+        public MateriaLogic()
         {
-            PlanData = new PlanAdapter();
+            MateriaData = new MateriaAdapter();
         }
-        public List<Plan> GetAll()
+        public List<Materia> GetAll()
         {
             try
             {
-                return PlanData.GetAll();
+                return MateriaData.GetAll();
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de planes", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
                 throw ExcepcionManejada;
             }
         }
 
-        public Plan GetOne(int id)
+        public Materia GetOne(int id)
         {
             try
             {
-                return PlanData.GetOne(id);
+                return MateriaData.GetOne(id);
             }
             catch (Exception Ex)
             {
@@ -42,11 +42,11 @@ namespace Business.Logic
             }
         }
 
-        public void Delete(Plan pla, BusinessEntity.States est)
+        public void Delete(Materia mat, BusinessEntity.States est)
         {
             try
             {
-                PlanData.Delete(pla, est);
+                MateriaData.Delete(mat, est);
             }
             catch (Exception Ex)
             {
@@ -54,11 +54,11 @@ namespace Business.Logic
                 throw ExcepcionManejada;
             }
         }
-        public void Save(Plan pl)
+        public void Save(Materia mat)
         {
             try
             {
-                PlanData.Save(pl);
+                MateriaData.Save(mat);
             }
             catch (Exception Ex)
             {

@@ -63,7 +63,7 @@ namespace UI.Desktop
 
         public override void MapearADatos()
         {
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)         //Aca deberia entrar en ModoForm.Modificacion pero no lo hace
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 if (Modo == ModoForm.Modificacion)
                 {
@@ -75,7 +75,7 @@ namespace UI.Desktop
                     }
                     catch(Exception Ex)
                     {
-                        Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
+                        Notificar("Error de conversion de ID", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -172,13 +172,26 @@ namespace UI.Desktop
 
             if (this.Modo != ModoForm.Alta)//Si NO es una alta, cargo el nombre de la persona que estamos editando.
             {
-                PersonaLogic pl = new PersonaLogic();
-                string nomPer = pl.GetOne(UsuarioActual.IdPersona).NombreYApellido;//Busco el nombre de la persona de dicho usuario.
-                this.cbPersonas.SelectedIndex = cbPersonas.FindStringExact(nomPer);//Esta funcion busca el indice que tiene asiganda la persona dentro del combo
-
-                TipoUsuarioLogic tul = new TipoUsuarioLogic();
-                string descTipo = tul.GetOne(UsuarioActual.IdTipoUsuario).Descripcion;
-                this.cbTipoUsuario.SelectedIndex = cbTipoUsuario.FindStringExact(descTipo);
+                try
+                {
+                    PersonaLogic pl = new PersonaLogic();
+                    string nomPer = pl.GetOne(UsuarioActual.IdPersona).NombreYApellido;//Busco el nombre de la persona de dicho usuario.
+                    this.cbPersonas.SelectedIndex = cbPersonas.FindStringExact(nomPer);//Esta funcion busca el indice que tiene asiganda la persona dentro del combo
+                }
+                catch
+                {
+                    Notificar("Error de carga", "No se ha podido recuperar la persona actual.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                try
+                {
+                    TipoUsuarioLogic tul = new TipoUsuarioLogic();
+                    string descTipo = tul.GetOne(UsuarioActual.IdTipoUsuario).Descripcion;
+                    this.cbTipoUsuario.SelectedIndex = cbTipoUsuario.FindStringExact(descTipo);
+                }
+                catch
+                {
+                    Notificar("Error de carga", "No se ha podido recuperar el tipo de usuario actual.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

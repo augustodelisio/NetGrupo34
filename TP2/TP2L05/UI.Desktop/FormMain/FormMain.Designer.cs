@@ -35,11 +35,13 @@
             this.administrarPersonasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarEspecialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tiposDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarMateriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,8 @@
             this.personasToolStripMenuItem,
             this.usuariosToolStripMenuItem,
             this.especialidadesToolStripMenuItem,
-            this.planesToolStripMenuItem});
+            this.planesToolStripMenuItem,
+            this.materiasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -105,6 +108,13 @@
             this.administrarUsuariosToolStripMenuItem.Text = "Administrar Usuarios";
             this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
             // 
+            // tiposDeUsuariosToolStripMenuItem
+            // 
+            this.tiposDeUsuariosToolStripMenuItem.Name = "tiposDeUsuariosToolStripMenuItem";
+            this.tiposDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.tiposDeUsuariosToolStripMenuItem.Text = "Tipos de Usuarios";
+            this.tiposDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.tiposDeUsuariosToolStripMenuItem_Click);
+            // 
             // especialidadesToolStripMenuItem
             // 
             this.especialidadesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -135,12 +145,20 @@
             this.administrarPlanesToolStripMenuItem.Text = "Administrar Planes";
             this.administrarPlanesToolStripMenuItem.Click += new System.EventHandler(this.administrarPlanesToolStripMenuItem_Click);
             // 
-            // tiposDeUsuariosToolStripMenuItem
+            // materiasToolStripMenuItem
             // 
-            this.tiposDeUsuariosToolStripMenuItem.Name = "tiposDeUsuariosToolStripMenuItem";
-            this.tiposDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.tiposDeUsuariosToolStripMenuItem.Text = "Tipos de Usuarios";
-            this.tiposDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.tiposDeUsuariosToolStripMenuItem_Click);
+            this.materiasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administrarMateriasToolStripMenuItem});
+            this.materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
+            this.materiasToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.materiasToolStripMenuItem.Text = "Materias";
+            // 
+            // administrarMateriasToolStripMenuItem
+            // 
+            this.administrarMateriasToolStripMenuItem.Name = "administrarMateriasToolStripMenuItem";
+            this.administrarMateriasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.administrarMateriasToolStripMenuItem.Text = "Administrar Materias";
+            this.administrarMateriasToolStripMenuItem.Click += new System.EventHandler(this.administrarMateriasToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -176,5 +194,7 @@
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarPersonasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarMateriasToolStripMenuItem;
     }
 }

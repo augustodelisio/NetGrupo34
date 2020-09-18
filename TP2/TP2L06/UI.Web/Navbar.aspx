@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PagPrincipal.aspx.cs" Inherits="UI.Web.PagPrincipal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Navbar.aspx.cs" Inherits="UI.Web.PagPrincipal" %>
 
 <!DOCTYPE html>
 
@@ -39,7 +39,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Personas</a>
+                        <a class="nav-link" href="Persona.aspx">Personas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Materias</a>

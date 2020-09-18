@@ -76,8 +76,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="PagPrincipal.aspx" />
+    <Content Include="Navbar.aspx" />
+    <Content Include="PagTiposUsuarios.aspx" />
+    <Content Include="PagUsuarios.aspx" />
+    <Content Include="Persona.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -189,6 +193,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -196,12 +207,33 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PagPrincipal.aspx.cs">
-      <DependentUpon>PagPrincipal.aspx</DependentUpon>
+    <Compile Include="Navbar.aspx.cs">
+      <DependentUpon>Navbar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PagPrincipal.aspx.designer.cs">
-      <DependentUpon>PagPrincipal.aspx</DependentUpon>
+    <Compile Include="Navbar.aspx.designer.cs">
+      <DependentUpon>Navbar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagTiposUsuarios.aspx.cs">
+      <DependentUpon>PagTiposUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagTiposUsuarios.aspx.designer.cs">
+      <DependentUpon>PagTiposUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagUsuarios.aspx.cs">
+      <DependentUpon>PagUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagUsuarios.aspx.designer.cs">
+      <DependentUpon>PagUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Persona.aspx.cs">
+      <DependentUpon>Persona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Persona.aspx.designer.cs">
+      <DependentUpon>Persona.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

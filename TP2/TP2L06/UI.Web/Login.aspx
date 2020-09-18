@@ -45,10 +45,10 @@
 
         .auto-style12 {
             height: 23px;
-            width: 118px;
+            width: 120px;
         }
         .auto-style13 {
-            width: 118px;
+            width: 100px;
         }
         .auto-style14 {
             width: 45%

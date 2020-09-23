@@ -35,7 +35,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Persona.aspx">Personas</a>
+                        <a class="nav-link" href="PagPersonas.aspx">Personas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Materias</a>

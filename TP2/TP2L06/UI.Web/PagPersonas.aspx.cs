@@ -1,38 +1,32 @@
-﻿using Business.Entities;
-using Business.Logic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Business.Entities;
+using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class TipoUsuario : System.Web.UI.Page
+    public partial class PagPersonas : System.Web.UI.Page
     {
-        TipoUsuarioLogic _logic;
-        private TipoUsuarioLogic Logic
+        PersonaLogic _logic;
+
+
+        private PersonaLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new TipoUsuarioLogic();
+                    _logic = new PersonaLogic();
                 }
                 return _logic;
             }
         }
 
-
-        Usuario _EntityTipoUsuario;
-
-        private Business.Entities.TipoUsuario EntityTipoUsuario
-        {
-            get;
-            set;
-        }
-
+        private Persona EntityPersona;
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadGrid();
@@ -43,22 +37,17 @@ namespace UI.Web
             this.gridView.DataSource = this.Logic.GetAll();
             this.gridView.DataBind();
         }
-
         public enum FormModes
         {
             Alta,
             Baja,
             Modificacion
         }
-
         public FormModes FormMode
         {
             get { return (FormModes)this.ViewState["FormMode"]; }
             set { this.ViewState["FormMode"] = value; }
         }
-
-
-
         private int SelectedID
         {
             get
@@ -86,42 +75,43 @@ namespace UI.Web
             this.SelectedID = (int)this.gridView.SelectedValue;
         }
 
-        private void LoadForm(int idUsr)
+
+
+        private void LoadForm(int idPersona)
         {
-            this.EntityTipoUsuario = this.Logic.GetOne(idUsr);
+            this.EntityPersona = this.Logic.GetOne(idPersona);
 
-
-            this.idTipoUsuarioTextBox.Text = this.EntityTipoUsuario.IdTipoUsuario.ToString();
-            this.descripcionTextBox.Text = this.EntityTipoUsuario.Descripcion;
-            this.habilitadoCheckBox.Checked = this.EntityTipoUsuario.Habilitado; 
+            this.nombreTextBox.Text = this.EntityPersona.Nombre;
+            this.apellidoTextBox.Text = this.EntityPersona.Apellido;
+            this.direccionTextBox.Text = this.EntityPersona.Direccion.ToString();
+            this.emailTextBox.Text = this.EntityPersona.Email.ToString();
+            this.fechaNacimientoTextBox.Text = this.EntityPersona.FechaNacimiento.ToString();
+            this.emailTextBox.Text = this.EntityPersona.FechaNacimiento.ToString();
+            this.habilitadoCheckBox.Checked = this.EntityPersona.Habilitado;
 
         }
-
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
             {
-                this.EnableForm(true);
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
             }
         }
-
-        private void LoadEntity(Business.Entities.TipoUsuario tipoUsuario)
+        private void LoadEntity(Business.Entities.Persona persona)
         {
-
-            tipoUsuario.IdTipoUsuario = Convert.ToInt32(this.idTipoUsuarioTextBox.Text);
-            tipoUsuario.Descripcion = this.descripcionTextBox.Text;
-            tipoUsuario.Habilitado = this.habilitadoCheckBox.Checked;
-
+            persona.Nombre = this.nombreTextBox.Text;
+            persona.Apellido = this.apellidoTextBox.Text;
+            persona.Direccion = this.direccionTextBox.Text;
+            persona.Email = this.emailTextBox.Text;
+            persona.FechaNacimiento = Convert.ToDateTime(this.EntityPersona.FechaNacimiento);
+            persona.Habilitado = this.habilitadoCheckBox.Checked;
 
         }
-
-
-        private void SaveEntity(Business.Entities.TipoUsuario tipoUsuario)
+        private void SaveEntity(Business.Entities.Persona persona)
         {
-            this.Logic.Save(tipoUsuario);
+            this.Logic.Save(persona);
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
@@ -129,46 +119,43 @@ namespace UI.Web
             switch (this.FormMode)
             {
                 case FormModes.Alta:
-                    this.EntityTipoUsuario = new Business.Entities.TipoUsuario();
-                    this.LoadEntity(this.EntityTipoUsuario);
-                    this.SaveEntity(this.EntityTipoUsuario);
+                    this.EntityPersona = new Business.Entities.Persona();
+                    this.LoadEntity(this.EntityPersona);
+                    this.SaveEntity(this.EntityPersona);
                     this.LoadGrid();
                     break;
 
 
                 case FormModes.Baja:
-                    this.EntityTipoUsuario = new Business.Entities.TipoUsuario();
-                    this.EntityTipoUsuario.ID = this.SelectedID;
-                    this.LoadEntity(this.EntityTipoUsuario);
-                    this.DeleteEntity(EntityTipoUsuario, BusinessEntity.States.Deleted);
+                    this.EntityPersona = new Business.Entities.Persona();
+                    this.EntityPersona.ID = this.SelectedID;
+                    this.LoadEntity(this.EntityPersona);
+                    this.DeleteEntity(EntityPersona, BusinessEntity.States.Deleted);
                     this.LoadGrid();
                     break;
 
                 case FormModes.Modificacion:
-                    this.EntityTipoUsuario = new Business.Entities.TipoUsuario();
-                    this.EntityTipoUsuario.ID = this.SelectedID;
-                    this.EntityTipoUsuario.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.EntityTipoUsuario);
-                    this.SaveEntity(this.EntityTipoUsuario);
+                    this.EntityPersona = new Business.Entities.Persona();
+                    this.EntityPersona.ID = this.SelectedID;
+                    this.EntityPersona.State = BusinessEntity.States.Modified;
+                    this.LoadEntity(this.EntityPersona);
+                    this.SaveEntity(this.EntityPersona);
                     this.LoadGrid();
                     break;
 
                 default:
                     break;
             }
-
-            this.formPanel.Visible = false;
         }
-
         private void EnableForm(bool enable)
         {
-            this.idTipoUsuarioTextBox.Enabled = enable;
-            this.descripcionTextBox.Enabled = enable;
+            this.nombreTextBox.Enabled = enable;
+            this.apellidoTextBox.Enabled = enable;
+            this.direccionTextBox.Enabled = enable;
+            this.emailTextBox.Enabled = enable;
+            this.fechaNacimientoTextBox.Enabled = enable;
             this.habilitadoCheckBox.Enabled = enable;
-
-
         }
-
         protected void elimiarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
@@ -179,13 +166,10 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
             }
         }
-
-
-        private void DeleteEntity(Business.Entities.TipoUsuario tipoUsuario, BusinessEntity.States est)
+        private void DeleteEntity(Business.Entities.Persona persona, BusinessEntity.States est)
         {
-            this.Logic.Delete(tipoUsuario, est);
+            this.Logic.Delete(persona, est);
         }
-
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = true;
@@ -193,14 +177,16 @@ namespace UI.Web
             this.ClearForm();
             this.EnableForm(true);
         }
-
         private void ClearForm()
         {
-            this.idTipoUsuarioTextBox.Text = string.Empty;
-            this.descripcionTextBox.Text = string.Empty;
+            this.nombreTextBox.Text = string.Empty;
+            this.apellidoTextBox.Text = string.Empty;
+            this.direccionTextBox.Text = string.Empty;
+            this.emailTextBox.Text = string.Empty;
+            this.fechaNacimientoTextBox.Text = string.Empty;
             this.habilitadoCheckBox.Checked = false;
-        }
 
+        }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
@@ -209,5 +195,6 @@ namespace UI.Web
                 this.formPanel.Visible = false;
             }
         }
+
     }
 }

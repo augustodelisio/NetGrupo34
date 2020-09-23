@@ -1,17 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Persona.aspx.cs" Inherits="UI.Web.WebForm1" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-        <asp:Panel ID="gridPanel" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PagPersonas.aspx.cs" Inherits="UI.Web.PagPersonas" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
+    <asp:Panel ID="gridPanel" runat="server">
                 <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false"
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="Black"
@@ -59,6 +50,5 @@
                 <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
                 <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
             </asp:Panel>
-    </form>
-</body>
-</html>
+
+</asp:Content>

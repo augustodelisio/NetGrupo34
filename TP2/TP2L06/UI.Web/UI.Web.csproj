@@ -76,9 +76,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Error404.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Navbar.aspx" />
     <Content Include="PagPersonas.aspx" />
     <Content Include="PagTiposUsuarios.aspx" />
     <Content Include="PagUsuarios.aspx" />
@@ -191,6 +191,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,13 +211,6 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Navbar.aspx.cs">
-      <DependentUpon>Navbar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Navbar.aspx.designer.cs">
-      <DependentUpon>Navbar.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagPersonas.aspx.cs">
       <DependentUpon>PagPersonas.aspx</DependentUpon>

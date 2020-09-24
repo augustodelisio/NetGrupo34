@@ -78,7 +78,7 @@
                         <asp:Label ID="lblClave" runat="server" Text="Clave"></asp:Label>
                     </td>
                     <td class="auto-style11 text-right">
-                        <asp:TextBox ID="txtClave" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtClave" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
 
                     </td>
                 </tr>

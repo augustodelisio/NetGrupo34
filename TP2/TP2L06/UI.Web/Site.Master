@@ -12,6 +12,13 @@
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
+    <style>
+        li {
+            width: 110px;
+            text-align: center;
+        }
+
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -20,7 +27,7 @@
     <form id="bodyForm" runat="server">
         <!-- Barra de navegación -->
         <div class="auto-style1">
-            <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
+            <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top" style="margin-left:0px; padding-left:0px;">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="Home.aspx">Inicio</a>
@@ -39,6 +46,27 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Materias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Comisiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Planes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cursos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Ver Cursos</a>
+                            <a class="dropdown-item" href="#">Alumnos Inscriptos</a>
+                            <a class="dropdown-item" href="#">Docentes Inscriptos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Especialidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Modulos</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

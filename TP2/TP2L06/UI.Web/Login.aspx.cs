@@ -15,7 +15,7 @@ namespace Login
         {
             if (Session["usuario"] != null)
             {
-                Response.Redirect("PagPrincipal.aspx");
+                Response.Redirect("Home.aspx");
             }
         }
 
@@ -32,6 +32,7 @@ namespace Login
                 {
                     Page.Response.Write("Usuario encontrado");
                     Session["usuario"] = nombreUsu;
+                    Session["tipoUsu"] = usu.IdTipoUsuario;
                     Response.Redirect("Home.aspx");
                 }
                 else//Si no se encontro dicho usuario en la BD o se ingreso mal la clave

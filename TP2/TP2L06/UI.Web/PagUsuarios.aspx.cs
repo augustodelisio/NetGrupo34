@@ -26,7 +26,7 @@ namespace UI.Web
 
         Usuario _EntityUsuario;
 
-        private Business.Entities.Usuario EntityUsuario
+        private Usuario EntityUsuario
         {
             get;
             set;
@@ -34,6 +34,17 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                if (Session["tipoUsu"].ToString() != "1") //Si no sos Admin te saca
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
             LoadGrid();
         }
 
@@ -88,14 +99,11 @@ namespace UI.Web
         private void LoadForm(int idUsr)
         {
             this.EntityUsuario = this.Logic.GetOne(idUsr);
-
             this.usuarioTextBox.Text = this.EntityUsuario.NombreUsuario;
             this.claveTextBox.Text = this.EntityUsuario.Clave;
             this.legajoTextBox.Text = this.EntityUsuario.Legajo.ToString();
             this.idTipoUsuarioTextbox.Text = this.EntityUsuario.IdTipoUsuario.ToString();
             this.idPersonaTextBox.Text = this.EntityUsuario.IdPersona.ToString();
-            this.habilitadoCheckBox.Checked = this.EntityUsuario.Habilitado;
-
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -109,19 +117,17 @@ namespace UI.Web
             }
         }
 
-        private void LoadEntity(Business.Entities.Usuario usuario)
+        private void LoadEntity(Usuario usuario)
         {
             usuario.NombreUsuario = this.usuarioTextBox.Text;
             usuario.Clave = this.claveTextBox.Text;
             usuario.Legajo = Convert.ToInt32(this.legajoTextBox.Text);
             usuario.IdTipoUsuario = Convert.ToInt32(this.idTipoUsuarioTextbox.Text);
             usuario.IdPersona = Convert.ToInt32(this.idPersonaTextBox.Text);
-            usuario.Habilitado = this.habilitadoCheckBox.Checked;
-
         }
 
 
-        private void SaveEntity(Business.Entities.Usuario usuario)
+        private void SaveEntity(Usuario usuario)
         {
             this.Logic.Save(usuario);
         }
@@ -131,15 +137,15 @@ namespace UI.Web
             switch (this.FormMode)
             {
                 case FormModes.Alta:
-                    this.EntityUsuario = new Business.Entities.Usuario();
+                    this.EntityUsuario = new Usuario();
                     this.LoadEntity(this.EntityUsuario);
+                    this.EntityUsuario.Habilitado = true;
                     this.SaveEntity(this.EntityUsuario);
                     this.LoadGrid();
                     break;
 
-
                 case FormModes.Baja:
-                    this.EntityUsuario = new Business.Entities.Usuario();
+                    this.EntityUsuario = new Usuario();
                     this.EntityUsuario.ID = this.SelectedID;
                     this.LoadEntity(this.EntityUsuario);
                     this.DeleteEntity(EntityUsuario, BusinessEntity.States.Deleted);
@@ -147,10 +153,12 @@ namespace UI.Web
                     break;
 
                 case FormModes.Modificacion:
-                    this.EntityUsuario = new Business.Entities.Usuario();
+                    this.EntityUsuario = new Usuario();
                     this.EntityUsuario.ID = this.SelectedID;
                     this.EntityUsuario.State = BusinessEntity.States.Modified;
                     this.LoadEntity(this.EntityUsuario);
+                    //Guardo hab según el valor que tiene en el grid view
+                    this.EntityUsuario.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
                     this.SaveEntity(this.EntityUsuario);
                     this.LoadGrid();
                     break;
@@ -169,7 +177,6 @@ namespace UI.Web
             this.legajoTextBox.Enabled = enable;
             this.idTipoUsuarioTextbox.Enabled = enable;
             this.idPersonaTextBox.Enabled = enable;
-            this.habilitadoCheckBox.Enabled = enable;
         }
 
         protected void elimiarLinkButton_Click(object sender, EventArgs e)
@@ -184,7 +191,7 @@ namespace UI.Web
         }
 
 
-        private void DeleteEntity(Business.Entities.Usuario usuario, BusinessEntity.States est)
+        private void DeleteEntity(Usuario usuario, BusinessEntity.States est)
         {
             this.Logic.Delete(usuario, est);
         }
@@ -203,7 +210,6 @@ namespace UI.Web
             this.claveTextBox.Text = string.Empty;
             this.repetirClaveTextBox.Text = string.Empty;
             this.legajoTextBox.Text = string.Empty;
-            this.habilitadoCheckBox.Checked = false;
             this.idPersonaTextBox.Text = string.Empty;
             this.idTipoUsuarioTextbox.Text = string.Empty;
         }

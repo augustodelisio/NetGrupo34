@@ -39,8 +39,6 @@
             <asp:Label ID="idTipoUsuarioLabel" runat="server" Text="Tipo de Usuario: "></asp:Label>
             <asp:TextBox ID="idTipoUsuarioTextbox" runat="server"></asp:TextBox>
 
-            <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado:"></asp:Label>
-            <asp:CheckBox ID="habilitadoCheckBox" runat="server"></asp:CheckBox>
         </asp:Panel>
 
         <asp:Panel ID="gridActionsPanel" runat="server">

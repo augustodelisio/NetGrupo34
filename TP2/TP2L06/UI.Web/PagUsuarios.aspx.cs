@@ -58,6 +58,7 @@ namespace UI.Web
         {
             Alta,
             Baja,
+            CancelaBaja,
             Modificacion
         }
 
@@ -86,6 +87,18 @@ namespace UI.Web
             }
         }
 
+        private bool SelectedHab
+        {
+            get
+            {
+                if (this.ViewState["SelectedID"] != null)
+                {
+                    return Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
+                }
+                else return false;
+            }
+        }
+
         private bool IsEntitySelected
         {
             get { return (this.SelectedID != 0); }
@@ -94,6 +107,14 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            if (SelectedHab)
+            {
+                this.elimiarLinkButton.Text = "Eliminar";
+            }
+            else
+            {
+                this.elimiarLinkButton.Text = "Habilitar";
+            }
         }
 
         private void LoadForm(int idUsr)
@@ -112,6 +133,7 @@ namespace UI.Web
             {
                 this.EnableForm(true);
                 this.formPanel.Visible = true;
+                this.formActionPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
             }
@@ -152,6 +174,14 @@ namespace UI.Web
                     this.LoadGrid();
                     break;
 
+                case FormModes.CancelaBaja:
+                    this.EntityUsuario = new Usuario();
+                    this.EntityUsuario.ID = this.SelectedID;
+                    this.LoadEntity(this.EntityUsuario);
+                    this.DeleteEntity(EntityUsuario, BusinessEntity.States.Undeleted);
+                    this.LoadGrid();
+                    break;
+
                 case FormModes.Modificacion:
                     this.EntityUsuario = new Usuario();
                     this.EntityUsuario.ID = this.SelectedID;
@@ -166,8 +196,8 @@ namespace UI.Web
                 default:
                     break;
             }
-
             this.formPanel.Visible = false;
+            this.formActionPanel.Visible = false;
         }
 
         private void EnableForm(bool enable)
@@ -177,6 +207,8 @@ namespace UI.Web
             this.legajoTextBox.Enabled = enable;
             this.idTipoUsuarioTextbox.Enabled = enable;
             this.idPersonaTextBox.Enabled = enable;
+            this.aceptarLinkButton.Enabled = enable;
+            this.cancelarLinkButton.Enabled = enable;
         }
 
         protected void elimiarLinkButton_Click(object sender, EventArgs e)
@@ -184,7 +216,15 @@ namespace UI.Web
             if (this.IsEntitySelected)
             {
                 this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
+                this.formActionPanel.Visible = true;
+                if (SelectedHab)
+                {
+                    this.FormMode = FormModes.Baja;
+                }
+                else
+                {
+                    this.FormMode = FormModes.CancelaBaja;
+                }
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
             }
@@ -199,6 +239,7 @@ namespace UI.Web
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = true;
+            this.formActionPanel.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
@@ -216,11 +257,9 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            if (this.IsEntitySelected)
-            {
-                this.ClearForm();
-                this.formPanel.Visible = false;
-            }
+            this.ClearForm();
+            this.formPanel.Visible = false;
+            this.formActionPanel.Visible = false;
         }
     }
 }

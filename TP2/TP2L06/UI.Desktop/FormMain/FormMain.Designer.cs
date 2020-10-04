@@ -42,6 +42,8 @@
             this.administrarPlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarMateriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +56,8 @@
             this.usuariosToolStripMenuItem,
             this.especialidadesToolStripMenuItem,
             this.planesToolStripMenuItem,
-            this.materiasToolStripMenuItem});
+            this.materiasToolStripMenuItem,
+            this.reportesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -160,6 +163,21 @@
             this.administrarMateriasToolStripMenuItem.Text = "Administrar Materias";
             this.administrarMateriasToolStripMenuItem.Click += new System.EventHandler(this.administrarMateriasToolStripMenuItem_Click);
             // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarReporteToolStripMenuItem});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // generarReporteToolStripMenuItem
+            // 
+            this.generarReporteToolStripMenuItem.Name = "generarReporteToolStripMenuItem";
+            this.generarReporteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.generarReporteToolStripMenuItem.Text = "Generar Reporte";
+            this.generarReporteToolStripMenuItem.Click += new System.EventHandler(this.generarReporteToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,5 +214,7 @@
         private System.Windows.Forms.ToolStripMenuItem tiposDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrarMateriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarReporteToolStripMenuItem;
     }
 }

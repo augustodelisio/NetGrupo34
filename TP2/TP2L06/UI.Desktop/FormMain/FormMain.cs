@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Desktop.FormReportes;
 
 namespace UI.Desktop
 {
@@ -65,6 +66,12 @@ namespace UI.Desktop
         {
             Materias ABMMaterias = new Materias();
             ABMMaterias.ShowDialog();
+        }
+
+        private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes Rep = new Reportes();
+            Rep.ShowDialog();
         }
     }
 }

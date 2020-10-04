@@ -1,0 +1,27 @@
+﻿.bloquePadre {
+    text-align: center;
+    width: 100%;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+.bloqueHijo {
+    float: left;
+}
+
+.formItem {
+    display:block;
+    max-width: 200px;
+    width: 100%;
+    text-align:left;
+    margin-bottom: 5px;
+}
+
+.formulario {
+    width: 30%;
+    min-width: 200px;
+}
+
+.tabla {
+    width: 60%;
+}

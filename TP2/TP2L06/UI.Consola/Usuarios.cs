@@ -10,6 +10,7 @@ namespace UI.Consola
 {
     public class Usuarios
     {
+        /*
         private UsuarioLogic _UsuarioNegocio;
         public UsuarioLogic UsuarioNegocio { get; set; }
         public Usuarios()
@@ -192,6 +193,6 @@ namespace UI.Consola
             Console.WriteLine("\t\tHabilitado: {0}", usr.Habilitado);
             Console.WriteLine();
         }
-        
+        */
     }
 }

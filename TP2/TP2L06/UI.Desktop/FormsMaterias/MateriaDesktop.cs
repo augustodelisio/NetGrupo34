@@ -37,7 +37,7 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.MateriaActual.ID.ToString();
+            this.txtID.Text = this.MateriaActual.IdMateria.ToString();
             this.txtDescripcion.Text = this.MateriaActual.Descripcion;
             this.txtHsSemanales.Text = this.MateriaActual.HsSemanales.ToString();
             this.txtHsTotales.Text = this.MateriaActual.HsTotales.ToString();
@@ -68,7 +68,7 @@ namespace UI.Desktop
                 {
                     try
                     {
-                        this.MateriaActual.ID = int.Parse(this.txtID.Text);
+                        this.MateriaActual.IdMateria = int.Parse(this.txtID.Text);
                         MateriaActual.State = BusinessEntity.States.Modified;
                     }
                     catch (Exception Ex)
@@ -81,6 +81,7 @@ namespace UI.Desktop
                     Materia mat = new Materia();
                     MateriaActual = mat;
                     MateriaActual.State = BusinessEntity.States.New;
+                    MateriaActual.Habilitado = true;
                 }
                 
                 this.MateriaActual.Descripcion = this.txtDescripcion.Text;
@@ -144,8 +145,8 @@ namespace UI.Desktop
             {
                 //Rellenar ComboBox Personas
                 this.cbPlanes.DataSource = null;
-                PlanLogic el = new PlanLogic();
-                this.cbPlanes.DataSource = el.GetAll();
+                PlanLogic pl = new PlanLogic();
+                this.cbPlanes.DataSource = pl.GetAll();
                 this.cbPlanes.DisplayMember = "Descripcion";
                 this.cbPlanes.ValueMember = "IdPlan";
             }

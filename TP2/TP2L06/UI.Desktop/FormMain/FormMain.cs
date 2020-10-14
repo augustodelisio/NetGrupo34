@@ -73,5 +73,17 @@ namespace UI.Desktop
             Reportes Rep = new Reportes();
             Rep.ShowDialog();
         }
+
+        private void verCursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos ABMCur = new Cursos();
+            ABMCur.ShowDialog();
+        }
+
+        private void verComisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Comisiones ABMCom = new Comisiones();
+            ABMCom.ShowDialog();
+        }
     }
 }

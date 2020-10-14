@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class Materias
+    partial class Comisiones
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,28 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Materias));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comisiones));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvMaterias = new System.Windows.Forms.DataGridView();
+            this.tlComisiones = new System.Windows.Forms.TableLayoutPanel();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.tsUsuarios = new System.Windows.Forms.ToolStrip();
+            this.dgvComisiones = new System.Windows.Forms.DataGridView();
+            this.tsComisiones = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtHsSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtHsTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IdColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripciom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Habilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.tlUsuarios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).BeginInit();
-            this.tsUsuarios.SuspendLayout();
+            this.tlComisiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComisiones)).BeginInit();
+            this.tsComisiones.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -57,7 +56,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.tlUsuarios);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tlComisiones);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(703, 403);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
@@ -68,50 +67,23 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tsUsuarios);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tsComisiones);
             // 
-            // tlUsuarios
+            // tlComisiones
             // 
-            this.tlUsuarios.ColumnCount = 2;
-            this.tlUsuarios.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlUsuarios.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlUsuarios.Controls.Add(this.dgvMaterias, 0, 0);
-            this.tlUsuarios.Controls.Add(this.btnActualizar, 0, 1);
-            this.tlUsuarios.Controls.Add(this.btnSalir, 1, 1);
-            this.tlUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.tlUsuarios.Name = "tlUsuarios";
-            this.tlUsuarios.RowCount = 2;
-            this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlUsuarios.Size = new System.Drawing.Size(703, 405);
-            this.tlUsuarios.TabIndex = 0;
-            // 
-            // dgvMaterias
-            // 
-            this.dgvMaterias.AllowUserToAddRows = false;
-            this.dgvMaterias.AllowUserToDeleteRows = false;
-            this.dgvMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMaterias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMaterias.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.descripcion,
-            this.txtHsSemanales,
-            this.txtHsTotales,
-            this.Plan,
-            this.Habilitado});
-            this.tlUsuarios.SetColumnSpan(this.dgvMaterias, 2);
-            this.dgvMaterias.Location = new System.Drawing.Point(3, 3);
-            this.dgvMaterias.MultiSelect = false;
-            this.dgvMaterias.Name = "dgvMaterias";
-            this.dgvMaterias.ReadOnly = true;
-            this.dgvMaterias.RowHeadersWidth = 51;
-            this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(697, 369);
-            this.dgvMaterias.TabIndex = 0;
-            this.dgvMaterias.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvMaterias_RowStateChanged);
+            this.tlComisiones.ColumnCount = 2;
+            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlComisiones.Controls.Add(this.btnActualizar, 0, 1);
+            this.tlComisiones.Controls.Add(this.btnSalir, 1, 1);
+            this.tlComisiones.Controls.Add(this.dgvComisiones, 0, 0);
+            this.tlComisiones.Location = new System.Drawing.Point(0, 0);
+            this.tlComisiones.Name = "tlComisiones";
+            this.tlComisiones.RowCount = 2;
+            this.tlComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlComisiones.Size = new System.Drawing.Size(703, 405);
+            this.tlComisiones.TabIndex = 0;
             // 
             // btnActualizar
             // 
@@ -134,19 +106,44 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // tsUsuarios
+            // dgvComisiones
             // 
-            this.tsUsuarios.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsUsuarios.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.tsUsuarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dgvComisiones.AllowUserToAddRows = false;
+            this.dgvComisiones.AllowUserToDeleteRows = false;
+            this.dgvComisiones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvComisiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvComisiones.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvComisiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvComisiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdColumna,
+            this.descripciom,
+            this.anio,
+            this.Habilitado});
+            this.tlComisiones.SetColumnSpan(this.dgvComisiones, 2);
+            this.dgvComisiones.Location = new System.Drawing.Point(3, 3);
+            this.dgvComisiones.MultiSelect = false;
+            this.dgvComisiones.Name = "dgvComisiones";
+            this.dgvComisiones.ReadOnly = true;
+            this.dgvComisiones.RowHeadersWidth = 51;
+            this.dgvComisiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvComisiones.Size = new System.Drawing.Size(697, 369);
+            this.dgvComisiones.TabIndex = 0;
+            this.dgvComisiones.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvComisiones_RowStateChanged);
+            // 
+            // tsComisiones
+            // 
+            this.tsComisiones.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsComisiones.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.tsComisiones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbEditar,
             this.tsbEliminar});
-            this.tsUsuarios.Location = new System.Drawing.Point(7, 0);
-            this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(84, 27);
-            this.tsUsuarios.TabIndex = 0;
-            this.tsUsuarios.Text = "toolStrip1";
+            this.tsComisiones.Location = new System.Drawing.Point(7, 0);
+            this.tsComisiones.Name = "tsComisiones";
+            this.tsComisiones.Size = new System.Drawing.Size(84, 27);
+            this.tsComisiones.TabIndex = 0;
+            this.tsComisiones.Text = "toolStrip1";
             // 
             // tsbNuevo
             // 
@@ -183,40 +180,35 @@
             // 
             // id
             // 
-            this.id.DataPropertyName = "IdMateria";
+            this.id.DataPropertyName = "IdComision";
             this.id.HeaderText = "ID";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
-            this.id.ReadOnly = true;
+            this.id.Width = 292;
             // 
-            // descripcion
+            // IdColumna
             // 
-            this.descripcion.DataPropertyName = "Descripcion";
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.MinimumWidth = 6;
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
+            this.IdColumna.DataPropertyName = "IdComision";
+            this.IdColumna.HeaderText = "ID";
+            this.IdColumna.MinimumWidth = 6;
+            this.IdColumna.Name = "IdColumna";
+            this.IdColumna.ReadOnly = true;
             // 
-            // txtHsSemanales
+            // descripciom
             // 
-            this.txtHsSemanales.DataPropertyName = "HsSemanales";
-            this.txtHsSemanales.HeaderText = "Horas Semanales";
-            this.txtHsSemanales.Name = "txtHsSemanales";
-            this.txtHsSemanales.ReadOnly = true;
+            this.descripciom.DataPropertyName = "Descripcion";
+            this.descripciom.HeaderText = "Descripcion";
+            this.descripciom.MinimumWidth = 6;
+            this.descripciom.Name = "descripciom";
+            this.descripciom.ReadOnly = true;
             // 
-            // txtHsTotales
+            // anio
             // 
-            this.txtHsTotales.DataPropertyName = "HsTotales";
-            this.txtHsTotales.HeaderText = "Horas Totales";
-            this.txtHsTotales.Name = "txtHsTotales";
-            this.txtHsTotales.ReadOnly = true;
-            // 
-            // Plan
-            // 
-            this.Plan.DataPropertyName = "IdPlan";
-            this.Plan.HeaderText = "idPlan";
-            this.Plan.Name = "Plan";
-            this.Plan.ReadOnly = true;
+            this.anio.DataPropertyName = "AnioEspecialidad";
+            this.anio.HeaderText = "Año Especialidad";
+            this.anio.MinimumWidth = 6;
+            this.anio.Name = "anio";
+            this.anio.ReadOnly = true;
             // 
             // Habilitado
             // 
@@ -226,29 +218,28 @@
             this.Habilitado.ReadOnly = true;
             this.Habilitado.Visible = false;
             // 
-            // Materias
+            // Comisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 430);
             this.Controls.Add(this.toolStripContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Materias";
+            this.Name = "Comisiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Materias";
-            this.Load += new System.EventHandler(this.Materias_Load);
+            this.Text = "Comisiones";
+            this.Load += new System.EventHandler(this.Comisiones_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.tlUsuarios.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).EndInit();
-            this.tsUsuarios.ResumeLayout(false);
-            this.tsUsuarios.PerformLayout();
+            this.tlComisiones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComisiones)).EndInit();
+            this.tsComisiones.ResumeLayout(false);
+            this.tsComisiones.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -256,20 +247,20 @@
         #endregion
 
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStrip tsUsuarios;
+        private System.Windows.Forms.ToolStrip tsComisiones;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
-        private System.Windows.Forms.TableLayoutPanel tlUsuarios;
-        private System.Windows.Forms.DataGridView dgvMaterias;
+        private System.Windows.Forms.TableLayoutPanel tlComisiones;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridView dgvComisiones;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtHsSemanales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtHsTotales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Habilitado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumna;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripciom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Habilitado;
     }
 }
 

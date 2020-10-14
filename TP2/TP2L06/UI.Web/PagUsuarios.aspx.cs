@@ -125,6 +125,11 @@ namespace UI.Web
             this.legajoTextBox.Text = this.EntityUsuario.Legajo.ToString();
             this.idTipoUsuarioTextbox.Text = this.EntityUsuario.IdTipoUsuario.ToString();
             this.idPersonaTextBox.Text = this.EntityUsuario.IdPersona.ToString();
+            this.ListarPersonas();
+            int idPer = EntityUsuario.IdPersona;
+            var per = new PersonaLogic().GetOne(idPer);
+            idPersonaDDL.SelectedValue = per.IdPersona.ToString();
+            idPersonaDDL.DataBind();
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -261,5 +266,17 @@ namespace UI.Web
             this.formPanel.Visible = false;
             this.formActionPanel.Visible = false;
         }
+
+        private void ListarPersonas()
+        {
+            var personas = new PersonaLogic().GetAll();
+            idPersonaDDL.DataSource = personas;
+            idPersonaDDL.DataValueField = "idPersona";
+            idPersonaDDL.DataTextField = "NombreYApellido";
+            idPersonaDDL.DataBind();
+        }
+
+        //idPersonaTextBox.Text = idPersonaDDL.SelectedValue; Esto deberia modificar el id segun el selected value.
+        
     }
 }

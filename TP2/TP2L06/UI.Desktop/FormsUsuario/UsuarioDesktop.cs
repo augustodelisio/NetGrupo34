@@ -111,7 +111,6 @@ namespace UI.Desktop
             {
                 UsuarioActual.State = BusinessEntity.States.Unmodified;
             }
-            
         }
         public override void GuardarCambios()
         {

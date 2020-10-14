@@ -49,5 +49,12 @@ namespace Business.Entities
             get { return _IdMateria; }
             set { _IdMateria = value; }
         }
+
+        private bool _Habilitado;
+        public bool Habilitado
+        {
+            get { return _Habilitado; }
+            set { _Habilitado = value; }
+        }
     }
 }

@@ -97,6 +97,18 @@
     <Compile Include="FormReportes\Reportes.Designer.cs">
       <DependentUpon>Reportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsComision\ComisionDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsComision\ComisionDesktop.designer.cs">
+      <DependentUpon>ComisionDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsComision\Comisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsComision\Comisiones.designer.cs">
+      <DependentUpon>Comisiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsEspecialidades\EspecialidadDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +163,18 @@
     <Compile Include="FormsTipoUsuario\TiposUsuarios.Designer.cs">
       <DependentUpon>TiposUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsCurso\CursoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCurso\CursoDesktop.Designer.cs">
+      <DependentUpon>CursoDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsCurso\Cursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCurso\Cursos.Designer.cs">
+      <DependentUpon>Cursos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsUsuario\UsuarioDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +208,12 @@
     <EmbeddedResource Include="FormReportes\Reportes.resx">
       <DependentUpon>Reportes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsComision\ComisionDesktop.resx">
+      <DependentUpon>ComisionDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsComision\Comisiones.resx">
+      <DependentUpon>Comisiones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsEspecialidades\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +240,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsTipoUsuario\TiposUsuarios.resx">
       <DependentUpon>TiposUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCurso\CursoDesktop.resx">
+      <DependentUpon>CursoDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCurso\Cursos.resx">
+      <DependentUpon>Cursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUsuario\UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>

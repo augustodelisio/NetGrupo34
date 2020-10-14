@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class Materias
+    partial class Cursos
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Materias));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cursos));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvMaterias = new System.Windows.Forms.DataGridView();
+            this.dgvCursos = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tsUsuarios = new System.Windows.Forms.ToolStrip();
@@ -39,16 +39,17 @@
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtHsSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtHsTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tlUsuarios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).BeginInit();
             this.tsUsuarios.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             this.tlUsuarios.ColumnCount = 2;
             this.tlUsuarios.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlUsuarios.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlUsuarios.Controls.Add(this.dgvMaterias, 0, 0);
+            this.tlUsuarios.Controls.Add(this.dgvCursos, 0, 0);
             this.tlUsuarios.Controls.Add(this.btnActualizar, 0, 1);
             this.tlUsuarios.Controls.Add(this.btnSalir, 1, 1);
             this.tlUsuarios.Location = new System.Drawing.Point(0, 0);
@@ -86,32 +87,33 @@
             this.tlUsuarios.Size = new System.Drawing.Size(703, 405);
             this.tlUsuarios.TabIndex = 0;
             // 
-            // dgvMaterias
+            // dgvCursos
             // 
-            this.dgvMaterias.AllowUserToAddRows = false;
-            this.dgvMaterias.AllowUserToDeleteRows = false;
-            this.dgvMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvCursos.AllowUserToAddRows = false;
+            this.dgvCursos.AllowUserToDeleteRows = false;
+            this.dgvCursos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMaterias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMaterias.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCursos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCursos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.descripcion,
-            this.txtHsSemanales,
-            this.txtHsTotales,
-            this.Plan,
-            this.Habilitado});
-            this.tlUsuarios.SetColumnSpan(this.dgvMaterias, 2);
-            this.dgvMaterias.Location = new System.Drawing.Point(3, 3);
-            this.dgvMaterias.MultiSelect = false;
-            this.dgvMaterias.Name = "dgvMaterias";
-            this.dgvMaterias.ReadOnly = true;
-            this.dgvMaterias.RowHeadersWidth = 51;
-            this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(697, 369);
-            this.dgvMaterias.TabIndex = 0;
-            this.dgvMaterias.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvMaterias_RowStateChanged);
+            this.nombre,
+            this.anioCalendario,
+            this.cupo,
+            this.IdMateria,
+            this.IdComision,
+            this.habilitado});
+            this.tlUsuarios.SetColumnSpan(this.dgvCursos, 2);
+            this.dgvCursos.Location = new System.Drawing.Point(3, 3);
+            this.dgvCursos.MultiSelect = false;
+            this.dgvCursos.Name = "dgvCursos";
+            this.dgvCursos.ReadOnly = true;
+            this.dgvCursos.RowHeadersWidth = 51;
+            this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCursos.Size = new System.Drawing.Size(697, 369);
+            this.dgvCursos.TabIndex = 0;
+            this.dgvCursos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvCursos_RowStateChanged);
             // 
             // btnActualizar
             // 
@@ -183,70 +185,81 @@
             // 
             // id
             // 
-            this.id.DataPropertyName = "IdMateria";
+            this.id.DataPropertyName = "IdCurso";
             this.id.HeaderText = "ID";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
-            // descripcion
+            // nombre
             // 
-            this.descripcion.DataPropertyName = "Descripcion";
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.MinimumWidth = 6;
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
+            this.nombre.DataPropertyName = "Descripcion";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
-            // txtHsSemanales
+            // anioCalendario
             // 
-            this.txtHsSemanales.DataPropertyName = "HsSemanales";
-            this.txtHsSemanales.HeaderText = "Horas Semanales";
-            this.txtHsSemanales.Name = "txtHsSemanales";
-            this.txtHsSemanales.ReadOnly = true;
+            this.anioCalendario.DataPropertyName = "AnioCalendario";
+            this.anioCalendario.HeaderText = "Año";
+            this.anioCalendario.MinimumWidth = 6;
+            this.anioCalendario.Name = "anioCalendario";
+            this.anioCalendario.ReadOnly = true;
             // 
-            // txtHsTotales
+            // cupo
             // 
-            this.txtHsTotales.DataPropertyName = "HsTotales";
-            this.txtHsTotales.HeaderText = "Horas Totales";
-            this.txtHsTotales.Name = "txtHsTotales";
-            this.txtHsTotales.ReadOnly = true;
+            this.cupo.DataPropertyName = "Cupo";
+            this.cupo.HeaderText = "Cupo";
+            this.cupo.MinimumWidth = 6;
+            this.cupo.Name = "cupo";
+            this.cupo.ReadOnly = true;
             // 
-            // Plan
+            // IdMateria
             // 
-            this.Plan.DataPropertyName = "IdPlan";
-            this.Plan.HeaderText = "idPlan";
-            this.Plan.Name = "Plan";
-            this.Plan.ReadOnly = true;
+            this.IdMateria.DataPropertyName = "IdMateria";
+            this.IdMateria.HeaderText = "Materia";
+            this.IdMateria.MinimumWidth = 6;
+            this.IdMateria.Name = "IdMateria";
+            this.IdMateria.ReadOnly = true;
             // 
-            // Habilitado
+            // IdComision
             // 
-            this.Habilitado.DataPropertyName = "Habilitado";
-            this.Habilitado.HeaderText = "Habilitado";
-            this.Habilitado.Name = "Habilitado";
-            this.Habilitado.ReadOnly = true;
-            this.Habilitado.Visible = false;
+            this.IdComision.DataPropertyName = "IdComision";
+            this.IdComision.HeaderText = "Comision";
+            this.IdComision.Name = "IdComision";
+            this.IdComision.ReadOnly = true;
             // 
-            // Materias
+            // habilitado
+            // 
+            this.habilitado.DataPropertyName = "Habilitado";
+            this.habilitado.HeaderText = "Habilitado";
+            this.habilitado.MinimumWidth = 6;
+            this.habilitado.Name = "habilitado";
+            this.habilitado.ReadOnly = true;
+            this.habilitado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.habilitado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.habilitado.Visible = false;
+            // 
+            // Cursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(703, 430);
             this.Controls.Add(this.toolStripContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Materias";
+            this.Name = "Cursos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Materias";
-            this.Load += new System.EventHandler(this.Materias_Load);
+            this.Text = "Usuarios";
+            this.Load += new System.EventHandler(this.Cursos_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.tlUsuarios.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).EndInit();
             this.tsUsuarios.ResumeLayout(false);
             this.tsUsuarios.PerformLayout();
             this.ResumeLayout(false);
@@ -261,15 +274,16 @@
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.TableLayoutPanel tlUsuarios;
-        private System.Windows.Forms.DataGridView dgvMaterias;
+        private System.Windows.Forms.DataGridView dgvCursos;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtHsSemanales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtHsTotales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Plan;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Habilitado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anioCalendario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdMateria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdComision;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn habilitado;
     }
 }
 

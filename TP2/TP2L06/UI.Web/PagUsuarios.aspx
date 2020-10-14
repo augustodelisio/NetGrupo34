@@ -44,6 +44,8 @@
                 <asp:Label ID="idPersonaLabel" runat="server" Text="Persona: " CssClass="formItem"></asp:Label>
                 <asp:TextBox ID="idPersonaTextBox" runat="server" CssClass="formItem"></asp:TextBox>
 
+                <asp:DropDownList ID="idPersonaDDL" runat="server" CssClass="formItem"></asp:DropDownList>
+
                 <asp:Label ID="idTipoUsuarioLabel" runat="server" Text="Tipo de Usuario: " CssClass="formItem"></asp:Label>
                 <asp:TextBox ID="idTipoUsuarioTextbox" runat="server" CssClass="formItem"></asp:TextBox>
 

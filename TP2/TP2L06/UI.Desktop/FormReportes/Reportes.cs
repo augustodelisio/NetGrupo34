@@ -35,7 +35,7 @@ namespace UI.Desktop.FormReportes
                 List<Usuario> reportes = usu.GetAll();
                 this.usuariosBindingSource.DataSource = reportes;
 
-                this.reportViewer1.Refresh();
+                this.reportViewer1.RefreshReport();
 
             }
             catch (Exception ex)

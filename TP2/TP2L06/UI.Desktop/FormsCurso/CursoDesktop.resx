@@ -117,22 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="usuariosBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>34, 8</value>
-  </metadata>
-  <metadata name="academiaDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>210, 8</value>
-  </metadata>
-  <metadata name="academiaDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>210, 8</value>
-  </metadata>
-  <metadata name="academiaDataSetBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>356, 8</value>
-  </metadata>
-  <metadata name="usuariosTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>574, 10</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>46</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCrearComision.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAjxJREFUWEftlP1LE3Ecx/c3Bf4QRFkEBfVDZcjKSTFl4FVzOFlPF5REPmCCPWzi
+        QF1lsjWwiIpRxCJ/KKGaURBlD1ai7uHuFImi4N29b1+DzbMb0i2EveHFfe/7/nzfn89txzkqqmjNaV1t
+        ElX146bQE2X2ab37GfbIn9HY+RVuAdc7A1OgJ8rsE5ucGZzD2MQiHqXycC31TJd3gKXm/2UAOTyLxNMF
+        3HuSh2v+DWUbIBCaQTypIfZQNeC6LAN0XBozmviDM7h2X8PVRB6u+TLSY40oX72qXI+xUZowZYt/Er7Q
+        LPrvKAW4u6cNz+wMYaaIt9YG6TlaBzKQryznRCSD9lgOF2+rBbSNZA3P7MyRvjSYKeKttcmbQpvepPum
+        iq4SYW3nqGKck4dzaI1k0aw/BPGE0qhuTpU+wOaWlzgVVXE2rpQEm3oHsmjQG+2/kMbe83Oo0eF1CWaK
+        eGttPfYKR/UB5LiGkytA73hMgzSUw75gFs7LmT/wvhhminhrbZNfwx/VELgxvyK+ERWNgwrq+nOWuMIK
+        mCnirbXj9Bs0DM/DoyNdXzA4FM1fuUfvwFCeg5HSYKaIt1a1bxy7O95jV/tkIefeoj6cNgYwgx5ris8x
+        i5kifvXiR6am6x088UVT6P2TD9HfVNvzAU23vqFptAh9j54os0/O3o84fPe7KfREmX1yBj/Bm/ixrDn3
+        6Iky+1TXNwXfg5+m0BNl9skV/oKW5C9T6Iky+7RdfmH81GbQE2UVVbRW5HD8BrBbUuiiBC05AAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="btnCrearMateria.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAjxJREFUWEftlP1LE3Ecx/c3Bf4QRFkEBfVDZcjKSTFl4FVzOFlPF5REPmCCPWzi
+        QF1lsjWwiIpRxCJ/KKGaURBlD1ai7uHuFImi4N29b1+DzbMb0i2EveHFfe/7/nzfn89txzkqqmjNaV1t
+        ElX146bQE2X2ab37GfbIn9HY+RVuAdc7A1OgJ8rsE5ucGZzD2MQiHqXycC31TJd3gKXm/2UAOTyLxNMF
+        3HuSh2v+DWUbIBCaQTypIfZQNeC6LAN0XBozmviDM7h2X8PVRB6u+TLSY40oX72qXI+xUZowZYt/Er7Q
+        LPrvKAW4u6cNz+wMYaaIt9YG6TlaBzKQryznRCSD9lgOF2+rBbSNZA3P7MyRvjSYKeKttcmbQpvepPum
+        iq4SYW3nqGKck4dzaI1k0aw/BPGE0qhuTpU+wOaWlzgVVXE2rpQEm3oHsmjQG+2/kMbe83Oo0eF1CWaK
+        eGttPfYKR/UB5LiGkytA73hMgzSUw75gFs7LmT/wvhhminhrbZNfwx/VELgxvyK+ERWNgwrq+nOWuMIK
+        mCnirbXj9Bs0DM/DoyNdXzA4FM1fuUfvwFCeg5HSYKaIt1a1bxy7O95jV/tkIefeoj6cNgYwgx5ris8x
+        i5kifvXiR6am6x088UVT6P2TD9HfVNvzAU23vqFptAh9j54os0/O3o84fPe7KfREmX1yBj/Bm/ixrDn3
+        6Iky+1TXNwXfg5+m0BNl9skV/oKW5C9T6Iky+7RdfmH81GbQE2UVVbRW5HD8BrBbUuiiBC05AAAAAElF
+        TkSuQmCC
+</value>
+  </data>
 </root>

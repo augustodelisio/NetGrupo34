@@ -30,6 +30,7 @@ namespace Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HsSemanales = (int)drMaterias["hs_semanales"];
                     mat.HsTotales = (int)drMaterias["hs_totales"];
+                    mat.IdPlan = (int)drMaterias["id_plan"];
                     mat.Habilitado = (bool)drMaterias["habilitado"];
 
                     materias.Add(mat);
@@ -67,6 +68,7 @@ namespace Data.Database
                     mat.Descripcion = (string)drMaterias["desc_materia"];
                     mat.HsSemanales = (int)drMaterias["hs_semanales"];
                     mat.HsTotales = (int)drMaterias["hs_totales"];
+                    mat.IdPlan = (int)drMaterias["id_plan"];
                     mat.Habilitado = (bool)drMaterias["habilitado"];
                 }
                 drMaterias.Close();
@@ -89,10 +91,14 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "UPDATE materias SET desc_materia = @desc_materia, habilitado = @habilitado " +
+                    "UPDATE materias SET desc_materia = @desc_materia, habilitado = @habilitado, " +
+                    "id_plan = @id_plan , hs_totales = @hs_totales, hs_semanales = @hs_semanales " +
                     "WHERE id_materia=@id", SqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = materia.IdMateria;
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.Descripcion;
+                cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HsTotales;
+                cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HsSemanales;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IdPlan;
                 if (estado == BusinessEntity.States.Deleted)
                 { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
                 else
@@ -135,10 +141,14 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "UPDATE materias SET desc_materia = @desc_materia " +
+                    "UPDATE materias SET desc_materia = @desc_materia, habilitado = @habilitado," +
+                    "id_plan = @id_plan , hs_totales = @hs_totales, hs_semanales = @hs_semanales " +
                     "WHERE id_materia=@id", SqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = materia.IdMateria;
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.Descripcion;
+                cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HsTotales;
+                cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HsSemanales;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IdPlan;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = materia.Habilitado;
                 cmdSave.ExecuteNonQuery();
             }
@@ -158,12 +168,15 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "INSERT INTO materias(desc_materia, habilitado) " +
-                    "values(@desc_materia, @habilitado) " +
+                    "INSERT INTO materias(desc_materia, hs_semanales, hs_totales, id_plan, habilitado) " +
+                    "values(@desc_materia, @hs_semanales, @hs_totales, @id_plan, @habilitado) " +
                     "select @@identity", SqlConn);
                 cmdSave.Parameters.Add("@desc_materia", SqlDbType.VarChar, 50).Value = materia.Descripcion;
+                cmdSave.Parameters.Add("@hs_totales", SqlDbType.Int).Value = materia.HsTotales;
+                cmdSave.Parameters.Add("@hs_semanales", SqlDbType.Int).Value = materia.HsSemanales;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IdPlan;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = materia.Habilitado;
-                materia.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                materia.IdMateria = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 //cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)

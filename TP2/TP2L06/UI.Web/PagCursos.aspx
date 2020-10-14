@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PagUsuarios.aspx.cs" Inherits="UI.Web.PagUsuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PagCursos.aspx.cs" Inherits="UI.Web.PagCursos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
@@ -8,15 +8,15 @@
                 <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" Width="100%" HeaderStyle-Height="40px"
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="Black"
-                    DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
+                    DataKeyNames="IdCurso" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
                     <Columns>
                         <asp:CommandField SelectText="-->" ShowSelectButton="True"/>
-                        <asp:BoundField HeaderText="Legajo" DataField="Legajo"/>
-                        <asp:BoundField HeaderText="Usuario" DataField="NombreUsuario" />
-                        <asp:BoundField HeaderText="Clave" DataField="Clave" />
+                        <asp:BoundField HeaderText="Año" DataField="AnioCalendario"/>
+                        <asp:BoundField HeaderText="Cupo" DataField="Cupo" />
+                        <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                         <asp:BoundField HeaderText="Habilitado" DataField="Habilitado" />
-                        <asp:BoundField HeaderText="Persona" DataField="IdPersona" />
-                        <asp:BoundField HeaderText="Tipo Usuario" DataField="IdTipoUsuario" />
+                        <asp:BoundField HeaderText="Materia" DataField="IdMateria" />
+                        <asp:BoundField HeaderText="Comision" DataField="IdComision" />
                     </Columns>
                     <SelectedRowStyle BackColor="#9BBCFF" ForeColor="Black" />
                 </asp:GridView>
@@ -30,23 +30,20 @@
         <div class="bloqueHijo">
             <asp:Panel ID="formPanel" Visible="false" runat="server" CssClass="formulario">
 
-                <asp:Label ID="legajoLabel" runat="server" Text="Legajo: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="legajoTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="anioLabel" runat="server" Text="Año: " CssClass="formItem"></asp:Label>
+                <asp:TextBox ID="anioTextBox" runat="server" CssClass="formItem"></asp:TextBox>
 
-                <asp:Label ID="usuarioLabel" runat="server" Text="Nombre de Usuario: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="usuarioTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="cupoLabel" runat="server" Text="Cupo: " CssClass="formItem"></asp:Label>
+                <asp:TextBox ID="cupoTextBox" runat="server" CssClass="formItem"></asp:TextBox>
 
-                <asp:Label ID="claveLabel" runat="server" Text="Clave:" CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="claveTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion:" CssClass="formItem"></asp:Label>
+                <asp:TextBox ID="descripcionTextBox" runat="server" CssClass="formItem"></asp:TextBox>
 
-                <asp:Label ID="repetirClaveLabel" Visible="false" runat="server" Text="Repetir Clave: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="repetirClaveTextBox" Visible="false" TextMode="Password" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="idMateriaLabel" runat="server" Text="Materia: " CssClass="formItem"></asp:Label>
+                <asp:DropDownList ID="idMateriaDDL" runat="server" CssClass="formItem"></asp:DropDownList>
 
-                <asp:Label ID="idPersonaLabel" runat="server" Text="Persona: " CssClass="formItem"></asp:Label>
-                <asp:DropDownList ID="idPersonaDDL" runat="server" CssClass="formItem"></asp:DropDownList>
-
-                <asp:Label ID="idTipoUsuarioLabel" runat="server" Text="Tipo de Usuario: " CssClass="formItem"></asp:Label>
-                <asp:DropDownList ID="idTipoUsuarioDDL" runat="server" CssClass="formItem"></asp:DropDownList>
+                <asp:Label ID="idComisionLabel" runat="server" Text="Comision: " CssClass="formItem"></asp:Label>
+                <asp:DropDownList ID="idComisionDDL" runat="server" CssClass="formItem"></asp:DropDownList>
 
             </asp:Panel>
             

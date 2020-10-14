@@ -9,29 +9,28 @@ using Business.Entities;
 
 namespace UI.Web
 {
-    public partial class PagUsuarios : System.Web.UI.Page
+    public partial class PagCursos : Page
     {
-        UsuarioLogic _logic;
-        private UsuarioLogic Logic
+        CursoLogic _logic;
+        private CursoLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new UsuarioLogic();
+                    _logic = new CursoLogic();
                 }
                 return _logic;
             }
         }
 
-        Usuario _EntityUsuario;
+        Curso _EntityCurso;
 
-        private Usuario EntityUsuario
+        private Curso EntityCurso
         {
             get;
             set;
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
@@ -125,43 +124,43 @@ namespace UI.Web
 
         private void LoadForm(int idUsr)
         {
-            this.EntityUsuario = this.Logic.GetOne(idUsr);
-            this.usuarioTextBox.Text = this.EntityUsuario.NombreUsuario;
-            this.claveTextBox.Text = this.EntityUsuario.Clave;
-            this.legajoTextBox.Text = this.EntityUsuario.Legajo.ToString();
+            this.EntityCurso = this.Logic.GetOne(idUsr);
+            this.anioTextBox.Text = this.EntityCurso.AnioCalendario.ToString();
+            this.cupoTextBox.Text = this.EntityCurso.Cupo.ToString();
+            this.descripcionTextBox.Text = this.EntityCurso.Descripcion;
             this.ListarPersonas();
-            this.ListarTiposUsuarios();
+            this.ListarTiposCursos();
 
             try
             {
-                int idPer = EntityUsuario.IdPersona;
-                var per = new PersonaLogic().GetOne(idPer);
-                idPersonaDDL.SelectedValue = per.IdPersona.ToString();
-                idPersonaDDL.DataBind();
+                int idMat = EntityCurso.IdMateria;
+                var mat = new MateriaLogic().GetOne(idMat);
+                idMateriaDDL.SelectedValue = mat.IdMateria.ToString();
+                idMateriaDDL.DataBind();
 
-                int idTU = EntityUsuario.IdTipoUsuario;
-                var tipo = new TipoUsuarioLogic().GetOne(idTU);
-                idTipoUsuarioDDL.SelectedValue = tipo.IdTipoUsuario.ToString();
-                idTipoUsuarioDDL.DataBind();
+                int idCom = EntityCurso.IdComision;
+                var com = new ComisionLogic().GetOne(idCom);
+                idComisionDDL.SelectedValue = com.IdComision.ToString();
+                idComisionDDL.DataBind();
             }
             catch
             {
-                Console.WriteLine("Error al cargar personas o tipos de usuario");
+                Console.WriteLine("Error al cargar personas o tipos de curso");
             }
         }
 
-        private void LoadEntity(Usuario usuario)
+        private void LoadEntity(Curso curso)
         {
-            usuario.NombreUsuario = this.usuarioTextBox.Text;
-            usuario.Clave = this.claveTextBox.Text;
-            usuario.Legajo = Convert.ToInt32(this.legajoTextBox.Text);
-            usuario.IdTipoUsuario = Convert.ToInt32(idTipoUsuarioDDL.SelectedValue.ToString());
-            usuario.IdPersona = Convert.ToInt32(idPersonaDDL.SelectedValue.ToString());
+            curso.AnioCalendario = Convert.ToInt32(this.anioTextBox.Text);
+            curso.Cupo = Convert.ToInt32(this.cupoTextBox.Text);
+            curso.Descripcion = this.descripcionTextBox.Text;
+            curso.IdMateria = Convert.ToInt32(idMateriaDDL.SelectedValue.ToString());
+            curso.IdComision = Convert.ToInt32(idComisionDDL.SelectedValue.ToString());
         }
 
-        private void SaveEntity(Usuario usuario)
+        private void SaveEntity(Curso curso)
         {
-            this.Logic.Save(usuario);
+            this.Logic.Save(curso);
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
@@ -169,39 +168,39 @@ namespace UI.Web
             switch (this.FormMode)
             {
                 case FormModes.Alta:
-                    this.EntityUsuario = new Usuario();
-                    this.LoadEntity(this.EntityUsuario);
-                    this.EntityUsuario.Habilitado = true;
-                    this.SaveEntity(this.EntityUsuario);
+                    this.EntityCurso = new Curso();
+                    this.LoadEntity(this.EntityCurso);
+                    this.EntityCurso.Habilitado = true;
+                    this.SaveEntity(this.EntityCurso);
                     this.LoadGrid();
                     break;
 
                 case FormModes.Baja:
-                    this.EntityUsuario = new Usuario();
-                    this.EntityUsuario.ID = this.SelectedID;
-                    this.LoadEntity(this.EntityUsuario);
-                    this.DeleteEntity(EntityUsuario, BusinessEntity.States.Deleted);
+                    this.EntityCurso = new Curso();
+                    this.EntityCurso.IdCurso = this.SelectedID;
+                    this.LoadEntity(this.EntityCurso);
+                    this.DeleteEntity(EntityCurso, BusinessEntity.States.Deleted);
                     this.LoadGrid();
                     cambiaNombreBtn();
                     break;
 
                 case FormModes.CancelaBaja:
-                    this.EntityUsuario = new Usuario();
-                    this.EntityUsuario.ID = this.SelectedID;
-                    this.LoadEntity(this.EntityUsuario);
-                    this.DeleteEntity(EntityUsuario, BusinessEntity.States.Undeleted);
+                    this.EntityCurso = new Curso();
+                    this.EntityCurso.IdCurso = this.SelectedID;
+                    this.LoadEntity(this.EntityCurso);
+                    this.DeleteEntity(EntityCurso, BusinessEntity.States.Undeleted);
                     this.LoadGrid();
                     cambiaNombreBtn();
                     break;
 
                 case FormModes.Modificacion:
-                    this.EntityUsuario = new Usuario();
-                    this.EntityUsuario.ID = this.SelectedID;
-                    this.EntityUsuario.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.EntityUsuario);
+                    this.EntityCurso = new Curso();
+                    this.EntityCurso.IdCurso = this.SelectedID;
+                    this.EntityCurso.State = BusinessEntity.States.Modified;
+                    this.LoadEntity(this.EntityCurso);
                     //Guardo hab según el valor que tiene en el grid view
-                    this.EntityUsuario.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
-                    this.SaveEntity(this.EntityUsuario);
+                    this.EntityCurso.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
+                    this.SaveEntity(this.EntityCurso);
                     this.LoadGrid();
                     break;
 
@@ -214,11 +213,11 @@ namespace UI.Web
 
         private void EnableForm(bool enable, bool en2)
         {
-            this.usuarioTextBox.Enabled = enable;
-            this.claveTextBox.Enabled = enable;
-            this.legajoTextBox.Enabled = enable;
-            this.idPersonaDDL.Enabled = enable;
-            this.idTipoUsuarioDDL.Enabled = enable;
+            this.anioTextBox.Enabled = enable;
+            this.cupoTextBox.Enabled = enable;
+            this.descripcionTextBox.Enabled = enable;
+            this.idMateriaDDL.Enabled = enable;
+            this.idComisionDDL.Enabled = enable;
             this.aceptarLinkButton.Enabled = en2;
             this.cancelarLinkButton.Enabled = en2;
         }
@@ -250,14 +249,13 @@ namespace UI.Web
                 {
                     this.FormMode = FormModes.CancelaBaja;
                 }
-                //this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
             }
         }
 
-        private void DeleteEntity(Usuario usuario, BusinessEntity.States est)
+        private void DeleteEntity(Curso curso, BusinessEntity.States est)
         {
-            this.Logic.Delete(usuario, est);
+            this.Logic.Delete(curso, est);
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
@@ -271,10 +269,9 @@ namespace UI.Web
 
         private void ClearForm()
         {
-            this.usuarioTextBox.Text = string.Empty;
-            this.claveTextBox.Text = string.Empty;
-            this.repetirClaveTextBox.Text = string.Empty;
-            this.legajoTextBox.Text = string.Empty;
+            this.anioTextBox.Text = string.Empty;
+            this.cupoTextBox.Text = string.Empty;
+            this.descripcionTextBox.Text = string.Empty;
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
@@ -286,20 +283,20 @@ namespace UI.Web
 
         private void ListarPersonas()
         {
-            var personas = new PersonaLogic().GetAll();
-            idPersonaDDL.DataSource = personas;
-            idPersonaDDL.DataValueField = "IdPersona";
-            idPersonaDDL.DataTextField = "NombreYApellido";
-            idPersonaDDL.DataBind();
+            var materias = new MateriaLogic().GetAll();
+            idMateriaDDL.DataSource = materias;
+            idMateriaDDL.DataValueField = "IdMateria";
+            idMateriaDDL.DataTextField = "Descripcion";
+            idMateriaDDL.DataBind();
         }
 
-        private void ListarTiposUsuarios()
+        private void ListarTiposCursos()
         {
-            var tipos = new TipoUsuarioLogic().GetAll();
-            idTipoUsuarioDDL.DataSource = tipos;
-            idTipoUsuarioDDL.DataValueField = "IdTipoUsuario";
-            idTipoUsuarioDDL.DataTextField = "Descripcion";
-            idTipoUsuarioDDL.DataBind();
+            var comisiones = new ComisionLogic().GetAll();
+            idComisionDDL.DataSource = comisiones;
+            idComisionDDL.DataValueField = "IdComision";
+            idComisionDDL.DataTextField = "Descripcion";
+            idComisionDDL.DataBind();
         }
     }
 }

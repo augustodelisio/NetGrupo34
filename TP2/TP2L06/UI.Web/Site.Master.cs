@@ -11,7 +11,19 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] != null)
+            {
+                navbarDropdownMenuLink3.Text = (Session["usuario"]).ToString();
+            }
+        }
 
+        protected void cerrarCesionLB_Click1(object sender, EventArgs e)
+        {
+            if (Session["usuario"] != null)
+            {
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ namespace UI.Web
 {
 
 
-    public partial class PagUsuarios
+    public partial class PagCursos
     {
 
         /// <summary>
@@ -78,112 +78,94 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// Control legajoLabel.
+        /// Control anioLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label legajoLabel;
+        protected global::System.Web.UI.WebControls.Label anioLabel;
 
         /// <summary>
-        /// Control legajoTextBox.
+        /// Control anioTextBox.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox legajoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox anioTextBox;
 
         /// <summary>
-        /// Control usuarioLabel.
+        /// Control cupoLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label usuarioLabel;
+        protected global::System.Web.UI.WebControls.Label cupoLabel;
 
         /// <summary>
-        /// Control usuarioTextBox.
+        /// Control cupoTextBox.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usuarioTextBox;
+        protected global::System.Web.UI.WebControls.TextBox cupoTextBox;
 
         /// <summary>
-        /// Control claveLabel.
+        /// Control descripcionLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label claveLabel;
+        protected global::System.Web.UI.WebControls.Label descripcionLabel;
 
         /// <summary>
-        /// Control claveTextBox.
+        /// Control descripcionTextBox.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox claveTextBox;
+        protected global::System.Web.UI.WebControls.TextBox descripcionTextBox;
 
         /// <summary>
-        /// Control repetirClaveLabel.
+        /// Control idMateriaLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label repetirClaveLabel;
+        protected global::System.Web.UI.WebControls.Label idMateriaLabel;
 
         /// <summary>
-        /// Control repetirClaveTextBox.
+        /// Control idMateriaDDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox repetirClaveTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList idMateriaDDL;
 
         /// <summary>
-        /// Control idPersonaLabel.
+        /// Control idComisionLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idPersonaLabel;
+        protected global::System.Web.UI.WebControls.Label idComisionLabel;
 
         /// <summary>
-        /// Control idPersonaDDL.
+        /// Control idComisionDDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList idPersonaDDL;
-
-        /// <summary>
-        /// Control idTipoUsuarioLabel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idTipoUsuarioLabel;
-
-        /// <summary>
-        /// Control idTipoUsuarioDDL.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList idTipoUsuarioDDL;
+        protected global::System.Web.UI.WebControls.DropDownList idComisionDDL;
 
         /// <summary>
         /// Control formActionPanel.

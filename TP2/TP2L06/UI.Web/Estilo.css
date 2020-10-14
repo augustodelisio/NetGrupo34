@@ -10,18 +10,38 @@
 }
 
 .formItem {
-    display:block;
+    display: block;
     max-width: 200px;
     width: 100%;
-    text-align:left;
+    text-align: left;
     margin-bottom: 5px;
 }
 
 .formulario {
-    width: 30%;
     min-width: 200px;
+    width: 250px;
+    height: 330px;
+    padding-left: 25px;
+    padding-top: 20px;
 }
 
 .tabla {
-    width: 60%;
+    width: 550px;
+    padding-top: 20px;
+}
+
+.boton {
+    margin-right: 10px;
+}
+
+.botonera {
+    margin-top: 10px;
+    text-align: right;
+    margin-right: 30px;
+}
+
+footer {
+    background-color: lightgray;
+    height: 50px;
+    width: 100%;
 }

@@ -105,21 +105,13 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
-            cambiaNombreBtn();
-        }
-
-        protected void cambiaNombreBtn()
-        {
-            if (this.SelectedID > 0)
+            if (SelectedHab)
             {
-                if (SelectedHab)
-                {
-                    this.elimiarLinkButton.Text = "Eliminar";
-                }
-                else
-                {
-                    this.elimiarLinkButton.Text = "Habilitar";
-                }
+                this.elimiarLinkButton.Text = "Eliminar";
+            }
+            else
+            {
+                this.elimiarLinkButton.Text = "Habilitar";
             }
         }
 
@@ -182,7 +174,6 @@ namespace UI.Web
                     this.LoadEntity(this.EntityUsuario);
                     this.DeleteEntity(EntityUsuario, BusinessEntity.States.Deleted);
                     this.LoadGrid();
-                    cambiaNombreBtn();
                     break;
 
                 case FormModes.CancelaBaja:
@@ -191,7 +182,6 @@ namespace UI.Web
                     this.LoadEntity(this.EntityUsuario);
                     this.DeleteEntity(EntityUsuario, BusinessEntity.States.Undeleted);
                     this.LoadGrid();
-                    cambiaNombreBtn();
                     break;
 
                 case FormModes.Modificacion:
@@ -288,7 +278,7 @@ namespace UI.Web
         {
             var personas = new PersonaLogic().GetAll();
             idPersonaDDL.DataSource = personas;
-            idPersonaDDL.DataValueField = "IdPersona";
+            idPersonaDDL.DataValueField = "idPersona";
             idPersonaDDL.DataTextField = "NombreYApellido";
             idPersonaDDL.DataBind();
         }

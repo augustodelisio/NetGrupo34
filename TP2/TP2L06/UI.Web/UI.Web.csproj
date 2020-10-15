@@ -80,6 +80,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="PagCursos.aspx" />
+    <Content Include="PagEspecialidades.aspx" />
     <Content Include="PagPersonas.aspx" />
     <Content Include="PagTiposUsuarios.aspx" />
     <Content Include="PagUsuarios.aspx" />
@@ -220,6 +221,13 @@
     </Compile>
     <Compile Include="PagCursos.aspx.designer.cs">
       <DependentUpon>PagCursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagEspecialidades.aspx.cs">
+      <DependentUpon>PagEspecialidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagEspecialidades.aspx.designer.cs">
+      <DependentUpon>PagEspecialidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagPersonas.aspx.cs">
       <DependentUpon>PagPersonas.aspx</DependentUpon>

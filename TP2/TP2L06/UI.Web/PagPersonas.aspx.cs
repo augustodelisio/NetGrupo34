@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Entities;
 using Business.Logic;
+using Util;
 
 namespace UI.Web
 {
@@ -29,6 +30,17 @@ namespace UI.Web
         private Persona EntityPersona;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                if (Session["tipoUsu"].ToString() != "1") //Si no sos Admin te saca
+                {
+                    Response.Redirect("Home.aspx");
+                }
+            }
             LoadGrid();
         }
 
@@ -41,6 +53,7 @@ namespace UI.Web
         {
             Alta,
             Baja,
+            CancelaBaja,
             Modificacion
         }
         public FormModes FormMode
@@ -65,6 +78,18 @@ namespace UI.Web
             }
         }
 
+        private bool SelectedHab
+        {
+            get
+            {
+                if (this.ViewState["SelectedID"] != null)
+                {
+                    return Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
+                }
+                else return false;
+            }
+        }
+
         private bool IsEntitySelected
         {
             get { return (this.SelectedID != 0); }
@@ -73,9 +98,24 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            cambiaNombreBtn();
+            LimpiarCampos();
         }
 
-
+        protected void cambiaNombreBtn()
+        {
+            if (this.SelectedID > 0)
+            {
+                if (SelectedHab)
+                {
+                    this.elimiarLinkButton.Text = "Eliminar";
+                }
+                else
+                {
+                    this.elimiarLinkButton.Text = "Habilitar";
+                }
+            }
+        }
 
         private void LoadForm(int idPersona)
         {
@@ -83,99 +123,129 @@ namespace UI.Web
 
             this.nombreTextBox.Text = this.EntityPersona.Nombre;
             this.apellidoTextBox.Text = this.EntityPersona.Apellido;
-            this.direccionTextBox.Text = this.EntityPersona.Direccion.ToString();
-            this.emailTextBox.Text = this.EntityPersona.Email.ToString();
-            this.fechaNacimientoTextBox.Text = this.EntityPersona.FechaNacimiento.ToString();
-            this.emailTextBox.Text = this.EntityPersona.FechaNacimiento.ToString();
-            this.habilitadoCheckBox.Checked = this.EntityPersona.Habilitado;
+            this.direccionTextBox.Text = this.EntityPersona.Direccion;
+            this.emailTextBox.Text = this.EntityPersona.Email;
+            this.telefonoTextBox.Text = this.EntityPersona.Telefono;
+            this.fechaNacimientoTextBox.Text = this.EntityPersona.FechaNacimiento.ToShortDateString();
 
         }
-        protected void editarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Modificacion;
-                this.LoadForm(this.SelectedID);
-            }
-        }
-        private void LoadEntity(Business.Entities.Persona persona)
+        private void LoadEntity(Persona persona)
         {
             persona.Nombre = this.nombreTextBox.Text;
             persona.Apellido = this.apellidoTextBox.Text;
             persona.Direccion = this.direccionTextBox.Text;
             persona.Email = this.emailTextBox.Text;
-            persona.FechaNacimiento = Convert.ToDateTime(this.EntityPersona.FechaNacimiento);
-            persona.Habilitado = this.habilitadoCheckBox.Checked;
+            persona.Telefono = this.telefonoTextBox.Text;
+            persona.FechaNacimiento = Convert.ToDateTime(this.fechaNacimientoTextBox.Text);
 
         }
-        private void SaveEntity(Business.Entities.Persona persona)
+        private void SaveEntity(Persona persona)
         {
             this.Logic.Save(persona);
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            switch (this.FormMode)
+            LimpiarCampos();
+            if (ValidaCampos(this.FormMode))
             {
-                case FormModes.Alta:
-                    this.EntityPersona = new Business.Entities.Persona();
-                    this.LoadEntity(this.EntityPersona);
-                    this.SaveEntity(this.EntityPersona);
-                    this.LoadGrid();
-                    break;
+                switch (this.FormMode)
+                {
+                    case FormModes.Alta:
+                        this.EntityPersona = new Persona();
+                        this.LoadEntity(this.EntityPersona);
+                        this.SaveEntity(this.EntityPersona);
+                        this.LoadGrid();
+                        break;
 
 
-                case FormModes.Baja:
-                    this.EntityPersona = new Business.Entities.Persona();
-                    this.EntityPersona.ID = this.SelectedID;
-                    this.LoadEntity(this.EntityPersona);
-                    this.DeleteEntity(EntityPersona, BusinessEntity.States.Deleted);
-                    this.LoadGrid();
-                    break;
+                    case FormModes.Baja:
+                        this.EntityPersona = new Persona();
+                        this.EntityPersona.IdPersona = this.SelectedID;
+                        this.LoadEntity(this.EntityPersona);
+                        this.DeleteEntity(EntityPersona, BusinessEntity.States.Deleted);
+                        this.LoadGrid();
+                        cambiaNombreBtn();
+                        break;
 
-                case FormModes.Modificacion:
-                    this.EntityPersona = new Business.Entities.Persona();
-                    this.EntityPersona.ID = this.SelectedID;
-                    this.EntityPersona.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.EntityPersona);
-                    this.SaveEntity(this.EntityPersona);
-                    this.LoadGrid();
-                    break;
+                    case FormModes.CancelaBaja:
+                        this.EntityPersona = new Persona();
+                        this.EntityPersona.ID = this.SelectedID;
+                        this.LoadEntity(this.EntityPersona);
+                        this.DeleteEntity(EntityPersona, BusinessEntity.States.Undeleted);
+                        this.LoadGrid();
+                        cambiaNombreBtn();
+                        break;
 
-                default:
-                    break;
+                    case FormModes.Modificacion:
+                        this.EntityPersona = new Persona();
+                        this.EntityPersona.IdPersona = this.SelectedID;
+                        this.EntityPersona.State = BusinessEntity.States.Modified;
+                        this.LoadEntity(this.EntityPersona);
+                        this.SaveEntity(this.EntityPersona);
+                        this.LoadGrid();
+                        break;
+
+                    default:
+                        break;
+                }
+                this.formPanel.Visible = false;
+                this.formActionPanel.Visible = false;
             }
         }
-        private void EnableForm(bool enable)
+        private void EnableForm(bool enable, bool en2)
         {
             this.nombreTextBox.Enabled = enable;
             this.apellidoTextBox.Enabled = enable;
             this.direccionTextBox.Enabled = enable;
             this.emailTextBox.Enabled = enable;
+            this.telefonoTextBox.Enabled = enable;
             this.fechaNacimientoTextBox.Enabled = enable;
-            this.habilitadoCheckBox.Enabled = enable;
+            this.aceptarLinkButton.Enabled = en2;
+            this.cancelarLinkButton.Enabled = en2;
+        }
+
+        protected void editarLinkButton_Click(object sender, EventArgs e)
+        {
+            if (this.IsEntitySelected)
+            {
+                this.EnableForm(true, true);
+                this.formPanel.Visible = true;
+                this.formActionPanel.Visible = true;
+                this.FormMode = FormModes.Modificacion;
+                this.LoadForm(this.SelectedID);
+            }
         }
         protected void elimiarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
             {
+                this.EnableForm(false, true);
                 this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.EnableForm(false);
+                this.formActionPanel.Visible = true;
+                if (SelectedHab)
+                {
+                    this.FormMode = FormModes.Baja;
+                }
+                else
+                {
+                    this.FormMode = FormModes.CancelaBaja;
+                }
+                //this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
             }
         }
-        private void DeleteEntity(Business.Entities.Persona persona, BusinessEntity.States est)
+        private void DeleteEntity(Persona persona, BusinessEntity.States est)
         {
             this.Logic.Delete(persona, est);
         }
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = true;
+            this.formActionPanel.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
-            this.EnableForm(true);
+            this.EnableForm(true, true);
         }
         private void ClearForm()
         {
@@ -183,18 +253,78 @@ namespace UI.Web
             this.apellidoTextBox.Text = string.Empty;
             this.direccionTextBox.Text = string.Empty;
             this.emailTextBox.Text = string.Empty;
+            this.telefonoTextBox.Text = string.Empty;
             this.fechaNacimientoTextBox.Text = string.Empty;
-            this.habilitadoCheckBox.Checked = false;
 
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            if (this.IsEntitySelected)
-            {
-                this.ClearForm();
-                this.formPanel.Visible = false;
-            }
+            LimpiarCampos();
+            this.ClearForm();
+            this.formPanel.Visible = false;
+            this.formActionPanel.Visible = false;
         }
 
+        private bool ValidaCampos(FormModes modo)
+        {
+            var correcto = true;
+            if (!Validaciones.campoLleno(nombreTextBox.Text))
+            {
+                correcto = false;
+                nombreValidator.Text = "*";
+            }
+            else { nombreValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(apellidoTextBox.Text))
+            {
+                correcto = false;
+                apellidoValidator.Text = "*";
+            }
+            else { apellidoValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(emailTextBox.Text))
+            {
+                correcto = false;
+                emailValidator.Text = "*";
+            }
+            else if (!Validaciones.EsMailCorrecto(emailTextBox.Text))
+            {
+                correcto = false;
+                emailValidator.Text = "Formato de email incorrecto";
+            }
+            else { emailValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(direccionTextBox.Text))
+            {
+                correcto = false;
+                direccionValidator.Text = "*";
+            }
+            else { direccionValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(telefonoTextBox.Text))
+            {
+                correcto = false;
+                telefonoValidator.Text = "*";
+            }
+            else { telefonoValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(fechaNacimientoTextBox.Text))
+            {
+                correcto = false;
+                fechaNacimientoValidator.Text = "*";
+            }
+            else { fechaNacimientoValidator.Text = ""; }
+            
+            return correcto;
+        }
+        private void LimpiarCampos()
+        {
+            nombreValidator.Text = "";
+            apellidoValidator.Text = "";
+            emailValidator.Text = "";
+            direccionValidator.Text = "";
+            telefonoValidator.Text = "";
+            fechaNacimientoValidator.Text = "";
+        }
     }
 }

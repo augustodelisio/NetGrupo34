@@ -38,33 +38,33 @@
             </asp:Panel>
         </div>
         <div class="auto-style2">
-            <asp:Panel ID="formPanel" Visible="false" runat="server" CssClass="formulario">
+            <asp:Panel ID="formPanel" Visible="false" runat="server" CssClass="formulario pila">
 
                 <asp:Label ID="legajoLabel" runat="server" Text="Legajo: " CssClass="formItem"></asp:Label>
                 <asp:TextBox ID="legajoTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
                 <asp:Label ID="legajoValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="usuarioLabel" runat="server" Text="Nombre de Usuario: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="usuarioTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="usuarioTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
                 <asp:Label ID="usuarioValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="claveLabel" runat="server" Text="Clave:" CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="claveTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="claveTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
                 <asp:Label ID="claveValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="repetirClaveLabel" Visible="false" runat="server" Text="Repetir Clave: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="repetirClaveTextBox" Visible="false" TextMode="Password" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="repetirClaveTextBox" Visible="false" runat="server" CssClass="formItem bro"></asp:TextBox>
                 <asp:Label ID="repiteClaveValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="idPersonaLabel" runat="server" Text="Persona: " CssClass="formItem"></asp:Label>
-                <asp:DropDownList ID="idPersonaDDL" runat="server" CssClass="formItem"></asp:DropDownList>
+                <asp:DropDownList ID="idPersonaDDL" runat="server" CssClass="formItem ddl"></asp:DropDownList>
 
                 <asp:Label ID="idTipoUsuarioLabel" runat="server" Text="Tipo de Usuario: " CssClass="formItem"></asp:Label>
-                <asp:DropDownList ID="idTipoUsuarioDDL" runat="server" CssClass="formItem"></asp:DropDownList>
+                <asp:DropDownList ID="idTipoUsuarioDDL" runat="server" CssClass="formItem ddl"></asp:DropDownList>
 
             </asp:Panel>
             
-            <asp:Panel ID="formActionPanel" runat="server" Visible="false" CssClass="botonera">
+            <asp:Panel ID="formActionPanel" runat="server" Visible="false" CssClass="botonera pila">
                 <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click" CssClass="boton">Aceptar</asp:LinkButton>
                 <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
             </asp:Panel>

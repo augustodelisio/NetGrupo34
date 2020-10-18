@@ -29,5 +29,33 @@ namespace Util
                 return false;
             }
         }
+
+        public static bool campoLleno(string campo)
+        {
+            if (String.IsNullOrEmpty(campo))
+                return false;
+            else return true;
+        }
+
+        public static bool clavesIguales(string clave1, string clave2)
+        {
+            if (String.Equals(clave1, clave2, StringComparison.Ordinal))
+                return true;
+            else return false;
+        }
+
+        public static bool minAlcanzado(string campo, int min)
+        {
+            if (campo.Length >= min)
+                return true;
+            else return false;
+        }
+
+        public static bool maxAlcanzado(string campo, int max)
+        {
+            if (campo.Length <= max)
+                return true;
+            else return false;
+        }
     }
 }

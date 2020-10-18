@@ -62,7 +62,6 @@
                 <tr>
                     <td class="auto-style12 text-center" colspan="2" style="padding-bottom:30px;">
                         <asp:Label ID="lblBienvenido" runat="server" Text="¡Bienvenido al Sistema!"></asp:Label>
-
                     </td>
                 </tr>
                 <tr>

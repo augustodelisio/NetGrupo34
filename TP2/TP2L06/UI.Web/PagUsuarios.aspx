@@ -1,5 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PagUsuarios.aspx.cs" Inherits="UI.Web.PagUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            float: left;
+            width: 309px;
+        }
+        .auto-style2 {
+            float: left;
+            width: 330px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
     <div class="bloquePadre">
@@ -27,20 +37,24 @@
                 <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click" CssClass="boton">Nuevo</asp:LinkButton>
             </asp:Panel>
         </div>
-        <div class="bloqueHijo">
+        <div class="auto-style2">
             <asp:Panel ID="formPanel" Visible="false" runat="server" CssClass="formulario">
 
                 <asp:Label ID="legajoLabel" runat="server" Text="Legajo: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="legajoTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="legajoTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
+                <asp:Label ID="legajoValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="usuarioLabel" runat="server" Text="Nombre de Usuario: " CssClass="formItem"></asp:Label>
                 <asp:TextBox ID="usuarioTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="usuarioValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="claveLabel" runat="server" Text="Clave:" CssClass="formItem"></asp:Label>
                 <asp:TextBox ID="claveTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="claveValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="repetirClaveLabel" Visible="false" runat="server" Text="Repetir Clave: " CssClass="formItem"></asp:Label>
                 <asp:TextBox ID="repetirClaveTextBox" Visible="false" TextMode="Password" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:Label ID="repiteClaveValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="idPersonaLabel" runat="server" Text="Persona: " CssClass="formItem"></asp:Label>
                 <asp:DropDownList ID="idPersonaDDL" runat="server" CssClass="formItem"></asp:DropDownList>

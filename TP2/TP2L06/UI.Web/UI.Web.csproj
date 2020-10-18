@@ -291,6 +291,10 @@
       <Project>{bb5fe04f-3f0b-4a25-be33-39dd0ae5a10f}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{94bb7fc8-73fc-4efd-bae5-dac0e1160126}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

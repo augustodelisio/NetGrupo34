@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
+using Util;
 
 namespace UI.Web
 {
@@ -106,6 +107,7 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
             cambiaNombreBtn();
+            LimpiarCampos();
         }
 
         protected void cambiaNombreBtn()
@@ -166,50 +168,58 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            switch (this.FormMode)
+            LimpiarCampos();
+            if (ValidaCampos(this.FormMode))
             {
-                case FormModes.Alta:
-                    this.EntityUsuario = new Usuario();
-                    this.LoadEntity(this.EntityUsuario);
-                    this.EntityUsuario.Habilitado = true;
-                    this.SaveEntity(this.EntityUsuario);
-                    this.LoadGrid();
-                    break;
+                switch (this.FormMode)
+                {
+                    case FormModes.Alta:
+                        this.EntityUsuario = new Usuario();
+                        this.LoadEntity(this.EntityUsuario);
+                        this.EntityUsuario.Habilitado = true;
+                        this.SaveEntity(this.EntityUsuario);
+                        this.LoadGrid();
+                        break;
 
-                case FormModes.Baja:
-                    this.EntityUsuario = new Usuario();
-                    this.EntityUsuario.ID = this.SelectedID;
-                    this.LoadEntity(this.EntityUsuario);
-                    this.DeleteEntity(EntityUsuario, BusinessEntity.States.Deleted);
-                    this.LoadGrid();
-                    cambiaNombreBtn();
-                    break;
+                    case FormModes.Baja:
+                        this.EntityUsuario = new Usuario();
+                        this.EntityUsuario.ID = this.SelectedID;
+                        this.LoadEntity(this.EntityUsuario);
+                        this.DeleteEntity(EntityUsuario, BusinessEntity.States.Deleted);
+                        this.LoadGrid();
+                        cambiaNombreBtn();
+                        break;
 
-                case FormModes.CancelaBaja:
-                    this.EntityUsuario = new Usuario();
-                    this.EntityUsuario.ID = this.SelectedID;
-                    this.LoadEntity(this.EntityUsuario);
-                    this.DeleteEntity(EntityUsuario, BusinessEntity.States.Undeleted);
-                    this.LoadGrid();
-                    cambiaNombreBtn();
-                    break;
+                    case FormModes.CancelaBaja:
+                        this.EntityUsuario = new Usuario();
+                        this.EntityUsuario.ID = this.SelectedID;
+                        this.LoadEntity(this.EntityUsuario);
+                        this.DeleteEntity(EntityUsuario, BusinessEntity.States.Undeleted);
+                        this.LoadGrid();
+                        cambiaNombreBtn();
+                        break;
 
-                case FormModes.Modificacion:
-                    this.EntityUsuario = new Usuario();
-                    this.EntityUsuario.ID = this.SelectedID;
-                    this.EntityUsuario.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.EntityUsuario);
-                    //Guardo hab según el valor que tiene en el grid view
-                    this.EntityUsuario.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
-                    this.SaveEntity(this.EntityUsuario);
-                    this.LoadGrid();
-                    break;
+                    case FormModes.Modificacion:
+                        this.EntityUsuario = new Usuario();
+                        this.EntityUsuario.ID = this.SelectedID;
+                        this.EntityUsuario.State = BusinessEntity.States.Modified;
+                        this.LoadEntity(this.EntityUsuario);
+                        //Guardo hab según el valor que tiene en el grid view
+                        this.EntityUsuario.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
+                        this.SaveEntity(this.EntityUsuario);
+                        this.LoadGrid();
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
+                this.formPanel.Visible = false;
+                this.formActionPanel.Visible = false;
+                this.repetirClaveLabel.Enabled = false;
+                this.repetirClaveTextBox.Enabled = false;
+                this.repetirClaveLabel.Visible = false;
+                this.repetirClaveTextBox.Visible = false;
             }
-            this.formPanel.Visible = false;
-            this.formActionPanel.Visible = false;
         }
 
         private void EnableForm(bool enable, bool en2)
@@ -232,6 +242,10 @@ namespace UI.Web
                 this.formActionPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
+                this.repetirClaveLabel.Enabled = false;
+                this.repetirClaveTextBox.Enabled = false;
+                this.repetirClaveLabel.Visible = false;
+                this.repetirClaveTextBox.Visible = false;
             }
         }
 
@@ -252,6 +266,10 @@ namespace UI.Web
                 }
                 //this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
+                this.repetirClaveLabel.Enabled = false;
+                this.repetirClaveTextBox.Enabled = false;
+                this.repetirClaveLabel.Visible = false;
+                this.repetirClaveTextBox.Visible = false;
             }
         }
 
@@ -267,6 +285,12 @@ namespace UI.Web
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true, true);
+            ListarPersonas();
+            ListarTiposUsuarios();
+            this.repetirClaveLabel.Enabled = true;
+            this.repetirClaveTextBox.Enabled = true;
+            this.repetirClaveLabel.Visible = true;
+            this.repetirClaveTextBox.Visible = true;
         }
 
         private void ClearForm()
@@ -279,9 +303,12 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             this.ClearForm();
             this.formPanel.Visible = false;
             this.formActionPanel.Visible = false;
+            this.repetirClaveLabel.Enabled = false;
+            this.repetirClaveTextBox.Enabled = false;
         }
 
         private void ListarPersonas()
@@ -300,6 +327,64 @@ namespace UI.Web
             idTipoUsuarioDDL.DataValueField = "IdTipoUsuario";
             idTipoUsuarioDDL.DataTextField = "Descripcion";
             idTipoUsuarioDDL.DataBind();
+        }
+
+        private bool ValidaCampos(FormModes modo)
+        {
+            var correcto = true;
+            if (!Validaciones.campoLleno(legajoTextBox.Text))
+            {
+                correcto = false;
+                legajoValidator.Text = "*";
+            }
+            else { legajoValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(usuarioTextBox.Text))
+            {
+                correcto = false;
+                usuarioValidator.Text = "*";
+            }
+            else { usuarioValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(claveTextBox.Text))
+            {
+                correcto = false;
+                claveValidator.Text = "*";
+            }
+            else if (!Validaciones.minAlcanzado(claveTextBox.Text, 8))
+            {
+                correcto = false;
+                claveValidator.Text = "La clave debe tener al menos 8 caracteres";
+            }
+            else { claveValidator.Text = ""; }
+
+            if (modo == FormModes.Alta)
+            {
+                if (!Validaciones.campoLleno(repetirClaveTextBox.Text))
+                {
+                    correcto = false;
+                    repiteClaveValidator.Text = "*";
+                }
+                else { repiteClaveValidator.Text = ""; }
+
+                if (!Validaciones.clavesIguales(claveTextBox.Text, repetirClaveTextBox.Text))
+                {
+                    correcto = false;
+                    repiteClaveValidator.Text = "Las claves no son idénticas";
+                }
+                else { repiteClaveValidator.Text = ""; }
+            }
+            else
+            { repiteClaveValidator.Text = ""; }
+
+            return correcto;
+        }
+        private void LimpiarCampos()
+        {
+            legajoValidator.Text = "";
+            usuarioValidator.Text = "";
+            claveValidator.Text = "";
+            repiteClaveValidator.Text = "";
         }
     }
 }

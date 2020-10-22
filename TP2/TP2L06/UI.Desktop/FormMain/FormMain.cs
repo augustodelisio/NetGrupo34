@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UI.Desktop.FormReportes;
+using UI.Desktop;
 
 namespace UI.Desktop
 {
@@ -70,7 +70,7 @@ namespace UI.Desktop
 
         private void generarReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reportes Rep = new Reportes();
+            FormREPORTE Rep = new FormREPORTE();
             Rep.ShowDialog();
         }
 

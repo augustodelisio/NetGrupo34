@@ -91,12 +91,6 @@
     <Compile Include="FormMain\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormReportes\Reportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormReportes\Reportes.Designer.cs">
-      <DependentUpon>Reportes.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormsComision\ComisionDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +144,12 @@
     </Compile>
     <Compile Include="FormsPersona\Personas.Designer.cs">
       <DependentUpon>Personas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsReporte\FormREPORTE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsReporte\FormREPORTE.designer.cs">
+      <DependentUpon>FormREPORTE.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsTipoUsuario\TipoUsuarioDesktop.cs">
       <SubType>Form</SubType>
@@ -205,9 +205,6 @@
     <EmbeddedResource Include="FormMain\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReportes\Reportes.resx">
-      <DependentUpon>Reportes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormsComision\ComisionDesktop.resx">
       <DependentUpon>ComisionDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +232,10 @@
     <EmbeddedResource Include="FormsPersona\Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsReporte\FormREPORTE.resx">
+      <DependentUpon>FormREPORTE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsReporte\ReportREPORTE.rdlc" />
     <EmbeddedResource Include="FormsTipoUsuario\TipoUsuarioDesktop.resx">
       <DependentUpon>TipoUsuarioDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,7 +267,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="FormReportes\ReporteUsuarios.rdlc" />
     <None Include="AcademiaDataSet.xsc">
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
     </None>

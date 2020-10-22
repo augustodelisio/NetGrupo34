@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 using Business.Entities;
 using Data.Database;
 
+
 namespace Business.Logic
 {
-    public class CursoLogic:BusinessLogic
+    public class AlumnoCursoLogic
     {
-        private CursoAdapter _CursoData;
-        public CursoAdapter CursoData
+        private AlumnoCursoAdapter _AlumnoCursoData;
+        public AlumnoCursoAdapter AlumnoCursoData
         {
-            get { return _CursoData; }
-            set { _CursoData = value; }
+            get { return _AlumnoCursoData; }
+            set { _AlumnoCursoData = value; }
         }
 
-        public CursoLogic()
+        public AlumnoCursoLogic()
         {
-            CursoData = new CursoAdapter();
+            AlumnoCursoData = new AlumnoCursoAdapter();
         }
-        public List<Curso> GetAll()
+        public List<AlumnoCurso> GetAll()
         {
             try
             {
-                return CursoData.GetAll();
+                return AlumnoCursoData.GetAll();
             }
             catch (Exception Ex)
             {
@@ -34,11 +35,11 @@ namespace Business.Logic
             }
         }
 
-        public Curso GetOne(int id)
+        public AlumnoCurso GetOne(int id)
         {
             try
             {
-                return CursoData.GetOne(id);
+                return AlumnoCursoData.GetOne(id);
             }
             catch (Exception Ex)
             {
@@ -47,11 +48,11 @@ namespace Business.Logic
             }
         }
 
-        public Curso BuscarCursoPorMateriaComision(int idMateria, int idComision)
+        public void Delete(AlumnoCurso cur, BusinessEntity.States est)
         {
             try
             {
-                return CursoData.BuscarCursoPorMateriaComision(idMateria, idComision);
+                AlumnoCursoData.Delete(cur, est);
             }
             catch (Exception Ex)
             {
@@ -59,24 +60,11 @@ namespace Business.Logic
                 throw ExcepcionManejada;
             }
         }
-
-        public void Delete(Curso cur, BusinessEntity.States est)
+        public void Save(AlumnoCurso cur)
         {
             try
             {
-                CursoData.Delete(cur, est);
-            }
-            catch (Exception Ex)
-            {
-                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
-                throw ExcepcionManejada;
-            }
-        }
-        public void Save(Curso cur)
-        {
-            try
-            {
-                CursoData.Save(cur);
+                AlumnoCursoData.Save(cur);
             }
             catch (Exception Ex)
             {

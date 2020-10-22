@@ -80,6 +80,54 @@ namespace Data.Database
             }
             return com;
         }
+        public List<Comision> GetComisionesPorCurso(int idMateria)
+        {
+            List<Comision> comisiones = new List<Comision>();
+
+            try
+            {
+
+                this.OpenConnection();
+
+                SqlCommand cmdComisiones = new SqlCommand("" +
+                    "SELECT com.desc_comision, com.anio_especialidad, com.id_comision " +
+                    "FROM cursos cur " +
+                    "INNER JOIN comisiones com ON com.id_comision = cur.id_comision " +
+                    "WHERE cur.id_materia = @idMateria and com.habilitado='true'", SqlConn);
+
+                cmdComisiones.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
+
+
+                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
+
+                while (drComisiones.Read())
+                {
+                    Comision com = new Comision();
+
+                    com.IdComision = (int)drComisiones["id_comision"];
+                    com.Descripcion = (string)drComisiones["desc_comision"];
+                    com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    //com.Habilitado = (bool)drComisiones["habilitado"];
+
+                    comisiones.Add(com);
+                }
+
+                drComisiones.Close();
+
+            }
+
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Comisiones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return comisiones;
+        }
 
         public void Delete(Comision comision, BusinessEntity.States estado)
         {

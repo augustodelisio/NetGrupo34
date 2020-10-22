@@ -85,6 +85,37 @@ namespace Data.Database
             return cur;
         }
 
+        public Curso BuscarCursoPorMateriaComision(int idMateria, int idComision)
+        {
+            Curso cur = new Curso();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select id_curso from cursos " +
+                    "where id_materia = @idMateria and id_comision = @idComision and anio_calendario = year(getdate()) ", SqlConn);
+                cmdCursos.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
+                cmdCursos.Parameters.Add("@idComision", SqlDbType.Int).Value = idComision;
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+                if (drCursos.Read())
+                {
+                    cur.IdCurso = (int)drCursos["id_curso"];
+
+                }
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos del curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return cur;
+        }
+
         public void Delete(Curso curso, BusinessEntity.States estado)
         {
             try

@@ -42,6 +42,21 @@ namespace Business.Logic
             }
         }
 
+
+        public List<Comision> GetComisionesPorCurso(int idCurso)
+        {
+            try
+            {
+                return ComisionData.GetComisionesPorCurso(idCurso);
+            }
+            catch(Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Comisiones", Ex);
+                throw ExcepcionManejada;
+            }
+
+        }
+
         public void Delete(Comision com, BusinessEntity.States est)
         {
             try

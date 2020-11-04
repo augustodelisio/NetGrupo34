@@ -38,12 +38,15 @@
         <div class="auto-style2">
 
             <asp:Panel ID="formPanel" Visible="false" runat="server" CssClass="formulario pila">
-
-                <asp:Label ID="idEspecialidadLabel" runat="server" Text="ID Especialidad: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="idEspecialidadTextBox" runat="server"></asp:TextBox>
+                
+                <asp:Label ID="idEspecialidadLabel" runat="server" Text="Especialidad: " CssClass="formItem"></asp:Label>
+                <asp:TextBox ID="idEspecialidadTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
+                <asp:Label ID="idEspecialidadValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion Especialidad: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="descripcionTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="descripcionTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
+                <asp:Label ID="descripcionValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
+
             </asp:Panel>
 
             <asp:Panel ID="formActionPanel" runat="server" Visible="false"  CssClass="botonera pila">

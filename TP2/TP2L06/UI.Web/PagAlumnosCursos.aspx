@@ -4,7 +4,75 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
 
     <div class="bloquePadre">   
-        <div class="bloqueHijo">  
+        
+        <div class="bloqueAdminIncial">
+
+            <asp:Panel ID="panelAdmin" Visible="false" runat="server" CssClass="formulario">
+
+
+                <asp:Label ID="preguntaLabel" runat="server" Text="Desea ingresar docentes o alumnos?"></asp:Label>
+             
+
+                <asp:RadioButtonList ID="seleccionRadioButtonList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="seleccionRadioButtonList_SelectedIndexChanged">
+                    <asp:ListItem Value="2">Alumno</asp:ListItem>
+                    <asp:ListItem Value="3">Docente</asp:ListItem>
+                </asp:RadioButtonList>
+                
+                
+                <asp:Panel ID="botoneraSeleccionAdmin" runat="server">
+                    <asp:Button ID="aceptarSeleccionAdminLinkButton" runat="server" Text="Aceptar" CssClass="botonera" />
+                    <asp:Button ID="cancelarSeleccionAdminLinkButton" runat="server" Text="Cancelar" CssClass="botonera"/>
+                </asp:Panel>
+
+
+            </asp:Panel>
+
+        </div>
+        
+        <div class="bloqueDDLs">
+            
+            <asp:Panel ID="panelDDL" Visible="false" runat="server" CssClass="formulario">
+            
+            <asp:DropDownList ID="DocentesDDL" runat="server" CssClass="formItem" DataSourceID="AcademiaDataSource" 
+                DataTextField="legajo" DataValueField="legajo">            
+            </asp:DropDownList>
+
+            
+            <asp:SqlDataSource ID="AcademiaDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:AcademiaConnectionString %>
+                " SelectCommand="SELECT [legajo] FROM [usuarios] WHERE (([id_tipo_usuario] = @id_tipo_usuario) AND ([habilitado] = @habilitado))">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="3" Name="id_tipo_usuario" Type="Int32" />
+                    <asp:Parameter DefaultValue="True" Name="habilitado" Type="Boolean" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+
+
+
+           <asp:DropDownList ID="AlumnosDDL" runat="server" CssClass="formItem" DataSourceID="AcademiaDataSource" 
+                DataTextField="legajo" DataValueField="legajo">            
+            </asp:DropDownList>
+
+            
+            <asp:SqlDataSource ID="AlumnosDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:AcademiaConnectionString %>
+                " SelectCommand="SELECT [legajo] FROM [usuarios] WHERE (([id_tipo_usuario] = @id_tipo_usuario) AND ([habilitado] = @habilitado))">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="2" Name="id_tipo_usuario" Type="Int32" />
+                    <asp:Parameter DefaultValue="True" Name="habilitado" Type="Boolean" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server"></asp:SqlDataSource>
+
+
+
+          </asp:Panel>
+            
+            
+       </div>
+
+
+        
+        <div class="bloqueSeleccionMateria">  
             
             <asp:Panel ID="gridPanel" runat="server" CssClass="tabla">
                 
@@ -28,7 +96,7 @@
             </asp:Panel>
         </div>
 
-        <div class="bloqueHijo">
+        <div class="bloqueSeleccionComision">
 
             <asp:Panel ID="comisionPanel" Visible="false" runat="server" CssClass="tabla">
 

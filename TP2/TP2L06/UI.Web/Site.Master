@@ -58,7 +58,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="PagCursos.aspx">Ver Cursos</a>
-                            <a class="dropdown-item" href="#">Alumnos Inscriptos</a>
+                            <a class="dropdown-item" href="PagAlumnosCursos.aspx">Alumnos Inscriptos</a>
                             <a class="dropdown-item" href="#">Docentes Inscriptos</a>
                         </div>
                     </li>

@@ -9,7 +9,7 @@ using Business.Entities;
 
 namespace UI.Web
 {
-    public partial class AlumnosCursos : System.Web.UI.Page
+    public partial class AlumnosCursos : Page
     {
 
         //////////////////////////Informacion de ALUMNO CURSO//////////////////////////
@@ -108,20 +108,38 @@ namespace UI.Web
 
         //////////////////////////////////////////////////////////////////////////////
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)            
         {
-            if (Session["usuario"] == null)
+            if (Session["usuario"] == null)         //Si no estas logueado te saca
             {
                 Response.Redirect("Login.aspx");
             }
             else
             {
-                if (Session["tipoUsu"].ToString() != "1") //Si no sos Admin te saca
+                if (Session["tipoUsu"].ToString() == "1") //Si sos admin
                 {
+                    showAdminSelectionPage();
+
+                    //LoadGridMaterias();
+
+                }
+
+                else if (Session["tipoUsu"].ToString() == "2")  //Si sos alumno
+                {
+                    LoadGridMaterias();
+                    //Si sos alumno te muestra x cosa
+                }
+                else if (Session["tipoUsu"].ToString() == "3")  //Si sos docente
+                {
+                    LoadGridMaterias();
+                    //Si sos docente te muestra x cosa
+                }
+                else
+                {
+                    //Si no sos admin/docente/alumno te saca
                     Response.Redirect("Home.aspx");
                 }
             }
-            LoadGridMaterias();
         }
 
         public enum FormModes
@@ -156,7 +174,11 @@ namespace UI.Web
 
 
 
-        //////////////////////////  Primer pantalla (Elección de Materia) //////////////////////////
+
+
+
+
+        //////////////////////////  MATERIA: Seleccion de materia en el gridview //////////////////////////
 
 
         private int SelectedIdMateria
@@ -208,17 +230,40 @@ namespace UI.Web
 
         private void LoadGridMaterias()                                     //Aca hay que cargar las materias -->   ( * | Materia | Año)
         {
-            this.gridView.DataSource = this.MateriaLogic.GetAll();
-            this.gridView.DataBind();
 
-            this.gridPanel.Enabled = true;
-            this.gridPanel.Visible = true;
+            switch (Convert.ToInt32(Session["tipoUsu"]))
+            {
+                case 1: //Admin
+                    {
+                        //AdminPageLoad();
+                        break;
+                    }
 
-            this.gridView.Enabled = true;
-            this.gridView.Visible = true;
+                 case 2:    //Alumno
+                    {
+                        //AlumnoPageLoad();
+                        break;
+                    }
 
-            this.gridActionsPanel.Enabled = true;
-            this.gridActionsPanel.Visible = true;
+                case 3: //Docente
+                    {
+                        //DocentePageLoad();
+                        break;
+                    }
+            }
+            
+            
+            //this.gridView.DataSource = this.MateriaLogic.GetAll();
+            //this.gridView.DataBind();
+
+            //this.gridPanel.Enabled = true;
+            //this.gridPanel.Visible = true;
+
+            //this.gridView.Enabled = true;
+            //this.gridView.Visible = true;
+
+            //this.gridActionsPanel.Enabled = true;
+            //this.gridActionsPanel.Visible = true;
         }
 
 
@@ -237,7 +282,7 @@ namespace UI.Web
         }
 
 
-        //////////////////////////  Segunda pantalla (Elección de Comisión) //////////////////////////
+        //////////////////////////  Comision: Seleccion de comision en el gridview //////////////////////////
 
 
         private int SelectedIdComision
@@ -414,5 +459,102 @@ namespace UI.Web
                 this.AlumnoCurso.Save(alumnoCursoActual);
 
         }
+
+
+
+        ////////////////////////// ADMIN: Bloque de seleccion de tipo de usuario  //////////////////////////
+
+
+        protected void aceptarSeleccionAdmininkButton_Click(object sender, EventArgs e)
+        {
+            if (this.seleccionRadioButtonList.SelectedValue != null)
+            {
+                showDDL(this.seleccionRadioButtonList.SelectedValue.ToString());
+            }
+        }
+
+        protected void cancelarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx"); //No se que otra manera hay de redireccionarlo al home
+
+        }
+
+
+        ////////////////////////// ADMIN: Bloque  selección de usuario en DDL  //////////////////////////
+
+
+
+
+        private int SelectedTipoUsuario
+        {
+
+            get;
+            set;
+            //get
+            //{
+            //    if (this.ViewState["SelectedTipoUsuario"] != null)
+            //    {
+            //        return (int)this.ViewState["SelectedTipoUsuario"];
+            //    }
+            //    else return 0;
+            //}
+
+            //set
+            //{
+            //    this.ViewState["SelectedTipoUsuario"] = value;
+            //}
+        }
+
+
+
+        private void showAdminSelectionPage()
+        {
+            //Muestra todos los elementos de la pantalla de seleccion del admin
+
+            this.panelAdmin.Enabled = true;
+            this.panelAdmin.Visible = true;
+            
+
+            //this.preguntaLabel.Visible = true;
+            //this.seleccionRadioButtonList.Visible = true;
+            //this.aceptarSeleccionAdminLinkButton.Visible = true;
+
+
+        }
+        
+        private void hideAdminPage()
+        {
+            //Esconde todos los elementos de la pantalla de seleccion del admin
+
+            this.panelAdmin.Enabled = false;
+            this.panelAdmin.Visible = false;
+
+        }
+
+        private void showDDL(string seleccion)
+        {
+            if (seleccion == "2") //LoadAdminPage
+            {
+                this.AlumnosDDL.Enabled = true;
+                this.AlumnosDDL.Visible = true;
+            }
+            else
+            {
+                this.DocentesDDL.Enabled = true;
+                this.DocentesDDL.Visible = true;
+            }
+
+        }
+
+        protected void seleccionRadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            this.SelectedTipoUsuario = Convert.ToInt32(this.seleccionRadioButtonList.SelectedValue);
+
+        }
+
+
+
+
     }
 }

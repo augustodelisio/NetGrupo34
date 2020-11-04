@@ -33,6 +33,7 @@ namespace Login
                     Page.Response.Write("Usuario encontrado");
                     Session["usuario"] = nombreUsu;
                     Session["tipoUsu"] = usu.IdTipoUsuario;
+                    Session["idUsuario"] = usu.ID;
                     Response.Redirect("Home.aspx");
                 }
                 else//Si no se encontro dicho usuario en la BD o se ingreso mal la clave

@@ -24,7 +24,7 @@ namespace Data.Database
         protected void CloseConnection()
         {
             SqlConn.Close();
-            SqlConn = null;
+            SqlConn = null; 
         }
 
         protected SqlDataReader ExecuteReader(String commandText)

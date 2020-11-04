@@ -31,7 +31,7 @@ namespace UI.Web
             get;
             set;
         }
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)            //Acá rompí todo
         {
             if (Session["usuario"] == null)
             {

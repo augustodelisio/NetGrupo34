@@ -137,6 +137,8 @@ namespace UI.Web
         {
             LimpiarCampos();
             if (ValidaCampos(this.FormMode))
+            {
+
                 switch (this.FormMode)
                 {
                 case FormModes.Alta:
@@ -149,7 +151,7 @@ namespace UI.Web
 
                 case FormModes.Baja:
                     this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.ID = this.SelectedID;
+                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
                     this.LoadEntity(this.EntityEspecialidad);
                     this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Deleted);
                     this.LoadGrid();
@@ -158,7 +160,7 @@ namespace UI.Web
 
                 case FormModes.CancelaBaja:
                     this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.ID = this.SelectedID;
+                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
                     this.LoadEntity(this.EntityEspecialidad);
                     this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Undeleted);
                     this.LoadGrid();
@@ -167,7 +169,7 @@ namespace UI.Web
 
                 case FormModes.Modificacion:
                     this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.ID = this.SelectedID;
+                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
                     this.EntityEspecialidad.State = BusinessEntity.States.Modified;
                     this.LoadEntity(this.EntityEspecialidad);
                     //Guardo hab según el valor que tiene en el grid view
@@ -179,8 +181,10 @@ namespace UI.Web
                 default:
                     break;
                 }
+                
             this.formPanel.Visible = false;
             this.formActionPanel.Visible = false;
+            }
         }
         private void EnableForm(bool enable, bool en2)
         {

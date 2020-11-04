@@ -79,6 +79,7 @@
     <Content Include="Error404.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="PagAlumnosCursos.aspx" />
     <Content Include="PagCursos.aspx" />
     <Content Include="PagEspecialidades.aspx" />
     <Content Include="PagPersonas.aspx" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagAlumnosCursos.aspx.cs">
+      <DependentUpon>PagAlumnosCursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagAlumnosCursos.aspx.designer.cs">
+      <DependentUpon>PagAlumnosCursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagCursos.aspx.cs">
       <DependentUpon>PagCursos.aspx</DependentUpon>

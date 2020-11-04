@@ -42,7 +42,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="PagPersonas.aspx">Personas</a>
+                        <asp:LinkButton ID="linkPersonas" runat="server" CssClass="nav-link" href="PagPersonas.aspx">Personas</asp:LinkButton>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Materias</a>

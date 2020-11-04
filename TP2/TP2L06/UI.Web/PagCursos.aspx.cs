@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
+using Util;
 
 namespace UI.Web
 {
@@ -105,6 +106,7 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
             cambiaNombreBtn();
+            LimpiarCampos();
         }
 
         protected void cambiaNombreBtn()
@@ -165,50 +167,54 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            switch (this.FormMode)
+            LimpiarCampos();
+            if (ValidaCampos(this.FormMode))
             {
-                case FormModes.Alta:
-                    this.EntityCurso = new Curso();
-                    this.LoadEntity(this.EntityCurso);
-                    this.EntityCurso.Habilitado = true;
-                    this.SaveEntity(this.EntityCurso);
-                    this.LoadGrid();
-                    break;
+                switch (this.FormMode)
+                {
+                    case FormModes.Alta:
+                        this.EntityCurso = new Curso();
+                        this.LoadEntity(this.EntityCurso);
+                        this.EntityCurso.Habilitado = true;
+                        this.SaveEntity(this.EntityCurso);
+                        this.LoadGrid();
+                        break;
 
-                case FormModes.Baja:
-                    this.EntityCurso = new Curso();
-                    this.EntityCurso.IdCurso = this.SelectedID;
-                    this.LoadEntity(this.EntityCurso);
-                    this.DeleteEntity(EntityCurso, BusinessEntity.States.Deleted);
-                    this.LoadGrid();
-                    cambiaNombreBtn();
-                    break;
+                    case FormModes.Baja:
+                        this.EntityCurso = new Curso();
+                        this.EntityCurso.IdCurso = this.SelectedID;
+                        this.LoadEntity(this.EntityCurso);
+                        this.DeleteEntity(EntityCurso, BusinessEntity.States.Deleted);
+                        this.LoadGrid();
+                        cambiaNombreBtn();
+                        break;
 
-                case FormModes.CancelaBaja:
-                    this.EntityCurso = new Curso();
-                    this.EntityCurso.IdCurso = this.SelectedID;
-                    this.LoadEntity(this.EntityCurso);
-                    this.DeleteEntity(EntityCurso, BusinessEntity.States.Undeleted);
-                    this.LoadGrid();
-                    cambiaNombreBtn();
-                    break;
+                    case FormModes.CancelaBaja:
+                        this.EntityCurso = new Curso();
+                        this.EntityCurso.IdCurso = this.SelectedID;
+                        this.LoadEntity(this.EntityCurso);
+                        this.DeleteEntity(EntityCurso, BusinessEntity.States.Undeleted);
+                        this.LoadGrid();
+                        cambiaNombreBtn();
+                        break;
 
-                case FormModes.Modificacion:
-                    this.EntityCurso = new Curso();
-                    this.EntityCurso.IdCurso = this.SelectedID;
-                    this.EntityCurso.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.EntityCurso);
-                    //Guardo hab según el valor que tiene en el grid view
-                    this.EntityCurso.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
-                    this.SaveEntity(this.EntityCurso);
-                    this.LoadGrid();
-                    break;
+                    case FormModes.Modificacion:
+                        this.EntityCurso = new Curso();
+                        this.EntityCurso.IdCurso = this.SelectedID;
+                        this.EntityCurso.State = BusinessEntity.States.Modified;
+                        this.LoadEntity(this.EntityCurso);
+                        //Guardo hab según el valor que tiene en el grid view
+                        this.EntityCurso.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[4].Text);
+                        this.SaveEntity(this.EntityCurso);
+                        this.LoadGrid();
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
+                this.formPanel.Visible = false;
+                this.formActionPanel.Visible = false;
             }
-            this.formPanel.Visible = false;
-            this.formActionPanel.Visible = false;
         }
 
         private void EnableForm(bool enable, bool en2)
@@ -265,6 +271,8 @@ namespace UI.Web
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true, true);
+            ListarPersonas();
+            ListarTiposCursos();
         }
 
         private void ClearForm()
@@ -297,6 +305,39 @@ namespace UI.Web
             idComisionDDL.DataValueField = "IdComision";
             idComisionDDL.DataTextField = "Descripcion";
             idComisionDDL.DataBind();
+        }
+
+        private bool ValidaCampos(FormModes modo)
+        {
+            var correcto = true;
+            if (!Validaciones.campoLleno(anioTextBox.Text))
+            {
+                correcto = false;
+                anioValidator.Text = "*";
+            }
+            else { anioValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(descripcionTextBox.Text))
+            {
+                correcto = false;
+                descripcionValidator.Text = "*";
+            }
+            else { descripcionValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(cupoTextBox.Text))
+            {
+                correcto = false;
+                cupoValidator.Text = "*";
+            }
+            else { cupoValidator.Text = ""; }
+
+            return correcto;
+        }
+        private void LimpiarCampos()
+        {
+            anioValidator.Text = "";
+            descripcionValidator.Text = "";
+            cupoValidator.Text = "";
         }
     }
 }

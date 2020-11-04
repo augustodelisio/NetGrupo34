@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Entities;
 using Business.Logic;
+using Util;
 
 namespace UI.Web
 {
@@ -99,13 +100,21 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
-            if (SelectedHab)
+            cambiaNombreBtn();
+            LimpiarCampos();
+        }
+        protected void cambiaNombreBtn()
+        {
+            if (this.SelectedID > 0)
             {
-                this.eliminarLinkButton.Text = "Eliminar";
-            }
-            else
-            {
-                this.eliminarLinkButton.Text = "Habilitar";
+                if (SelectedHab)
+                {
+                    this.eliminarLinkButton.Text = "Eliminar";
+                }
+                else
+                {
+                    this.eliminarLinkButton.Text = "Habilitar";
+                }
             }
         }
         private void LoadForm(int idEsp)
@@ -115,20 +124,9 @@ namespace UI.Web
             this.descripcionTextBox.Text = this.EntityEspecialidad.Descripcion;
             
         }
-        protected void editarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.EnableForm(true);
-                this.formPanel.Visible = true;
-                this.formActionPanel.Visible = true;
-                this.FormMode = FormModes.Modificacion;
-                this.LoadForm(this.SelectedID);
-            }
-        }
         private void LoadEntity(Especialidad especialidad)
         {
-            especialidad.IdEspecialidad = Convert.ToInt32(this.EntityEspecialidad.IdEspecialidad);
+            especialidad.IdEspecialidad = Convert.ToInt32(this.idEspecialidadTextBox.Text);
             especialidad.Descripcion = this.descripcionTextBox.Text;
         }
         private void SaveEntity(Especialidad especialidad)
@@ -138,8 +136,10 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            switch (this.FormMode)
-            {
+            LimpiarCampos();
+            if (ValidaCampos(this.FormMode))
+                switch (this.FormMode)
+                {
                 case FormModes.Alta:
                     this.EntityEspecialidad = new Especialidad();
                     this.LoadEntity(this.EntityEspecialidad);
@@ -154,6 +154,7 @@ namespace UI.Web
                     this.LoadEntity(this.EntityEspecialidad);
                     this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Deleted);
                     this.LoadGrid();
+                    this.cambiaNombreBtn();
                     break;
 
                 case FormModes.CancelaBaja:
@@ -162,6 +163,7 @@ namespace UI.Web
                     this.LoadEntity(this.EntityEspecialidad);
                     this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Undeleted);
                     this.LoadGrid();
+                    this.cambiaNombreBtn();
                     break;
 
                 case FormModes.Modificacion:
@@ -177,21 +179,34 @@ namespace UI.Web
 
                 default:
                     break;
-            }
+                }
             this.formPanel.Visible = false;
             this.formActionPanel.Visible = false;
         }
-        private void EnableForm(bool enable)
+        private void EnableForm(bool enable, bool en2)
         {
             this.idEspecialidadTextBox.Enabled = enable;
             this.descripcionTextBox.Enabled = enable;
-            this.aceptarLinkButton.Enabled = enable;
-            this.cancelarLinkButton.Enabled = enable;
+            this.aceptarLinkButton.Enabled = en2;
+            this.cancelarLinkButton.Enabled = en2;
         }
+        protected void editarLinkButton_Click(object sender, EventArgs e)
+        {
+            if (this.IsEntitySelected)
+            {
+                this.EnableForm(true, true);
+                this.formPanel.Visible = true;
+                this.formActionPanel.Visible = true;
+                this.FormMode = FormModes.Modificacion;
+                this.LoadForm(this.SelectedID);
+            }
+        }
+
         protected void elimiarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
             {
+                this.EnableForm(false, true);
                 this.formPanel.Visible = true;
                 this.formActionPanel.Visible = true;
                 if (SelectedHab)
@@ -202,7 +217,7 @@ namespace UI.Web
                 {
                     this.FormMode = FormModes.CancelaBaja;
                 }
-                this.EnableForm(false);
+                //this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
             }
         }
@@ -217,7 +232,7 @@ namespace UI.Web
             this.formActionPanel.Visible = true;
             this.FormMode = FormModes.Alta;
             this.ClearForm();
-            this.EnableForm(true);
+            this.EnableForm(true, true);
         }
         private void ClearForm()
         {
@@ -226,9 +241,36 @@ namespace UI.Web
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             this.ClearForm();
             this.formPanel.Visible = false;
             this.formActionPanel.Visible = false;
+        }
+
+        private bool ValidaCampos(FormModes modo)
+        {
+            var correcto = true;
+            if (!Validaciones.campoLleno(idEspecialidadTextBox.Text))
+            {
+                correcto = false;
+                idEspecialidadValidator.Text = "*";
+            }
+            else { idEspecialidadValidator.Text = ""; }
+
+            if (!Validaciones.campoLleno(descripcionTextBox.Text))
+            {
+                correcto = false;
+                descripcionValidator.Text = "*";
+            }
+            else { descripcionValidator.Text = ""; }
+
+            return correcto;
+        }
+        private void LimpiarCampos()
+        {
+            idEspecialidadValidator.Text = "";
+            descripcionValidator.Text = "";
+            
         }
     }
 }

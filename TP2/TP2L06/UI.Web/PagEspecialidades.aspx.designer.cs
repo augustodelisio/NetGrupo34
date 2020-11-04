@@ -96,6 +96,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox idEspecialidadTextBox;
 
         /// <summary>
+        /// Control idEspecialidadValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idEspecialidadValidator;
+
+        /// <summary>
         /// Control descripcionLabel.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace UI.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox descripcionTextBox;
+
+        /// <summary>
+        /// Control descripcionValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label descripcionValidator;
 
         /// <summary>
         /// Control formActionPanel.

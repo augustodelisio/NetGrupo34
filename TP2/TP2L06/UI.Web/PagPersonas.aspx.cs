@@ -170,7 +170,7 @@ namespace UI.Web
 
                     case FormModes.CancelaBaja:
                         this.EntityPersona = new Persona();
-                        this.EntityPersona.ID = this.SelectedID;
+                        this.EntityPersona.IdPersona = this.SelectedID;
                         this.LoadEntity(this.EntityPersona);
                         this.DeleteEntity(EntityPersona, BusinessEntity.States.Undeleted);
                         this.LoadGrid();

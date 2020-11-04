@@ -26,11 +26,11 @@ namespace Data.Database
 
                     cur.IdCurso = (int)drCursos["id_curso"];
                     cur.AnioCalendario = (int)drCursos["anio_calendario"];
-                    cur.Descripcion = (string)drCursos["descripcion"];
+                    //cur.Descripcion = (string)drCursos["descripcion"];
                     cur.Cupo = (int)drCursos["cupo"];
                     cur.IdMateria = (int)drCursos["id_materia"];
                     cur.IdComision = (int)drCursos["id_comision"];
-                    cur.Habilitado = (bool)drCursos["habilitado"];
+                    //cur.Habilitado = (bool)drCursos["habilitado"];
 
                     cursos.Add(cur);
                 }

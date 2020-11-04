@@ -118,10 +118,9 @@ namespace UI.Web
             {
                 if (Session["tipoUsu"].ToString() == "1") //Si sos admin
                 {
-                    showAdminSelectionPage();
-
-                    //LoadGridMaterias();
-
+                  
+                    showAdminSelectionPage();       //Muestra panel de opciones del admin
+                                                 
                 }
 
                 else if (Session["tipoUsu"].ToString() == "2")  //Si sos alumno
@@ -210,8 +209,8 @@ namespace UI.Web
             //cambiaNombreBtn();
         }
 
-
-        protected void inscribirseLinkButton_Click(object sender, EventArgs e)
+        
+        protected void seleccionarMateriaLinkButton_Click(object sender, EventArgs e)      //Seleccionar materia inscribirseLinkButton
         {
             if (this.IsEntityMateriaSelected)
             {
@@ -221,49 +220,28 @@ namespace UI.Web
             }
         }
 
-        protected void cancelarLinkButton_Click(object sender, EventArgs e)
+        protected void cancelarMateriaLinkButton_Click(object sender, EventArgs e)
         {
             limpiarIdMateria();
             
-            Response.Redirect("https://localhost:44313/Home.aspx"); //No se que otra manera hay de redireccionarlo al home
+            Response.Redirect("Home.aspx"); 
         }
 
-        private void LoadGridMaterias()                                     //Aca hay que cargar las materias -->   ( * | Materia | Año)
+        private void LoadGridMaterias()                            //Aca hay que cargar las materias en el grid -->   ( * | Materia | Año)
         {
 
-            switch (Convert.ToInt32(Session["tipoUsu"]))
-            {
-                case 1: //Admin
-                    {
-                        //AdminPageLoad();
-                        break;
-                    }
 
-                 case 2:    //Alumno
-                    {
-                        //AlumnoPageLoad();
-                        break;
-                    }
 
-                case 3: //Docente
-                    {
-                        //DocentePageLoad();
-                        break;
-                    }
-            }
+            this.gridPanel.Visible = true;
+            this.gridPanel.Enabled = true;
+
+            this.gridPanel.DataBind();
+
+
+            this.gridActionsPanel.Visible = true;
+            this.gridActionsPanel.Enabled = true;
+
             
-            
-            //this.gridView.DataSource = this.MateriaLogic.GetAll();
-            //this.gridView.DataBind();
-
-            //this.gridPanel.Enabled = true;
-            //this.gridPanel.Visible = true;
-
-            //this.gridView.Enabled = true;
-            //this.gridView.Visible = true;
-
-            //this.gridActionsPanel.Enabled = true;
-            //this.gridActionsPanel.Visible = true;
         }
 
 
@@ -358,7 +336,7 @@ namespace UI.Web
         }
 
 
-        protected void aceptarLinkButton_Click(object sender, EventArgs e)
+        protected void aceptarLinkButton_Click(object sender, EventArgs e)          //Ingresa comision
         {
 
             if (IsEntityComisionSelected)
@@ -408,7 +386,7 @@ namespace UI.Web
         }
 
 
-        private void LoadForm(int idMateria)
+        private void LoadForm(int idMateria)                //Carga form comision
         {
 
             if(this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)
@@ -422,7 +400,7 @@ namespace UI.Web
             }
             else if(!this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)
             {
-                // Vuelve?
+                
             }
                    
         }
@@ -475,7 +453,7 @@ namespace UI.Web
 
         protected void cancelarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Home.aspx"); //No se que otra manera hay de redireccionarlo al home
+            Response.Redirect("Home.aspx"); 
 
         }
 
@@ -513,16 +491,11 @@ namespace UI.Web
 
             this.panelAdmin.Enabled = true;
             this.panelAdmin.Visible = true;
-            
-
-            //this.preguntaLabel.Visible = true;
-            //this.seleccionRadioButtonList.Visible = true;
-            //this.aceptarSeleccionAdminLinkButton.Visible = true;
-
 
         }
-        
-        private void hideAdminPage()
+
+
+        private void hideAdminSelectionPage()
         {
             //Esconde todos los elementos de la pantalla de seleccion del admin
 
@@ -533,18 +506,48 @@ namespace UI.Web
 
         private void showDDL(string seleccion)
         {
-            if (seleccion == "2") //LoadAdminPage
+            if (seleccion == "2") //Carga DDL Alumno
             {
+                this.panelDDL.Visible = true;
+                this.DocentesDDL.Visible = false;
                 this.AlumnosDDL.Enabled = true;
                 this.AlumnosDDL.Visible = true;
+
+                this.panelSeleccionDeUsuario.Visible = true;
+                this.panelSeleccionDeUsuario.Enabled = true;
+
+                AlumnosDDL.DataBind();
             }
+            else if(seleccion == "3") //Carga DDL Docente
+            {
+                this.panelDDL.Visible = true;
+                this.AlumnosDDL.Visible = false;
+                this.DocentesDDL.Visible = true;
+                this.DocentesDDL.Enabled = true;
+
+                this.panelSeleccionDeUsuario.Visible = true;
+                this.panelSeleccionDeUsuario.Enabled = true;
+
+
+                AlumnosDDL.DataBind();
+            }
+
             else
             {
-                this.DocentesDDL.Enabled = true;
-                this.DocentesDDL.Visible = true;
+                //No selecciono nada
             }
 
         }
+
+        private void hideDDLs()
+        {
+            this.panelDDL.Visible = false;
+            this.panelDDL.Enabled = false;
+
+            
+
+        }
+
 
         protected void seleccionRadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -553,8 +556,35 @@ namespace UI.Web
 
         }
 
+        protected void aceptarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
+        {
+            if (this.seleccionRadioButtonList.SelectedValue != null)
+            {
+                showDDL(this.seleccionRadioButtonList.SelectedValue.ToString());
+            }
+        }
+
+        protected void cancelarSeleccionAdminLinkButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        
+        
+        
+        
+        
+        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e)
+        {
+            this.hideDDLs();
+            this.LoadGridMaterias();
 
 
+        }
 
+        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

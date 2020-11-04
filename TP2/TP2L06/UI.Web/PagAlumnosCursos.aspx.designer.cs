@@ -87,22 +87,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.DropDownList DocentesDDL;
 
         /// <summary>
-        /// Control AcademiaDataSource.
+        /// Control DocentesDataSource.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource AcademiaDataSource;
-
-        /// <summary>
-        /// Control SqlDataSource1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource DocentesDataSource;
 
         /// <summary>
         /// Control AlumnosDDL.
@@ -123,13 +114,31 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.SqlDataSource AlumnosDataSource;
 
         /// <summary>
-        /// Control SqlDataSource3.
+        /// Control panelSeleccionDeUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
+        protected global::System.Web.UI.WebControls.Panel panelSeleccionDeUsuario;
+
+        /// <summary>
+        /// Control ingresarUsuarioLinkButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ingresarUsuarioLinkButton;
+
+        /// <summary>
+        /// Control cancelarUsuarioLinkButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelarUsuarioLinkButton;
 
         /// <summary>
         /// Control gridPanel.
@@ -150,6 +159,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.GridView gridView;
 
         /// <summary>
+        /// Control MateriasDataSource.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource MateriasDataSource;
+
+        /// <summary>
         /// Control gridActionsPanel.
         /// </summary>
         /// <remarks>
@@ -159,22 +177,22 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Panel gridActionsPanel;
 
         /// <summary>
-        /// Control inscribirseLinkButton.
+        /// Control seleccionarMateriaLinkButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton inscribirseLinkButton;
+        protected global::System.Web.UI.WebControls.LinkButton seleccionarMateriaLinkButton;
 
         /// <summary>
-        /// Control cancelarLinkButton.
+        /// Control cancelarMateriaLinkButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton cancelarLinkButton;
+        protected global::System.Web.UI.WebControls.LinkButton cancelarMateriaLinkButton;
 
         /// <summary>
         /// Control comisionPanel.
@@ -193,6 +211,15 @@ namespace UI.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridComision;
+
+        /// <summary>
+        /// Control ComisionDataSource.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ComisionDataSource;
 
         /// <summary>
         /// Control panelInscripcionCursado.

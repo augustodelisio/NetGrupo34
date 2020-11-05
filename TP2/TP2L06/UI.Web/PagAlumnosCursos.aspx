@@ -32,7 +32,7 @@
 
                 <asp:Panel ID="botoneraSeleccionAdmin" runat="server" Width="268px">
                     <asp:Button ID="aceptarSeleccionAdminLinkButton" runat="server" Text="Aceptar" CssClass="botonera" OnClick="aceptarSeleccionAdminLinkButton_Click" />
-                    <asp:Button ID="cancelarSeleccionAdminLinkButton" runat="server" Text="Cancelar" CssClass="botonera" OnClick="cancelarSeleccionAdminLinkButton_Click1" />
+                    <asp:Button ID="cancelarSeleccionAdminLinkButton" runat="server" Text="Cancelar" CssClass="botonera" OnClick="cancelarSeleccionAdminLinkButton_Click" />
                 </asp:Panel>
 
 
@@ -110,12 +110,14 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="MateriasDataSource" runat="server" ConnectionString="Data Source=localhost\SqlExpress;Initial Catalog=Academia;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [id_materia], [desc_materia], [hs_semanales], [habilitado], [hs_totales], [id_plan] FROM [materias]"></asp:SqlDataSource>
 
+                <asp:Panel ID="gridActionsPanel" visible="false" runat="server" CssClass="botonera">
+                    <asp:LinkButton ID="seleccionarMateriaLinkButton" runat="server" OnClick="seleccionarMateriaLinkButton_Click" CssClass="boton">Aceptar</asp:LinkButton>
+                    <asp:LinkButton ID="cancelarMateriaLinkButton" runat="server" OnClick="cancelarMateriaLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
+                </asp:Panel>
+
             </asp:Panel>
 
-            <asp:Panel ID="gridActionsPanel" Visible="false" runat="server" CssClass="botonera">
-                <asp:LinkButton ID="seleccionarMateriaLinkButton" runat="server" OnClick="seleccionarMateriaLinkButton_Click" CssClass="boton">Aceptar</asp:LinkButton>
-                <asp:LinkButton ID="cancelarMateriaLinkButton" runat="server" OnClick="cancelarMateriaLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
-            </asp:Panel>
+
         </div>
 
         <div class="bloqueHijo">
@@ -140,18 +142,15 @@
 
                 </asp:GridView>
 
-                <asp:Label ID="cargosLabel" runat="server" Text="Año: " CssClass="formItem"></asp:Label>
 
-                <asp:DropDownList ID="cargosDDL" runat="server">
+                <asp:DropDownList ID="cargosDDL" Visible="false" runat="server">
 
-                    <asp:ListItem Selected="True" Value=1> Docente Práctica </asp:ListItem>
-                    <asp:ListItem Value=2> Docente Teoría </asp:ListItem>
-                    <asp:ListItem Value=3> Jefe de cátedra </asp:ListItem>
+                    <asp:ListItem Selected="True" Value="1"> Docente Práctica </asp:ListItem>
+                    <asp:ListItem Value="2"> Docente Teoría </asp:ListItem>
+                    <asp:ListItem Value="3"> Jefe de cátedra </asp:ListItem>
 
 
                 </asp:DropDownList>
-
-
 
 
 

@@ -30,7 +30,7 @@ namespace Data.Database
                     dc.IdDictado = (int)drDC["id_dictado"];
                     dc.IdCurso = (int)drDC["id_curso"];
                     dc.IdUsuario = (int)drDC["id_usuario"];
-                    dc.Cargos = (int)drDC["cargos"];
+                    dc.Cargos = (int)drDC["cargo"];
 
 
 
@@ -68,7 +68,7 @@ namespace Data.Database
                     dc.IdDictado = (int)drDC["id_dictado"];
                     dc.IdCurso = (int)drDC["id_curso"];
                     dc.IdUsuario = (int)drDC["id_usuario"];
-                    dc.Cargos = (int)drDC["cargos"];
+                    dc.Cargos = (int)drDC["cargo"];
                 }
                 drDC.Close();
             }

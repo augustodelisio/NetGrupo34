@@ -93,8 +93,8 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdCursos = new SqlCommand("select * from alumnos_cursos where id_usuario = @idUsuario and id_curso = @idCurso", SqlConn);
-                cmdDC.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
-                cmdDC.Parameters.Add("@idCurso", SqlDbType.Int).Value = idCurso;
+                cmdCursos.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                cmdCursos.Parameters.Add("@idCurso", SqlDbType.Int).Value = idCurso;
                 SqlDataReader drCursos = cmdCursos.ExecuteReader();
                 if (drCursos.Read())
                 {

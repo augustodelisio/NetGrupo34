@@ -60,7 +60,7 @@
                         </asp:LinkButton>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="PagReporteAlumnos.aspx">Alumnos inscriptos</a>
-                            <a class="dropdown-item" href="#">Docentes</a>
+                            <a class="dropdown-item" href="PagReporteDocentes.aspx">Docentes inscriptos</a>
                         </div>
                     </li>
                 </ul>

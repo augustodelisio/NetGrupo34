@@ -105,6 +105,7 @@
     <Content Include="PagEspecialidades.aspx" />
     <Content Include="PagPersonas.aspx" />
     <Content Include="PagReporteAlumnos.aspx" />
+    <Content Include="PagReporteDocentes.aspx" />
     <Content Include="PagTiposUsuarios.aspx" />
     <Content Include="PagUsuarios.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -286,6 +287,13 @@
     <Compile Include="PagReporteAlumnos.aspx.designer.cs">
       <DependentUpon>PagReporteAlumnos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PagReporteDocentes.aspx.cs">
+      <DependentUpon>PagReporteDocentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagReporteDocentes.aspx.designer.cs">
+      <DependentUpon>PagReporteDocentes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PagTiposUsuarios.aspx.cs">
       <DependentUpon>PagTiposUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -355,6 +363,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ReporteAlumnos.rdlc" />
+    <EmbeddedResource Include="ReporteDocentes.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

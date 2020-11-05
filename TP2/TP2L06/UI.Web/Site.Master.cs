@@ -31,6 +31,14 @@ namespace UI.Web
         {
             linkPersonas.Enabled = false;
             linkPersonas.Visible = false;
+            linkUsuarios.Enabled = false;
+            linkUsuarios.Visible = false;
+            linkEspecialidades.Enabled = false;
+            linkEspecialidades.Visible = false;
+            linkCursos.Enabled = false;
+            linkCursos.Visible = false;
+            linkReportes.Enabled = false;
+            linkReportes.Visible = false;
         }
 
         protected void cerrarCesionLB_Click1(object sender, EventArgs e)

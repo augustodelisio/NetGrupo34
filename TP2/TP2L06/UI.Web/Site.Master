@@ -32,41 +32,36 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="Home.aspx">Inicio</a>
                     </li>
-                    <!-- Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cursos
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <asp:LinkButton runat="server" ID="linkCursos" class="dropdown-item" href="PagCursos.aspx">Ver Cursos</asp:LinkButton>
+                            <a class="dropdown-item" href="PagAlumnosCursos.aspx">Alumnos Inscriptos</a>
+                            <a class="dropdown-item" href="#">Docentes Inscriptos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <asp:LinkButton runat="server" CssClass="nav-link dropdown-toggle" href="#" ID="linkUsuarios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios
+                        </asp:LinkButton>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="PagUsuarios.aspx">Ver Usuarios</a>
                             <a class="dropdown-item" href="PagTiposUsuarios.aspx">Tipos de Usuarios</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <asp:LinkButton ID="linkPersonas" runat="server" CssClass="nav-link" href="PagPersonas.aspx">Personas</asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="linkPersonas" CssClass="nav-link" href="PagPersonas.aspx">Personas</asp:LinkButton>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Materias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Comisiones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Planes</a>
+                        <asp:LinkButton runat="server" ID="linkEspecialidades"  CssClass="nav-link" href="PagEspecialidades.aspx">Especialidades</asp:LinkButton>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cursos
-                        </a>
+                        <asp:LinkButton runat="server" CssClass="nav-link dropdown-toggle" href="#" ID="linkReportes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes
+                        </asp:LinkButton>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="PagCursos.aspx">Ver Cursos</a>
-                            <a class="dropdown-item" href="PagAlumnosCursos.aspx">Alumnos Inscriptos</a>
-                            <a class="dropdown-item" href="#">Docentes Inscriptos</a>
+                            <a class="dropdown-item" href="PagReporteAlumnos.aspx">Alumnos inscriptos</a>
+                            <a class="dropdown-item" href="#">Docentes</a>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="PagEspecialidades.aspx">Especialidades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Modulos</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

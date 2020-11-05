@@ -159,7 +159,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "INSERT INTO alumnos_cursos(id_curso, id_usuario, condicion, nota)" +
+                    "INSERT INTO alumnos_cursos (id_curso, id_usuario, condicion, nota)" +
                     "values(@idcurso, @idusuario, @condicion, @nota)" +
                     "select @@identity", SqlConn);
                

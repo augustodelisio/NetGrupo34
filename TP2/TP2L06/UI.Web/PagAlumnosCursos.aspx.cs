@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
+using System.Security.Cryptography.X509Certificates;
 
 namespace UI.Web
 {
@@ -30,6 +31,30 @@ namespace UI.Web
         AlumnoCurso _EntityAlumnoCurso;
 
         private AlumnoCurso EntityAlumnoCurso
+        {
+            get;
+            set;
+        }
+
+
+        //////////////////////////Informacion de D CURSO//////////////////////////
+
+        DocenteCursoLogic _docenteCurso;
+        private DocenteCursoLogic DocenteCurso
+        {
+            get
+            {
+                if (_docenteCurso == null)
+                {
+                    _docenteCurso = new DocenteCursoLogic();
+                }
+                return _docenteCurso;
+            }
+        }
+
+        AlumnoCurso _EntityDocenteCurso;
+
+        private DocenteCurso EntityDocenteCurso
         {
             get;
             set;
@@ -118,8 +143,15 @@ namespace UI.Web
             {
                 if (Session["tipoUsu"].ToString() == "1") //Si sos admin
                 {
-                  
-                    showAdminSelectionPage();       //Muestra panel de opciones del admin
+
+                    if (!this.IsPostBack)
+                    {
+                        showAdminSelectionPage();       //Muestra panel de opciones del admin
+                    }
+                    else
+                    {
+
+                    }
                                                  
                 }
 
@@ -170,10 +202,6 @@ namespace UI.Web
         {
             this.SelectedIdMateria = 0;
         }
-
-
-
-
 
 
 
@@ -302,6 +330,7 @@ namespace UI.Web
 
             this.panelInscripcionCursado.Enabled = true;
             this.panelInscripcionCursado.Visible = true;
+
         }
 
         private void hideComisionGrid()
@@ -345,17 +374,32 @@ namespace UI.Web
                 if (Session["tipoUsu"].ToString() == "1")           //Admin
                 {
 
-                    //Buscar usuario a inscribir o borrar                   
+                    if(Session["tipoUsuarioAModificar"].ToString() == "2")
+                    {
+                        this.EntityAlumnoCurso = new AlumnoCurso();
+
+                        this.LoadAlumnoCursoEntity(this.EntityAlumnoCurso);
+                        this.SaveAlumnoCursoEntity(this.EntityAlumnoCurso);
+
+                        Response.Redirect("PagAlumnosCursos.aspx");
+                    }
+                    else
+                    {
+                        this.EntityDocenteCurso = new DocenteCurso();
+
+                        this.LoadDocenteCursoEntity(this.EntityDocenteCurso);
+                        this.SaveDocenteCursoEntity(this.EntityDocenteCurso);
+
+                        Response.Redirect("PagAlumnosCursos.aspx");
+                    }
+
                     
-                    //BORRAR. Este codigo va en alumno 
-
-                    this.EntityAlumnoCurso = new AlumnoCurso();
 
 
 
-                    this.LoadAlumnoCursoEntity(this.EntityAlumnoCurso);
-                    this.SaveAlumnoCursoEntity(this.EntityAlumnoCurso);
-                    //this.LoadGrid();
+                    
+                    
+                    //Vuelve al inicio
 
 
                 }
@@ -368,7 +412,12 @@ namespace UI.Web
                 }
                 else if (Session["tipoUsu"].ToString() == "3")  //Profesor
                 {
+                    this.EntityDocenteCurso = new DocenteCurso();
 
+
+
+                    this.LoadAlumnoCursoEntity(this.EntityAlumnoCurso);
+                    this.SaveAlumnoCursoEntity(this.EntityAlumnoCurso);
                 }
                 else
                 {
@@ -405,21 +454,9 @@ namespace UI.Web
                    
         }
 
-        //protected void cambiaNombreBtn()
-        //{
-        //    if (this.SelectedID > 0)
-        //    {
-        //        if (SelectedHab)
-        //        {
-        //            this.elimiarLinkButton.Text = "Eliminar";
-        //        }
-        //        else
-        //        {
-        //            this.elimiarLinkButton.Text = "Habilitar";
-        //        }
-        //    }
-        //}
 
+
+        ////////////////////////// Inscripcion Alumno //////////////////////////
         private void LoadAlumnoCursoEntity(AlumnoCurso alumnoCursoActual)
         {
             this.EntityCurso = this.Curso.BuscarCursoPorMateriaComision(SelectedIdMateria, SelectedIdComision);     //Obtenemos el objeto curso para usar el id
@@ -439,6 +476,28 @@ namespace UI.Web
         }
 
 
+        ////////////////////////// Inscripcion Docente  //////////////////////////
+
+
+        private void LoadDocenteCursoEntity(DocenteCurso docenteCursoActual)    //DOCENTE
+        {
+            this.EntityCurso = this.Curso.BuscarCursoPorMateriaComision(SelectedIdMateria, SelectedIdComision);     //Obtenemos el objeto curso para usar el id
+
+            docenteCursoActual.IdCurso = this.EntityCurso.IdCurso;
+            docenteCursoActual.IdUsuario = Convert.ToInt32(Session["idUsuario"]);
+            //docenteCursoActual.Cargos = Convert.ToInt32(cargosDDL.SelectedValue);
+            //docenteCursoActual.Cargos = Convert.ToInt32(this.cargosDDL.SelectedValue.ToString());
+
+        }
+
+        private void SaveDocenteCursoEntity(DocenteCurso docenteCursoActual)
+        {
+
+            this.DocenteCurso.Save(docenteCursoActual);
+
+        }
+
+
 
         ////////////////////////// ADMIN: Bloque de seleccion de tipo de usuario  //////////////////////////
 
@@ -448,6 +507,7 @@ namespace UI.Web
             if (this.seleccionRadioButtonList.SelectedValue != null)
             {
                 showDDL(this.seleccionRadioButtonList.SelectedValue.ToString());
+                //Session["tipoUsuarioAModificar"] = this.seleccionRadioButtonList.SelectedValue.ToString();
             }
         }
 
@@ -516,6 +576,8 @@ namespace UI.Web
                 this.panelSeleccionDeUsuario.Visible = true;
                 this.panelSeleccionDeUsuario.Enabled = true;
 
+                Session["tipoUsuarioAModificar"] = seleccion;
+
                 AlumnosDDL.DataBind();
             }
             else if(seleccion == "3") //Carga DDL Docente
@@ -528,6 +590,7 @@ namespace UI.Web
                 this.panelSeleccionDeUsuario.Visible = true;
                 this.panelSeleccionDeUsuario.Enabled = true;
 
+                Session["tipoUsuarioAModificar"] = seleccion;
 
                 AlumnosDDL.DataBind();
             }
@@ -574,17 +637,18 @@ namespace UI.Web
         
         
         
-        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e)
+        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e)  //Carga las materias si selecciono algo
         {
+            this.hideAdminSelectionPage();
             this.hideDDLs();
             this.LoadGridMaterias();
 
 
         }
 
-        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e)
+        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e)  //Esconde todo
         {
-
+            
         }
     }
 }

@@ -37,7 +37,8 @@ namespace Business.Entities
         }
     }
 
-    public class TiposCargos
+    public enum TiposCargos
     {
+        DocenteTeoria, JefeDeCatedra, DocentePractica
     }
 }

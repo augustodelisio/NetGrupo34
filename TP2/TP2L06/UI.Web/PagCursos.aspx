@@ -1,5 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PagCursos.aspx.cs" Inherits="UI.Web.PagCursos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            float: left;
+            width: 309px;
+        }
+        .auto-style2 {
+            float: left;
+            width: 330px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
     <div class="bloquePadre">
@@ -31,19 +41,22 @@
             <asp:Panel ID="formPanel" Visible="false" runat="server" CssClass="formulario">
 
                 <asp:Label ID="anioLabel" runat="server" Text="Año: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="anioTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="anioTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
+                <asp:Label ID="anioValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="cupoLabel" runat="server" Text="Cupo: " CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="cupoTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="cupoTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
+                <asp:Label ID="cupoValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion:" CssClass="formItem"></asp:Label>
-                <asp:TextBox ID="descripcionTextBox" runat="server" CssClass="formItem"></asp:TextBox>
+                <asp:TextBox ID="descripcionTextBox" runat="server" CssClass="formItem bro"></asp:TextBox>
+                <asp:Label ID="descripcionValidator" runat="server" CssClass="bro" ForeColor="Red"></asp:Label>
 
                 <asp:Label ID="idMateriaLabel" runat="server" Text="Materia: " CssClass="formItem"></asp:Label>
-                <asp:DropDownList ID="idMateriaDDL" runat="server" CssClass="formItem"></asp:DropDownList>
+                <asp:DropDownList ID="idMateriaDDL" runat="server" CssClass="formItem bro"></asp:DropDownList>
 
                 <asp:Label ID="idComisionLabel" runat="server" Text="Comision: " CssClass="formItem"></asp:Label>
-                <asp:DropDownList ID="idComisionDDL" runat="server" CssClass="formItem"></asp:DropDownList>
+                <asp:DropDownList ID="idComisionDDL" runat="server" CssClass="formItem bro"></asp:DropDownList>
 
             </asp:Panel>
             

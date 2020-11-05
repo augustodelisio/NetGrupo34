@@ -109,11 +109,11 @@ namespace UI.Web
             {
                 if (SelectedHab)
                 {
-                    this.eliminarLinkButton.Text = "Eliminar";
+                    this.elimiarLinkButton.Text = "Eliminar";
                 }
                 else
                 {
-                    this.eliminarLinkButton.Text = "Habilitar";
+                    this.elimiarLinkButton.Text = "Habilitar";
                 }
             }
         }
@@ -126,8 +126,7 @@ namespace UI.Web
         }
         private void LoadEntity(Especialidad especialidad)
         {
-            especialidad.IdEspecialidad = Convert.ToInt32(this.idEspecialidadTextBox.Text);
-            especialidad.Descripcion = this.descripcionTextBox.Text;
+          especialidad.Descripcion = this.descripcionTextBox.Text;
         }
         private void SaveEntity(Especialidad especialidad)
         {
@@ -138,6 +137,8 @@ namespace UI.Web
         {
             LimpiarCampos();
             if (ValidaCampos(this.FormMode))
+            {
+
                 switch (this.FormMode)
                 {
                 case FormModes.Alta:
@@ -150,7 +151,7 @@ namespace UI.Web
 
                 case FormModes.Baja:
                     this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.ID = this.SelectedID;
+                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
                     this.LoadEntity(this.EntityEspecialidad);
                     this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Deleted);
                     this.LoadGrid();
@@ -159,7 +160,7 @@ namespace UI.Web
 
                 case FormModes.CancelaBaja:
                     this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.ID = this.SelectedID;
+                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
                     this.LoadEntity(this.EntityEspecialidad);
                     this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Undeleted);
                     this.LoadGrid();
@@ -168,7 +169,7 @@ namespace UI.Web
 
                 case FormModes.Modificacion:
                     this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.ID = this.SelectedID;
+                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
                     this.EntityEspecialidad.State = BusinessEntity.States.Modified;
                     this.LoadEntity(this.EntityEspecialidad);
                     //Guardo hab según el valor que tiene en el grid view
@@ -180,8 +181,10 @@ namespace UI.Web
                 default:
                     break;
                 }
+                
             this.formPanel.Visible = false;
             this.formActionPanel.Visible = false;
+            }
         }
         private void EnableForm(bool enable, bool en2)
         {
@@ -199,6 +202,9 @@ namespace UI.Web
                 this.formActionPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
+                this.idEspecialidadTextBox.Enabled = false;
+                this.idEspecialidadTextBox.Visible = true;
+                this.idEspecialidadLabel.Visible = true;
             }
         }
 
@@ -209,6 +215,9 @@ namespace UI.Web
                 this.EnableForm(false, true);
                 this.formPanel.Visible = true;
                 this.formActionPanel.Visible = true;
+                this.idEspecialidadTextBox.Enabled = false;
+                this.idEspecialidadTextBox.Visible = true;
+                this.idEspecialidadLabel.Visible = true;
                 if (SelectedHab)
                 {
                     this.FormMode = FormModes.Baja;
@@ -233,6 +242,9 @@ namespace UI.Web
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true, true);
+            this.idEspecialidadTextBox.Enabled = false;
+            this.idEspecialidadTextBox.Visible = false;
+            this.idEspecialidadLabel.Visible = false;
         }
         private void ClearForm()
         {
@@ -250,12 +262,12 @@ namespace UI.Web
         private bool ValidaCampos(FormModes modo)
         {
             var correcto = true;
-            if (!Validaciones.campoLleno(idEspecialidadTextBox.Text))
-            {
-                correcto = false;
-                idEspecialidadValidator.Text = "*";
-            }
-            else { idEspecialidadValidator.Text = ""; }
+            //if (!Validaciones.campoLleno(idEspecialidadTextBox.Text))
+            //{
+            //    correcto = false;
+            //    idEspecialidadValidator.Text = "*";
+            //}
+            //else { idEspecialidadValidator.Text = ""; }
 
             if (!Validaciones.campoLleno(descripcionTextBox.Text))
             {
@@ -272,5 +284,7 @@ namespace UI.Web
             descripcionValidator.Text = "";
             
         }
+
+       
     }
 }

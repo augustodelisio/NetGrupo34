@@ -60,11 +60,18 @@ namespace Business.Logic
                 throw ExcepcionManejada;
             }
         }
-        public void Save(AlumnoCurso cur)
+        public bool Save(AlumnoCurso cur)
         {
+            
             try
             {
-                AlumnoCursoData.Save(cur);
+                var curso = AlumnoCursoData.GetOneDictado(cur.IdUsuario, cur.IdCurso);
+                if (curso == null)
+                {
+                    AlumnoCursoData.Save(cur);
+                    return true;
+                }
+                return false;
             }
             catch (Exception Ex)
             {

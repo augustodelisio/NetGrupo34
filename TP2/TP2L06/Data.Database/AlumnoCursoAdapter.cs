@@ -85,6 +85,39 @@ namespace Data.Database
             return cur;
         }
 
+        public AlumnoCurso GetOneDictado(int idUsuario, int idCurso)
+        {
+            AlumnoCurso cur = new AlumnoCurso();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select * from alumnos_cursos where id_usuario = @idUsuario and id_curso = @idCurso", SqlConn);
+                cmdDC.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                cmdDC.Parameters.Add("@idCurso", SqlDbType.Int).Value = idCurso;
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+                if (drCursos.Read())
+                {
+                    cur.IdInscripcion = (int)drCursos["id_inscripcion"];
+                    cur.IdUsuario = (int)drCursos["id_usuario"];
+                    cur.IdCurso = (int)drCursos["id_curso"];
+                    cur.Condicion = (string)drCursos["condicion"];
+                    cur.Nota = (int)drCursos["nota"];
+                }
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos del curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return cur;
+        }
+
         public void Delete(AlumnoCurso curso, BusinessEntity.States estado)
         {
             try

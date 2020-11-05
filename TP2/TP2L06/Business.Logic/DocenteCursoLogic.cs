@@ -60,22 +60,17 @@ namespace Business.Logic
                 throw ExcepcionManejada;
             }
         }
-        public string Save(DocenteCurso cur)
+        public bool Save(DocenteCurso cur)
         {
             try
             {
-                string msj;
                 var curso = DocenteCursoData.GetOneDictado(cur.IdUsuario, cur.IdCurso);
                 if (curso == null)
                 {
                     DocenteCursoData.Save(cur);
-                    msj = "El docente se inscribió correctamente.";
+                    return true;
                 }
-                else
-                {
-                    msj = "El docente ya está inscripto al curso.";
-                }
-                return msj;
+                return false;
             }
             catch (Exception Ex)
             {

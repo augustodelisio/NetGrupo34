@@ -15,9 +15,18 @@ namespace UI.Web
             {
                 navbarDropdownMenuLink3.Text = (Session["usuario"]).ToString();
 
-                if (Session["tipoUsu"].ToString() == "2") //Si no sos Admin te saca
+                if (Session["tipoUsu"].ToString() == "1") //Si es un alumno
                 {
-                    camposAlumno();
+                    linkAlDocCursos.Enabled = false;
+                    linkAlDocCursos.Visible = false;
+                }
+                else if (Session["tipoUsu"].ToString() == "2") //Si es un alumno
+                {
+                    noAdmin();
+                }
+                else if (Session["tipoUsu"].ToString() == "3") //Si es un docente
+                {
+                    noAdmin();
                 }
 
             }
@@ -27,7 +36,7 @@ namespace UI.Web
             }
         }
 
-        protected void camposAlumno()
+        protected void noAdmin()
         {
             linkPersonas.Enabled = false;
             linkPersonas.Visible = false;
@@ -39,6 +48,8 @@ namespace UI.Web
             linkCursos.Visible = false;
             linkReportes.Enabled = false;
             linkReportes.Visible = false;
+            linkInscribir.Enabled = false;
+            linkInscribir.Visible = true;
         }
 
         protected void cerrarCesionLB_Click1(object sender, EventArgs e)

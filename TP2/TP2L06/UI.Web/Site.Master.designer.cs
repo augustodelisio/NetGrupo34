@@ -42,6 +42,24 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.LinkButton linkCursos;
 
         /// <summary>
+        /// Control linkInscribir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkInscribir;
+
+        /// <summary>
+        /// Control linkAlDocCursos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkAlDocCursos;
+
+        /// <summary>
         /// Control linkUsuarios.
         /// </summary>
         /// <remarks>

@@ -37,8 +37,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <asp:LinkButton runat="server" ID="linkCursos" class="dropdown-item" href="PagCursos.aspx">Ver Cursos</asp:LinkButton>
-                            <a class="dropdown-item" href="PagAlumnosCursos.aspx">Alumnos Inscriptos</a>
-                            <a class="dropdown-item" href="#">Docentes Inscriptos</a>
+                            <asp:LinkButton runat="server" ID="linkInscribir" class="dropdown-item" href="PagAlumnosCursos.aspx">Inscripción</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="linkAlDocCursos" class="dropdown-item" href="PagAlumnosCursos.aspx">Inscribirme</asp:LinkButton>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

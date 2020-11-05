@@ -26,18 +26,27 @@ namespace UI.Web
                 }
                 return _alumnoCurso;
             }
+            set { _alumnoCurso = value; }
         }
 
         AlumnoCurso _EntityAlumnoCurso;
 
         private AlumnoCurso EntityAlumnoCurso
         {
-            get;
-            set;
+            get
+            {
+                if (_EntityAlumnoCurso == null)
+                {
+                    _EntityAlumnoCurso = new AlumnoCurso();
+                }
+                return _EntityAlumnoCurso;
+            }
+
+            set { _EntityAlumnoCurso = value; }
         }
 
 
-        //////////////////////////Informacion de D CURSO//////////////////////////
+        //////////////////////////  Informacion de DOCENTE CURSO  //////////////////////////
 
         DocenteCursoLogic _docenteCurso;
         private DocenteCursoLogic DocenteCurso
@@ -60,7 +69,7 @@ namespace UI.Web
             set;
         }
 
-        //////////////////////////Informacion de curso//////////////////////////
+        //////////////////////////  Informacion de CURSO  //////////////////////////
 
 
         CursoLogic _curso;
@@ -84,7 +93,7 @@ namespace UI.Web
             set;
         }
 
-        //////////////////////////Informacion de materia//////////////////////////
+        //////////////////////////  Informacion de materia  //////////////////////////
 
 
         MateriaLogic _materiaLogic;
@@ -108,7 +117,7 @@ namespace UI.Web
             set;
         }
 
-        //////////////////////////Informacion de Comision//////////////////////////
+        //////////////////////////  Informacion de Comision  //////////////////////////
 
         ComisionLogic _comisionLogic;
         private ComisionLogic ComisionLogic
@@ -131,7 +140,7 @@ namespace UI.Web
             set;
         }
 
-        //////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         protected void Page_Load(object sender, EventArgs e)            
         {
@@ -157,13 +166,25 @@ namespace UI.Web
 
                 else if (Session["tipoUsu"].ToString() == "2")  //Si sos alumno
                 {
-                    LoadGridMaterias();
-                    //Si sos alumno te muestra x cosa
+                    if (!this.IsPostBack)
+                    {
+                        LoadGridMaterias();       
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else if (Session["tipoUsu"].ToString() == "3")  //Si sos docente
                 {
-                    LoadGridMaterias();
-                    //Si sos docente te muestra x cosa
+                    if (!this.IsPostBack)
+                    {
+                        LoadGridMaterias();       
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else
                 {
@@ -191,6 +212,8 @@ namespace UI.Web
         {
             this.SelectedIdMateria = 0;
             this.SelectedIdComision = 0;
+            this.SelectedTipoUsuario = 0;
+            Session["tipoUsuarioAModificar"] = "";
         }
 
         private void limpiarIdComision()
@@ -231,10 +254,9 @@ namespace UI.Web
         }
 
 
-        protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gridView_SelectedIndexChanged(object sender, EventArgs e)        //Indice del grid que muestra las materias
         {
-            this.SelectedIdMateria = (int)this.gridView.SelectedValue;
-            //cambiaNombreBtn();
+            this.SelectedIdMateria = (int)this.gridView.SelectedValue;           
         }
 
         
@@ -242,23 +264,57 @@ namespace UI.Web
         {
             if (this.IsEntityMateriaSelected)
             {
-                this.EnableForm(true, true);
-                this.FormMode = FormModes.Modificacion;
+                //this.EnableForm(true, true);
+                this.FormMode = FormModes.Alta;
                 this.LoadForm(this.SelectedIdMateria);
+
+                if (Session["tipoUsuario"] == "3")
+                {
+                    this.showCargosDDL();
+                }
             }
         }
 
         protected void cancelarMateriaLinkButton_Click(object sender, EventArgs e)
         {
             limpiarIdMateria();
-            
-            Response.Redirect("Home.aspx"); 
+            this.hideMateriasPage();
+
+            if (Session["tipoUsu"].ToString() == "1")
+            {
+                this.limpiarVariables();
+                this.showAdminSelectionPage();
+            }
+            else
+            {
+                limpiarVariables();
+                Response.Redirect("Home.aspx");
+            }
+                
+                
         }
 
-        private void LoadGridMaterias()                            //Aca hay que cargar las materias en el grid -->   ( * | Materia | Año)
+        private void hideMateriasPage()
         {
 
+            this.gridPanel.Visible = false;
+            this.gridPanel.Enabled = false;
 
+            this.gridActionsPanel.Visible = false;
+            this.gridActionsPanel.Enabled = false;
+        }
+
+        private void showMateriasPage()
+        {
+            this.gridPanel.Visible = true;
+            this.gridPanel.Enabled = true;
+
+            this.gridActionsPanel.Visible = true;
+            this.gridActionsPanel.Enabled = true;
+        }
+
+        private void LoadGridMaterias()                            //Carga el grid de materias
+        {
 
             this.gridPanel.Visible = true;
             this.gridPanel.Enabled = true;
@@ -268,23 +324,7 @@ namespace UI.Web
 
             this.gridActionsPanel.Visible = true;
             this.gridActionsPanel.Enabled = true;
-
-            
-        }
-
-
-
-        private void hideMateriasGrid()
-        {
-            this.gridPanel.Enabled = false;
-            this.gridPanel.Visible = false;
-            
-            this.gridView.Enabled = false;
-            this.gridView.Visible = false;
-
-            this.gridActionsPanel.Enabled = false;
-            this.gridActionsPanel.Visible = false;
-
+    
         }
 
 
@@ -315,12 +355,10 @@ namespace UI.Web
 
 
 
-        private void LoadGridComision()                                     //Aca hay que cargar las Comisiones -->   ( * | Comision | Año | ID)
+        private void LoadGridComision()                                     
         {
-            this.gridComision.DataSource = this.ComisionLogic.GetComisionesPorCurso(this.SelectedIdMateria);     
+            this.gridComision.DataSource = this.ComisionLogic.GetComisionesPorCurso(this.SelectedIdMateria);
             this.gridComision.DataBind();
-
-
 
             this.comisionPanel.Enabled = true;
             this.comisionPanel.Visible = true;
@@ -331,6 +369,33 @@ namespace UI.Web
             this.panelInscripcionCursado.Enabled = true;
             this.panelInscripcionCursado.Visible = true;
 
+            if (Session["tipoUsuarioAModificar"].ToString() == "3")    //Si es docente te muestra el DDL de cargos
+            {
+
+                this.showCargosDDL();
+     
+            }
+            else if(Session["tipoUsu"].ToString() == "3")
+            {
+                this.showCargosDDL();
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void showCargosDDL()
+        {
+            this.cargosDDL.Visible = true;
+            this.cargosDDL.Enabled = true;
+        }
+
+        private void hideCargosDDL()
+        {
+            this.cargosDDL.Visible = false;
+            this.cargosDDL.Enabled = false;
         }
 
         private void hideComisionGrid()
@@ -381,7 +446,6 @@ namespace UI.Web
                         this.LoadAlumnoCursoEntity(this.EntityAlumnoCurso);
                         this.SaveAlumnoCursoEntity(this.EntityAlumnoCurso);
 
-                        Response.Redirect("PagAlumnosCursos.aspx");
                     }
                     else
                     {
@@ -390,22 +454,17 @@ namespace UI.Web
                         this.LoadDocenteCursoEntity(this.EntityDocenteCurso);
                         this.SaveDocenteCursoEntity(this.EntityDocenteCurso);
 
-                        Response.Redirect("PagAlumnosCursos.aspx");
+                        //Response.Redirect("PagAlumnosCursos.aspx");
                     }
-
-                    
-
-
-
-                    
-                    
-                    //Vuelve al inicio
-
 
                 }
                 else if (Session["tipoUsu"].ToString() == "2")              //Alumno
                 {
+                    
+                    
                     this.EntityCurso = this.Curso.BuscarCursoPorMateriaComision(SelectedIdMateria, SelectedIdComision);
+
+                    this.AlumnoCurso = new AlumnoCursoLogic();
                     
                     this.EntityAlumnoCurso.IdCurso = this.EntityCurso.IdCurso;
                     this.EntityAlumnoCurso.IdUsuario = Convert.ToInt32(Session["idUsuario"]);
@@ -438,18 +497,15 @@ namespace UI.Web
         private void LoadForm(int idMateria)                //Carga form comision
         {
 
-            if(this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)
+            if(this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)      //Muestra el grid de comision
             {
-                hideMateriasGrid();
+                this.hideMateriasPage();
                 LoadGridComision();
+
             }
-            else if (this.IsEntityMateriaSelected && this.IsEntityComisionSelected)
+            else if (this.IsEntityMateriaSelected && this.IsEntityComisionSelected)     //Guarda
             {
                 //Muestra un formulario modal (a hacer) que diga que salió todo ok y preguntar si quiere volver a inscribirse
-            }
-            else if(!this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)
-            {
-                
             }
                    
         }
@@ -471,7 +527,18 @@ namespace UI.Web
         private void SaveAlumnoCursoEntity(AlumnoCurso alumnoCursoActual)
         {
 
-                this.AlumnoCurso.Save(alumnoCursoActual);
+            bool codigo = this.AlumnoCurso.Save(alumnoCursoActual);
+
+            if (codigo)
+            {
+                //Response.Write("\n\nAlumno inscripto con éxito!");
+                this.limpiarVariables();
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                Response.Write("\n\nEl alumno ya está inscripto en este curso.");
+            }
 
         }
 
@@ -492,83 +559,77 @@ namespace UI.Web
 
         private void SaveDocenteCursoEntity(DocenteCurso docenteCursoActual)
         {
+            //this.DocenteCurso.Save(docenteCursoActual);
+            bool codigo = this.DocenteCurso.Save(docenteCursoActual);
 
-            this.DocenteCurso.Save(docenteCursoActual);
-
-        }
-
-
-
-        ////////////////////////// ADMIN: Bloque de seleccion de tipo de usuario  //////////////////////////
-
-
-        protected void aceptarSeleccionAdmininkButton_Click(object sender, EventArgs e)
-        {
-            if (this.seleccionRadioButtonList.SelectedValue != null)
+            if (codigo)
             {
-                showDDL(this.seleccionRadioButtonList.SelectedValue.ToString());
-                //Session["tipoUsuarioAModificar"] = this.seleccionRadioButtonList.SelectedValue.ToString();
+                //Response.Write("\n\nDocente inscripto con éxito!");
+                this.limpiarVariables();
+                Response.Redirect("Home.aspx");
             }
+            else
+            {
+                Response.Write("\n\nEl docente ya está inscripto en este curso.");
+            }
+
         }
 
-        protected void cancelarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Home.aspx"); 
-
-        }
-
-
-        ////////////////////////// ADMIN: Bloque  selección de usuario en DDL  //////////////////////////
 
 
 
-
+        ////////////////////////// ADMIN: Bloque selección de usuario en DDL  //////////////////////////
         private int SelectedTipoUsuario
         {
-
             get;
             set;
-            //get
-            //{
-            //    if (this.ViewState["SelectedTipoUsuario"] != null)
-            //    {
-            //        return (int)this.ViewState["SelectedTipoUsuario"];
-            //    }
-            //    else return 0;
-            //}
-
-            //set
-            //{
-            //    this.ViewState["SelectedTipoUsuario"] = value;
-            //}
         }
-
-
+        protected void seleccionRadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedTipoUsuario = Convert.ToInt32(this.seleccionRadioButtonList.SelectedValue);
+        }
 
         private void showAdminSelectionPage()
         {
-            //Muestra todos los elementos de la pantalla de seleccion del admin
-
             this.panelAdmin.Enabled = true;
             this.panelAdmin.Visible = true;
-
         }
 
 
         private void hideAdminSelectionPage()
         {
-            //Esconde todos los elementos de la pantalla de seleccion del admin
-
             this.panelAdmin.Enabled = false;
             this.panelAdmin.Visible = false;
-
         }
+
+        protected void aceptarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
+        {
+            if (this.seleccionRadioButtonList.SelectedValue != null)
+            {
+                showDDL(this.seleccionRadioButtonList.SelectedValue.ToString());
+                this.panelAdmin.Enabled = false;
+                Session["tipoUsuarioAModificar"] = this.seleccionRadioButtonList.SelectedValue.ToString();
+            }
+        }
+
+        protected void cancelarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
+        {
+            this.limpiarVariables();
+            Response.Redirect("Home.aspx");
+
+            //this.panelAdmin.Enabled = true;
+            //hideDDLs();
+            //Response.Redirect("Home.aspx");
+        }
+
 
         private void showDDL(string seleccion)
         {
             if (seleccion == "2") //Carga DDL Alumno
             {
                 this.panelDDL.Visible = true;
+                this.panelDDL.Enabled = true;
+
                 this.DocentesDDL.Visible = false;
                 this.AlumnosDDL.Enabled = true;
                 this.AlumnosDDL.Visible = true;
@@ -580,9 +641,11 @@ namespace UI.Web
 
                 AlumnosDDL.DataBind();
             }
-            else if(seleccion == "3") //Carga DDL Docente
+            else if (seleccion == "3") //Carga DDL Docente
             {
                 this.panelDDL.Visible = true;
+                this.panelDDL.Enabled = true;
+
                 this.AlumnosDDL.Visible = false;
                 this.DocentesDDL.Visible = true;
                 this.DocentesDDL.Enabled = true;
@@ -599,56 +662,27 @@ namespace UI.Web
             {
                 //No selecciono nada
             }
-
         }
 
         private void hideDDLs()
         {
             this.panelDDL.Visible = false;
             this.panelDDL.Enabled = false;
-
-            
-
         }
 
 
-        protected void seleccionRadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            this.SelectedTipoUsuario = Convert.ToInt32(this.seleccionRadioButtonList.SelectedValue);
-
-        }
-
-        protected void aceptarSeleccionAdminLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.seleccionRadioButtonList.SelectedValue != null)
-            {
-                showDDL(this.seleccionRadioButtonList.SelectedValue.ToString());
-            }
-        }
-
-        protected void cancelarSeleccionAdminLinkButton_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("Home.aspx");
-        }
-
-        
-        
-        
-        
-        
-        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e)  //Carga las materias si selecciono algo
+        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e) 
         {
             this.hideAdminSelectionPage();
             this.hideDDLs();
             this.LoadGridMaterias();
-
-
         }
 
-        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e)  //Esconde todo
+        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e) 
         {
-            
+            this.showAdminSelectionPage();
+            this.hideDDLs();
+           
         }
     }
 }

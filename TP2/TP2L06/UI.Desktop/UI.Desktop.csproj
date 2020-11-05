@@ -175,6 +175,12 @@
     <Compile Include="FormsCurso\Cursos.Designer.cs">
       <DependentUpon>Cursos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsUsuario\MiPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsUsuario\MiPerfil.Designer.cs">
+      <DependentUpon>MiPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsUsuario\UsuarioDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsCurso\Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsUsuario\MiPerfil.resx">
+      <DependentUpon>MiPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUsuario\UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>

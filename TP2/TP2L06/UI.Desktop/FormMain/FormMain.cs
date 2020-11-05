@@ -13,6 +13,8 @@ namespace UI.Desktop
 {
     public partial class FormMain : ApplicationForm
     {
+        public int IdUsu { get; set; }
+        public int Tipo { get; set; }
         public FormMain()
         {
             InitializeComponent();
@@ -30,9 +32,43 @@ namespace UI.Desktop
             {
                 this.Dispose();
             }
+            else
+            {
+                IdUsu = appLogin.IdUsu;
+                Tipo = appLogin.Tipo;
+                segunUsuario();
+            }
         }
 
-        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void segunUsuario()
+        {
+            if (Tipo == 1) //Admin
+            {
+                miPerfilToolStripMenuItem.Enabled = false;
+                miPerfilToolStripMenuItem.Visible = false;
+            }
+            else //Alumno o Docente
+            {
+                usuariosToolStripMenuItem.Enabled = false;
+                usuariosToolStripMenuItem.Visible = false;
+                especialidadesToolStripMenuItem.Enabled = false;
+                especialidadesToolStripMenuItem.Visible = false;
+                planesToolStripMenuItem.Enabled = false;
+                planesToolStripMenuItem.Visible = false;
+                personasToolStripMenuItem.Enabled = false;
+                personasToolStripMenuItem.Visible = false;
+                materiasToolStripMenuItem.Enabled = false;
+                materiasToolStripMenuItem.Visible = false;
+                reportesToolStripMenuItem.Enabled = false;
+                reportesToolStripMenuItem.Visible = false;
+                cursosToolStripMenuItem.Enabled = false;
+                cursosToolStripMenuItem.Visible = false;
+                comisionesToolStripMenuItem.Enabled = false;
+                comisionesToolStripMenuItem.Visible = false;
+            }
+        }
+
+    private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Usuarios ABMUsuarios = new Usuarios();
             ABMUsuarios.ShowDialog();
@@ -84,6 +120,12 @@ namespace UI.Desktop
         {
             Comisiones ABMCom = new Comisiones();
             ABMCom.ShowDialog();
+        }
+
+        private void configurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MiPerfil editarPerfil = new MiPerfil(IdUsu, ApplicationForm.ModoForm.Modificacion);
+            editarPerfil.ShowDialog();
         }
     }
 }

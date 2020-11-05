@@ -14,6 +14,8 @@ namespace UI.Desktop
 {
     public partial class FormLogin : ApplicationForm
     {
+        public int IdUsu { get; set; }
+        public int Tipo { get; set; }
         public FormLogin()
         {
             InitializeComponent();
@@ -66,6 +68,8 @@ namespace UI.Desktop
             {
                 if (usu != null)//Y se validó el usuario
                 {
+                    this.IdUsu = usu.ID;
+                    this.Tipo = usu.IdTipoUsuario;
                     this.DialogResult = DialogResult.OK;
                 }
                 else//Si no se encontro dicho usuario en la BD o se ingreso mal la clave

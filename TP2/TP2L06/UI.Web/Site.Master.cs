@@ -48,8 +48,10 @@ namespace UI.Web
             linkCursos.Visible = false;
             linkReportes.Enabled = false;
             linkReportes.Visible = false;
+            linkCursos.Enabled = false;
+            linkCursos.Visible = false;
             linkInscribir.Enabled = false;
-            linkInscribir.Visible = true;
+            linkInscribir.Visible = false;
         }
 
         protected void cerrarCesionLB_Click1(object sender, EventArgs e)

@@ -90,7 +90,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdComisiones = new SqlCommand("" +
-                    "SELECT com.desc_comision, com.anio_especialidad, com.id_comision " +
+                    "SELECT DISTINCT com.desc_comision, com.anio_especialidad, com.id_comision " +
                     "FROM cursos cur " +
                     "INNER JOIN comisiones com ON com.id_comision = cur.id_comision " +
                     "WHERE cur.id_materia = @idMateria and com.habilitado='true'", SqlConn);

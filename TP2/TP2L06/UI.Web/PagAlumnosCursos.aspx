@@ -40,7 +40,7 @@
 
         </div>
 
-        <div class="bloqueHijo">
+        <div class="bloqueHijo" style="margin-top: 100px;">
 
             <asp:Panel ID="panelDDL" Visible="false" runat="server" CssClass="formulario">
 
@@ -93,9 +93,7 @@
                     DataKeyNames="id_materia" OnSelectedIndexChanged="gridView_SelectedIndexChanged" Height="214px" DataSourceID="MateriasDataSource">
 
                     <Columns>
-
                         <asp:CommandField SelectText="-->" ShowSelectButton="True" />
-
                         <asp:BoundField HeaderText="id_materia" DataField="id_materia" InsertVisible="False" ReadOnly="True" SortExpression="id_materia" />
                         <asp:BoundField DataField="desc_materia" HeaderText="desc_materia" SortExpression="desc_materia" />
                         <asp:BoundField DataField="hs_semanales" HeaderText="hs_semanales" SortExpression="hs_semanales" />
@@ -108,9 +106,13 @@
 
                     <SelectedRowStyle BackColor="#9BBCFF" ForeColor="Black" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="MateriasDataSource" runat="server" ConnectionString="Data Source=localhost\SqlExpress;Initial Catalog=Academia;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [id_materia], [desc_materia], [hs_semanales], [habilitado], [hs_totales], [id_plan] FROM [materias]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="MateriasDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnStringExpress %>" SelectCommand="SELECT [id_materia], [desc_materia], [hs_semanales], [habilitado], [hs_totales], [id_plan] FROM [materias] WHERE ([habilitado] = @habilitado)">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="True" Name="habilitado" Type="Boolean" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
 
-                <asp:Panel ID="gridActionsPanel" visible="false" runat="server" CssClass="botonera">
+                <asp:Panel ID="gridActionsPanel" Visible="false" runat="server" CssClass="botonera">
                     <asp:LinkButton ID="seleccionarMateriaLinkButton" runat="server" OnClick="seleccionarMateriaLinkButton_Click" CssClass="boton">Aceptar</asp:LinkButton>
                     <asp:LinkButton ID="cancelarMateriaLinkButton" runat="server" OnClick="cancelarMateriaLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
                 </asp:Panel>
@@ -138,6 +140,8 @@
                         <asp:BoundField HeaderText="Año de cursado" DataField="AnioEspecialidad" />
 
                     </Columns>
+
+                    <SelectedRowStyle BackColor="#9BBCFF" ForeColor="Black" />
 
 
                 </asp:GridView>

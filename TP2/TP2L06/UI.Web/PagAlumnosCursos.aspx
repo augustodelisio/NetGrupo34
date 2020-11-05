@@ -1,8 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PagAlumnosCursos.aspx.cs" Inherits="UI.Web.AlumnosCursos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .auto-style1 {
+            float: left;
+            width: 309px;
+        }
+    </style>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
+
 
     <div class="bloquePadre">
 
@@ -30,7 +40,7 @@
 
         </div>
 
-        <div class="bloqueDDLs">
+        <div class="bloqueHijo">
 
             <asp:Panel ID="panelDDL" Visible="false" runat="server" CssClass="formulario">
 
@@ -59,7 +69,7 @@
                 </asp:SqlDataSource>
 
 
-                <asp:Panel ID="panelSeleccionDeUsuario" runat="server" CssClass="botonera">
+                <asp:Panel ID="panelSeleccionDeUsuario" Visible="false" runat="server" CssClass="botonera">
                     <asp:LinkButton ID="ingresarUsuarioLinkButton" runat="server" OnClick="ingresarUsuarioLinkButton_Click" CssClass="boton">Inscribirse</asp:LinkButton>
                     <asp:LinkButton ID="cancelarUsuarioLinkButton" runat="server" OnClick="cancelarUsuarioLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
                 </asp:Panel>
@@ -73,16 +83,19 @@
 
 
 
-        <div class="bloqueSeleccionMateria">
+        <div class="bloqueHijo">
 
             <asp:Panel ID="gridPanel" Visible="false" runat="server" CssClass="tabla">
 
-                <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False" Width="100%" HeaderStyle-Height="40px"
+                <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False" Width="119%" HeaderStyle-Height="40px"
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="Black"
                     DataKeyNames="id_materia" OnSelectedIndexChanged="gridView_SelectedIndexChanged" Height="214px" DataSourceID="MateriasDataSource">
 
                     <Columns>
+
+                        <asp:CommandField SelectText="-->" ShowSelectButton="True" />
+
                         <asp:BoundField HeaderText="id_materia" DataField="id_materia" InsertVisible="False" ReadOnly="True" SortExpression="id_materia" />
                         <asp:BoundField DataField="desc_materia" HeaderText="desc_materia" SortExpression="desc_materia" />
                         <asp:BoundField DataField="hs_semanales" HeaderText="hs_semanales" SortExpression="hs_semanales" />
@@ -96,15 +109,16 @@
                     <SelectedRowStyle BackColor="#9BBCFF" ForeColor="Black" />
                 </asp:GridView>
                 <asp:SqlDataSource ID="MateriasDataSource" runat="server" ConnectionString="Data Source=localhost\SqlExpress;Initial Catalog=Academia;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [id_materia], [desc_materia], [hs_semanales], [habilitado], [hs_totales], [id_plan] FROM [materias]"></asp:SqlDataSource>
+
             </asp:Panel>
 
-            <asp:Panel ID="gridActionsPanel" runat="server" CssClass="botonera">
-                <asp:LinkButton ID="seleccionarMateriaLinkButton" runat="server" OnClick="seleccionarMateriaLinkButton_Click" CssClass="boton">Inscribirse</asp:LinkButton>
+            <asp:Panel ID="gridActionsPanel" Visible="false" runat="server" CssClass="botonera">
+                <asp:LinkButton ID="seleccionarMateriaLinkButton" runat="server" OnClick="seleccionarMateriaLinkButton_Click" CssClass="boton">Aceptar</asp:LinkButton>
                 <asp:LinkButton ID="cancelarMateriaLinkButton" runat="server" OnClick="cancelarMateriaLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
             </asp:Panel>
         </div>
 
-        <div class="bloqueSeleccionComision">
+        <div class="bloqueHijo">
 
             <asp:Panel ID="comisionPanel" Visible="false" runat="server" CssClass="tabla">
 
@@ -126,9 +140,22 @@
 
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="ComisionDataSource" runat="server"></asp:SqlDataSource>
+                <asp:Label ID="cargosLabel" runat="server" Text="Año: " CssClass="formItem"></asp:Label>
 
-                <asp:Panel ID="panelInscripcionCursado" runat="server" CssClass="botonera">
+                <asp:DropDownList ID="cargosDDL" runat="server">
+
+                    <asp:ListItem Selected="True" Value=1> Docente Práctica </asp:ListItem>
+                    <asp:ListItem Value=2> Docente Teoría </asp:ListItem>
+                    <asp:ListItem Value=3> Jefe de cátedra </asp:ListItem>
+
+
+                </asp:DropDownList>
+
+
+
+
+
+                <asp:Panel ID="panelInscripcionCursado" Visible="false" runat="server" CssClass="botonera">
                     <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click" CssClass="boton">Aceptar</asp:LinkButton>
                     <asp:LinkButton ID="cancelarCursoLinkButton" runat="server" OnClick="cancelarCursoLinkButton_Click" CssClass="boton">Cancelar</asp:LinkButton>
                 </asp:Panel>

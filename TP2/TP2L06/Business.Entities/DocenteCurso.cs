@@ -29,16 +29,11 @@ namespace Business.Entities
             set { _IdUsuario = value; }
         }
 
-        private TiposCargos _Cargos;
-        public TiposCargos Cargos
+        private int _Cargos;
+        public int Cargos
         {
             get { return _Cargos; }
             set { _Cargos = value; }
         }
-    }
-
-    public enum TiposCargos
-    {
-        DocenteTeoria, JefeDeCatedra, DocentePractica
     }
 }

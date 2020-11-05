@@ -30,8 +30,8 @@ namespace Data.Database
                     dc.IdDictado = (int)drDC["id_dictado"];
                     dc.IdCurso = (int)drDC["id_curso"];
                     dc.IdUsuario = (int)drDC["id_usuario"];
-                    dc.Cargos = (TiposCargos)drDC["cargos"];
-                    
+                    dc.Cargos = (int)drDC["cargos"];
+
 
 
                     docentesCursos.Add(dc);
@@ -68,7 +68,39 @@ namespace Data.Database
                     dc.IdDictado = (int)drDC["id_dictado"];
                     dc.IdCurso = (int)drDC["id_curso"];
                     dc.IdUsuario = (int)drDC["id_usuario"];
-                    dc.Cargos = (TiposCargos)drDC["cargos"];
+                    dc.Cargos = (int)drDC["cargos"];
+                }
+                drDC.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos del curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return dc;
+        }
+
+        public DocenteCurso GetOneDictado(int idUsuario, int idCurso)
+        {
+            DocenteCurso dc = new DocenteCurso();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdDC = new SqlCommand("select * from docentes_cursos where id_usuario = @idUsuario and id_curso = @idCurso", SqlConn);
+                cmdDC.Parameters.Add("@idUsuario", SqlDbType.Int).Value = idUsuario;
+                cmdDC.Parameters.Add("@idCurso", SqlDbType.Int).Value = idCurso;
+                SqlDataReader drDC = cmdDC.ExecuteReader();
+                if (drDC.Read())
+                {
+                    dc.IdDictado = (int)drDC["id_dictado"];
+                    dc.IdCurso = (int)drDC["id_curso"];
+                    dc.IdUsuario = (int)drDC["id_usuario"];
+                    dc.Cargos = (int)drDC["cargo"];
                 }
                 drDC.Close();
             }
@@ -105,7 +137,6 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
-
 
         public void Save(DocenteCurso dc)
         {

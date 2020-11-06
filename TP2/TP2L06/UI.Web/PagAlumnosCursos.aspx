@@ -58,11 +58,11 @@
 
 
                 <asp:DropDownList ID="AlumnosDDL" runat="server" CssClass="formItem" DataSourceID="AlumnosDataSource"
-                    DataTextField="legajo" DataValueField="legajo" Width="268px">
+                    DataTextField="legajo" DataValueField="id_usuario" Width="268px">
                 </asp:DropDownList>
 
 
-                <asp:SqlDataSource ID="AlumnosDataSource" runat="server" ConnectionString="Data Source=localhost\SqlExpress;Initial Catalog=Academia;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [legajo] FROM [usuarios] WHERE ([id_tipo_usuario] = @id_tipo_usuario)">
+                <asp:SqlDataSource ID="AlumnosDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnStringExpress %>" SelectCommand="SELECT [legajo], [id_usuario] FROM [usuarios] WHERE ([id_tipo_usuario] = @id_tipo_usuario)">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="2" Name="id_tipo_usuario" Type="Int32" />
                     </SelectParameters>

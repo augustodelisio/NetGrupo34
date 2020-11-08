@@ -46,6 +46,8 @@ namespace UI.Desktop
             {
                 miPerfilToolStripMenuItem.Enabled = false;
                 miPerfilToolStripMenuItem.Visible = false;
+                inscribirmeToolStripMenuItem.Enabled = false;
+                inscribirmeToolStripMenuItem.Visible = false;
             }
             else //Alumno o Docente
             {
@@ -61,8 +63,12 @@ namespace UI.Desktop
                 materiasToolStripMenuItem.Visible = false;
                 reportesToolStripMenuItem.Enabled = false;
                 reportesToolStripMenuItem.Visible = false;
-                cursosToolStripMenuItem.Enabled = false;
-                cursosToolStripMenuItem.Visible = false;
+                verCursosToolStripMenuItem.Enabled = false;
+                verCursosToolStripMenuItem.Visible = false;
+                alumnosInscriptosToolStripMenuItem.Enabled = false;
+                alumnosInscriptosToolStripMenuItem.Visible = false;
+                docentesInscriptosToolStripMenuItem.Enabled = false;
+                docentesInscriptosToolStripMenuItem.Visible = false;
                 comisionesToolStripMenuItem.Enabled = false;
                 comisionesToolStripMenuItem.Visible = false;
             }
@@ -126,6 +132,17 @@ namespace UI.Desktop
         {
             MiPerfil editarPerfil = new MiPerfil(IdUsu, ApplicationForm.ModoForm.Modificacion);
             editarPerfil.ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inscribirmeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MateriasInscrip ABMMateriasInscrip = new MateriasInscrip(IdUsu);
+            ABMMateriasInscrip.ShowDialog();
         }
     }
 }

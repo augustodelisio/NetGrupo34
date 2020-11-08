@@ -109,6 +109,12 @@
     <Compile Include="FormsEspecialidades\EspecialidadDesktop.Designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsInscripciones\CursosInscrip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsInscripciones\CursosInscrip.Designer.cs">
+      <DependentUpon>CursosInscrip.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsMaterias\MateriaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,12 @@
     <Compile Include="FormsCurso\Cursos.Designer.cs">
       <DependentUpon>Cursos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsInscripciones\MateriasInscrip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsInscripciones\MateriasInscrip.Designer.cs">
+      <DependentUpon>MateriasInscrip.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsUsuario\MiPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +232,9 @@
     <EmbeddedResource Include="FormsEspecialidades\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsInscripciones\CursosInscrip.resx">
+      <DependentUpon>CursosInscrip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsMaterias\MateriaDesktop.resx">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsCurso\Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsInscripciones\MateriasInscrip.resx">
+      <DependentUpon>MateriasInscrip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUsuario\MiPerfil.resx">
       <DependentUpon>MiPerfil.cs</DependentUpon>

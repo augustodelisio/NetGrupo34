@@ -66,7 +66,7 @@ namespace Business.Logic
             try
             {
                 var curso = AlumnoCursoData.GetOneDictado(cur.IdUsuario, cur.IdCurso);
-                if (curso == null)
+                if (curso.IdCurso == 0)
                 {
                     AlumnoCursoData.Save(cur);
                     return true;

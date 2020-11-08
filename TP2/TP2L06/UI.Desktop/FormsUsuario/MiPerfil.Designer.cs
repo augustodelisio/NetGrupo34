@@ -51,8 +51,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Controls.Add(this.lbID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbUsuario, 0, 1);
@@ -71,7 +71,6 @@
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -79,30 +78,30 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(421, 364);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(281, 296);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lbID
             // 
             this.lbID.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbID.AutoSize = true;
-            this.lbID.Location = new System.Drawing.Point(55, 18);
-            this.lbID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbID.Location = new System.Drawing.Point(65, 15);
             this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(58, 17);
+            this.lbID.Size = new System.Drawing.Size(44, 13);
             this.lbID.TabIndex = 0;
             this.lbID.Text = "Mi Perfil";
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(121, 6);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtID.Location = new System.Drawing.Point(115, 11);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(149, 22);
+            this.txtID.Size = new System.Drawing.Size(113, 20);
             this.txtID.TabIndex = 4;
             this.txtID.Visible = false;
             // 
@@ -110,87 +109,87 @@
             // 
             this.lbUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbUsuario.AutoSize = true;
-            this.lbUsuario.Location = new System.Drawing.Point(56, 71);
-            this.lbUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbUsuario.Location = new System.Drawing.Point(66, 58);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(57, 17);
+            this.lbUsuario.Size = new System.Drawing.Size(43, 13);
             this.lbUsuario.TabIndex = 10;
             this.lbUsuario.Text = "Usuario";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(121, 59);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtUsuario.Enabled = false;
+            this.txtUsuario.Location = new System.Drawing.Point(115, 54);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(149, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(127, 20);
             this.txtUsuario.TabIndex = 13;
             // 
             // lbClave
             // 
             this.lbClave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbClave.AutoSize = true;
-            this.lbClave.Location = new System.Drawing.Point(70, 124);
-            this.lbClave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbClave.Location = new System.Drawing.Point(75, 101);
             this.lbClave.Name = "lbClave";
-            this.lbClave.Size = new System.Drawing.Size(43, 17);
+            this.lbClave.Size = new System.Drawing.Size(34, 13);
             this.lbClave.TabIndex = 3;
             this.lbClave.Text = "Clave";
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(121, 112);
-            this.txtClave.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.txtClave.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtClave.Location = new System.Drawing.Point(115, 97);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(149, 22);
+            this.txtClave.Size = new System.Drawing.Size(127, 20);
             this.txtClave.TabIndex = 7;
             // 
             // lbConfirmarClave
             // 
             this.lbConfirmarClave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbConfirmarClave.AutoSize = true;
-            this.lbConfirmarClave.Location = new System.Drawing.Point(5, 177);
-            this.lbConfirmarClave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbConfirmarClave.Location = new System.Drawing.Point(28, 144);
             this.lbConfirmarClave.Name = "lbConfirmarClave";
-            this.lbConfirmarClave.Size = new System.Drawing.Size(108, 17);
+            this.lbConfirmarClave.Size = new System.Drawing.Size(81, 13);
             this.lbConfirmarClave.TabIndex = 11;
             this.lbConfirmarClave.Text = "Confirmar Clave";
             // 
             // txtConfirmarClave
             // 
-            this.txtConfirmarClave.Location = new System.Drawing.Point(121, 165);
-            this.txtConfirmarClave.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.txtConfirmarClave.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtConfirmarClave.Location = new System.Drawing.Point(115, 140);
+            this.txtConfirmarClave.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.txtConfirmarClave.Name = "txtConfirmarClave";
-            this.txtConfirmarClave.Size = new System.Drawing.Size(149, 22);
+            this.txtConfirmarClave.Size = new System.Drawing.Size(127, 20);
             this.txtConfirmarClave.TabIndex = 14;
             // 
             // lbLegajo
             // 
             this.lbLegajo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbLegajo.AutoSize = true;
-            this.lbLegajo.Location = new System.Drawing.Point(62, 230);
-            this.lbLegajo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbLegajo.Location = new System.Drawing.Point(70, 187);
             this.lbLegajo.Name = "lbLegajo";
-            this.lbLegajo.Size = new System.Drawing.Size(51, 17);
+            this.lbLegajo.Size = new System.Drawing.Size(39, 13);
             this.lbLegajo.TabIndex = 9;
             this.lbLegajo.Text = "Legajo";
             // 
             // txtLegajo
             // 
+            this.txtLegajo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtLegajo.Enabled = false;
-            this.txtLegajo.Location = new System.Drawing.Point(121, 218);
-            this.txtLegajo.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.txtLegajo.Location = new System.Drawing.Point(115, 183);
+            this.txtLegajo.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.txtLegajo.Name = "txtLegajo";
-            this.txtLegajo.Size = new System.Drawing.Size(151, 22);
+            this.txtLegajo.Size = new System.Drawing.Size(128, 20);
             this.txtLegajo.TabIndex = 12;
             // 
             // lbTipoUsuario
             // 
             this.lbTipoUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbTipoUsuario.AutoSize = true;
-            this.lbTipoUsuario.Location = new System.Drawing.Point(4, 269);
-            this.lbTipoUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTipoUsuario.Location = new System.Drawing.Point(27, 218);
             this.lbTipoUsuario.Name = "lbTipoUsuario";
-            this.lbTipoUsuario.Size = new System.Drawing.Size(109, 17);
+            this.lbTipoUsuario.Size = new System.Drawing.Size(82, 13);
             this.lbTipoUsuario.TabIndex = 2;
             this.lbTipoUsuario.Text = "Tipo de Usuario";
             this.lbTipoUsuario.Visible = false;
@@ -199,10 +198,10 @@
             // 
             this.cbTipoUsuario.Enabled = false;
             this.cbTipoUsuario.FormattingEnabled = true;
-            this.cbTipoUsuario.Location = new System.Drawing.Point(121, 271);
-            this.cbTipoUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.cbTipoUsuario.Location = new System.Drawing.Point(115, 220);
+            this.cbTipoUsuario.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.cbTipoUsuario.Name = "cbTipoUsuario";
-            this.cbTipoUsuario.Size = new System.Drawing.Size(151, 24);
+            this.cbTipoUsuario.Size = new System.Drawing.Size(114, 21);
             this.cbTipoUsuario.TabIndex = 19;
             this.cbTipoUsuario.Visible = false;
             // 
@@ -210,10 +209,9 @@
             // 
             this.lbPersona.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbPersona.AutoSize = true;
-            this.lbPersona.Location = new System.Drawing.Point(52, 294);
-            this.lbPersona.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbPersona.Location = new System.Drawing.Point(63, 238);
             this.lbPersona.Name = "lbPersona";
-            this.lbPersona.Size = new System.Drawing.Size(61, 17);
+            this.lbPersona.Size = new System.Drawing.Size(46, 13);
             this.lbPersona.TabIndex = 17;
             this.lbPersona.Text = "Persona";
             this.lbPersona.Visible = false;
@@ -222,20 +220,19 @@
             // 
             this.cbPersonas.Enabled = false;
             this.cbPersonas.FormattingEnabled = true;
-            this.cbPersonas.Location = new System.Drawing.Point(121, 296);
-            this.cbPersonas.Margin = new System.Windows.Forms.Padding(4, 6, 13, 6);
+            this.cbPersonas.Location = new System.Drawing.Point(115, 240);
+            this.cbPersonas.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.cbPersonas.Name = "cbPersonas";
-            this.cbPersonas.Size = new System.Drawing.Size(151, 24);
+            this.cbPersonas.Size = new System.Drawing.Size(114, 21);
             this.cbPersonas.TabIndex = 19;
             this.cbPersonas.Visible = false;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelar.Location = new System.Drawing.Point(121, 322);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnCancelar.Location = new System.Drawing.Point(115, 260);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(100, 38);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 31);
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -243,11 +240,11 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAceptar.Location = new System.Drawing.Point(4, 322);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAceptar.Location = new System.Drawing.Point(32, 260);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(100, 38);
+            this.btnAceptar.Size = new System.Drawing.Size(75, 31);
             this.btnAceptar.TabIndex = 15;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -255,16 +252,16 @@
             // 
             // MiPerfil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 364);
+            this.ClientSize = new System.Drawing.Size(281, 296);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MiPerfil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Usuarios";
+            this.Text = "Editar Mi Perfil";
             this.Load += new System.EventHandler(this.UsuarioDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -170,21 +170,14 @@ namespace UI.Web
                     {
                         LoadGridMaterias();       
                     }
-                    else
-                    {
-
-                    }
+                    
                 }
                 else if (Session["tipoUsu"].ToString() == "3")  //Si sos docente
                 {
                     if (!this.IsPostBack)
                     {
                         LoadGridMaterias();       
-                    }
-                    else
-                    {
-
-                    }
+                    }                   
                 }
                 else
                 {
@@ -518,9 +511,17 @@ namespace UI.Web
             this.EntityCurso = this.Curso.BuscarCursoPorMateriaComision(SelectedIdMateria, SelectedIdComision);     //Obtenemos el objeto curso para usar el id
 
             alumnoCursoActual.IdCurso = this.EntityCurso.IdCurso;
-            alumnoCursoActual.IdUsuario = Convert.ToInt32(Session["idUsuario"]);
             alumnoCursoActual.Nota = 0;
             alumnoCursoActual.Condicion = "Inscripto";
+
+            if (Session["tipoUsu"].ToString() == "1")
+            {
+                alumnoCursoActual.IdUsuario = this.SelectedIdUsuario;
+            }
+            else
+            {
+                alumnoCursoActual.IdUsuario = Convert.ToInt32(Session["idUsuario"]);
+            }
 
         }
 
@@ -673,9 +674,41 @@ namespace UI.Web
 
         protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e) 
         {
-            this.hideAdminSelectionPage();
-            this.hideDDLs();
-            this.LoadGridMaterias();
+            this.SelectedIdUsuario = Convert.ToInt32(this.AlumnosDDL.SelectedValue);
+
+            if (IsSelectedIdUsuario)
+            {
+                this.hideAdminSelectionPage();
+                this.hideDDLs();
+                this.LoadGridMaterias();
+            }
+            else
+            {
+
+            }
+            
+        }
+
+        private int SelectedIdUsuario
+        {
+            get
+            {
+                if (this.ViewState["SelectedIdUsuario"] != null)
+                {
+                    return (int)this.ViewState["SelectedIdUsuario"];
+                }
+                else return 0;
+            }
+
+            set
+            {
+                this.ViewState["SelectedIdUsuario"] = value;
+            }
+        }
+
+        private bool IsSelectedIdUsuario
+        {
+            get { return (this.SelectedIdUsuario != 0); }
         }
 
         protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e) 

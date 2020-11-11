@@ -27,6 +27,7 @@ namespace UI.Desktop
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
+            this.Visible = false;
             FormLogin appLogin = new FormLogin();
             if (appLogin.ShowDialog() != DialogResult.OK)
             {
@@ -34,6 +35,7 @@ namespace UI.Desktop
             }
             else
             {
+                this.Visible = true;
                 IdUsu = appLogin.IdUsu;
                 Tipo = appLogin.Tipo;
                 segunUsuario();

@@ -30,10 +30,8 @@
         {
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
-            this.btnInscribirme = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvCursosInscrip = new System.Windows.Forms.DataGridView();
-            this.lbMateria = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +39,8 @@
             this.numeroCom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lbMateria = new System.Windows.Forms.Label();
+            this.btnInscribirme = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tlUsuarios.SuspendLayout();
@@ -53,11 +53,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tlUsuarios);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(703, 396);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(703, 389);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(703, 396);
+            this.toolStripContainer1.Size = new System.Drawing.Size(703, 389);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -78,19 +78,6 @@
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tlUsuarios.Size = new System.Drawing.Size(703, 388);
             this.tlUsuarios.TabIndex = 0;
-            // 
-            // btnInscribirme
-            // 
-            this.btnInscribirme.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnInscribirme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnInscribirme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnInscribirme.Location = new System.Drawing.Point(3, 336);
-            this.btnInscribirme.Name = "btnInscribirme";
-            this.btnInscribirme.Size = new System.Drawing.Size(591, 45);
-            this.btnInscribirme.TabIndex = 1;
-            this.btnInscribirme.Text = "Inscribirme";
-            this.btnInscribirme.UseVisualStyleBackColor = false;
-            this.btnInscribirme.Click += new System.EventHandler(this.btnInscribirme_Click);
             // 
             // btnSalir
             // 
@@ -130,19 +117,6 @@
             this.dgvCursosInscrip.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursosInscrip.Size = new System.Drawing.Size(697, 285);
             this.dgvCursosInscrip.TabIndex = 0;
-            // 
-            // lbMateria
-            // 
-            this.lbMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbMateria.AutoSize = true;
-            this.tlUsuarios.SetColumnSpan(this.lbMateria, 2);
-            this.lbMateria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMateria.Location = new System.Drawing.Point(326, 9);
-            this.lbMateria.Name = "lbMateria";
-            this.lbMateria.Size = new System.Drawing.Size(51, 20);
-            this.lbMateria.TabIndex = 3;
-            this.lbMateria.Text = "label1";
-            this.lbMateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // id
             // 
@@ -204,11 +178,37 @@
             this.habilitado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.habilitado.Visible = false;
             // 
+            // lbMateria
+            // 
+            this.lbMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbMateria.AutoSize = true;
+            this.tlUsuarios.SetColumnSpan(this.lbMateria, 2);
+            this.lbMateria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMateria.Location = new System.Drawing.Point(326, 9);
+            this.lbMateria.Name = "lbMateria";
+            this.lbMateria.Size = new System.Drawing.Size(51, 20);
+            this.lbMateria.TabIndex = 3;
+            this.lbMateria.Text = "label1";
+            this.lbMateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnInscribirme
+            // 
+            this.btnInscribirme.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnInscribirme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnInscribirme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInscribirme.Location = new System.Drawing.Point(3, 336);
+            this.btnInscribirme.Name = "btnInscribirme";
+            this.btnInscribirme.Size = new System.Drawing.Size(591, 45);
+            this.btnInscribirme.TabIndex = 1;
+            this.btnInscribirme.Text = "Inscribirme";
+            this.btnInscribirme.UseVisualStyleBackColor = false;
+            this.btnInscribirme.Click += new System.EventHandler(this.btnInscribirme_Click);
+            // 
             // CursosInscrip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 396);
+            this.ClientSize = new System.Drawing.Size(703, 389);
             this.Controls.Add(this.toolStripContainer1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

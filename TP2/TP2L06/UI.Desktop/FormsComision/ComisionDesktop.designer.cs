@@ -41,7 +41,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(86, 37);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(179, 20);
             this.txtDescripcion.TabIndex = 1;
@@ -49,7 +49,7 @@
             // txtIdComision
             // 
             this.txtIdComision.Location = new System.Drawing.Point(86, 11);
-            this.txtIdComision.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIdComision.Margin = new System.Windows.Forms.Padding(2);
             this.txtIdComision.Name = "txtIdComision";
             this.txtIdComision.ReadOnly = true;
             this.txtIdComision.Size = new System.Drawing.Size(76, 20);
@@ -77,24 +77,30 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(96, 98);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Location = new System.Drawing.Point(11, 98);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(64, 24);
+            this.btnAceptar.Size = new System.Drawing.Size(184, 42);
             this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(199, 98);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(64, 24);
+            this.btnCancelar.Size = new System.Drawing.Size(80, 42);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lbAnioEsp
@@ -110,7 +116,7 @@
             // txtAnioEsp
             // 
             this.txtAnioEsp.Location = new System.Drawing.Point(86, 67);
-            this.txtAnioEsp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAnioEsp.Margin = new System.Windows.Forms.Padding(2);
             this.txtAnioEsp.Name = "txtAnioEsp";
             this.txtAnioEsp.Size = new System.Drawing.Size(76, 20);
             this.txtAnioEsp.TabIndex = 8;
@@ -118,7 +124,7 @@
             // ComisionDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(290, 132);
+            this.ClientSize = new System.Drawing.Size(290, 151);
             this.Controls.Add(this.txtAnioEsp);
             this.Controls.Add(this.lbAnioEsp);
             this.Controls.Add(this.btnCancelar);
@@ -127,7 +133,7 @@
             this.Controls.Add(this.lbIdComision);
             this.Controls.Add(this.txtIdComision);
             this.Controls.Add(this.txtDescripcion);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ComisionDesktop";
             this.Text = "Comision";
             this.Load += new System.EventHandler(this.ComisionDesktop_Load);

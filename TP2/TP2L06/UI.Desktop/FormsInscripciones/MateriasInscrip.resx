@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="materia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="comision.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="condicion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nota.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="año.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -135,33 +153,22 @@
   <metadata name="habilitado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="tsUsuarios.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tsbInscribirme.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARzSURBVFhH7ZddTJtVGMeJF96YxTgvjYnxymiyGV3cFGKW
-        bJHFuZggMBducIbptsLmaNZsMzFqlGBwBrK5DWW106gIMvn+aPlooZ2ssFEoFHAtK/IhFEihbGxk69/z
-        0ae81FJ5a0y88El+OYW85fc/zznnfV8S/nOlMTiwu+DXuOHfD/2pVVX5cT4smRmwZ76Kpt2vRL1GVHqR
-        Hf+kbMOzeO101yrBwWQt9AkJcOYeACpPYfGDrWhI3BQ9BJ+F2goGJbzMAz7oKqeg+XZICLJOmPDlU9tQ
-        zQIYH30EgfO5wIU0eN9+BtYD+/8a4u8CkIxYvreaFqcPp2p8OFjYjuzP7RjxLqEiPQtmFuA6Y2DjQ5jP
-        3I472m2oemLD+gPEkt5dXoEH0P04hNSTVvzcugjvH4ClbgjlGzbCzQJMM2YefADdjz/M9sKutQNEk3GB
-        UnjrzspIlFaZcSl9Mw7pCvFNtR+Wa4DTAzR+14mKzUkYZgF6GOd2ZcTeA0pxpJQTCI2Lt+Xn+VvA+MQM
-        GvZvgfviTtTVF+NYgQ0tXUB7D9A1cB+WRg9+ea8A7yfnoLC4IXaASCGhFCrp7+6FKesFTFanAUu9uL/k
-        QUm5GZ/qB2HruYue4aDgE70LeedN0eW8KAAJuSyadG5xhZujM0LuLnkJWDADt/sFSwv9KP6hAkc+a4Ox
-        cw5ny9xMblxbzosCKIVcopT6QkzNAw6aedXrgL9KBiAWbezCQjjKk5CZciS2mIoCkIyYXViR0uj2zsDI
-        Z34xiV30PUtZq6CRfcmAQMcWdGgeQ7pOv/4AfPfTLElGTPglA67f0ZyzA5M1bOazJTKA4CfJdAECV5LQ
-        pnke3ut2cZsOKWIXBYgUEmNzgHdqGa26FLgv7WDyszKAwCCZKUKgcycs2U/C1WkXm1l1AJLRSDgGJ9B6
-        PBWT9SlMdprBAzDmLkh8eQh07YHp8FbY2uyig3EFICFb5vDIadJ/Bde5F5k0XwZgm0zAZi3afm0vzDlP
-        w9pqR/+47KLqAPzGw2UeBe5pCZ+9v/sMk51cCSFgM3e8BePhxLDcMSY7yI+z6gAkVNLnCcCmTca9MXbE
-        pviafxiS5yPgPATz0WdhabELsWA0KALE1YEh9hARTIZgny+XGNBedBTB0WYBxstEgIDrOJo0L6PVJOXd
-        XknXiFy+uDrAW0gBRDvZbMqy90GrO4ahK6XASB07Zl+j/4s0diPahBajPSwmedwBeMu4VInzhh/6NxPx
-        bsYbyNu7HXWaPTDkvoOaimZYh5eErPMmwxMMj9Ybci/xW7nqAOF1DK1ln2sCpanPofYjLUoNl2G6OrZK
-        Fh5D4o7fJDxAXB1QtlPZ1rWESql5mL2EsJ+bB+XmVd0BnpgL4pHykcPlFIA/yNQHiCIkGYmiCQnTAHsL
-        Yk/luAPQDEm8XimJOfVOeZL8gTgCkCSajERKGQk5tX2S6l55jFUH4JsmcgPSfiBoaZQou0bwJeDvEqo7
-        QG9DauGzjYT/XlWAf4N9Z1b/u/Z/yUpI+BPjXzvA1c9RuwAAAABJRU5ErkJggg==
-</value>
-  </data>
+  <metadata name="materia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="comision.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="condicion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nota.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="año.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

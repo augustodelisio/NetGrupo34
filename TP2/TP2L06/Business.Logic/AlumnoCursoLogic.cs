@@ -79,5 +79,17 @@ namespace Business.Logic
                 throw ExcepcionManejada;
             }
         }
+        public int getCantAlumnos(int idCurso)
+        {
+            try
+            {
+                return AlumnoCursoData.getCantAlumnos(idCurso);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
+                throw ExcepcionManejada;
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace UI.Desktop
 {
     public partial class CursosInscrip : ApplicationForm
     {
-        public Materia Mat { set; get; }
+        public Materia Mate { set; get; }
         public Usuario Usu { set; get; }
         public CursosInscrip()
         {
@@ -27,7 +27,7 @@ namespace UI.Desktop
             dgvCursosInscrip.AutoGenerateColumns = false;
             try
             {
-                Mat = new MateriaLogic().GetOne(idMat);
+                Mate = new MateriaLogic().GetOne(idMat);
                 Usu = new UsuarioLogic().GetOne(idUsu);
             }
             catch(Exception Ex)
@@ -41,20 +41,41 @@ namespace UI.Desktop
         {
             try
             {
-                CursoLogic ul = new CursoLogic();
-                this.dgvCursosInscrip.DataSource = ul.GetAll().Where( x => x.IdMateria == Mat.IdMateria).ToList();
+                CursoLogic cul = new CursoLogic();
+                MateriaLogic mal = new MateriaLogic();
+                ComisionLogic col = new ComisionLogic();
+
+                var cursosDisp = (
+                    from Cur in cul.GetAll()
+                    join Mat in mal.GetAll()
+                    on Cur.IdMateria equals Mat.IdMateria
+                    join Com in col.GetAll()
+                    on Cur.IdComision equals Com.IdComision
+                    select new
+                    {
+                        IdCurso = Cur.IdCurso,
+                        IdComision = Cur.IdComision,
+                        IdMateria= Cur.IdMateria,
+                        Habilitado = Cur.Habilitado,
+                        Cupo = Cur.Cupo,
+                        Anio = Cur.AnioCalendario,
+                        NombreMat = Mat.Descripcion,
+                        NumeroCom = Com.Descripcion
+                    }).ToList();
+
+                this.dgvCursosInscrip.DataSource = cursosDisp.Where( x => x.IdMateria == Mate.IdMateria && x.Habilitado == true).ToList();
                 FormatoDGV.ActualizaColor(dgvCursosInscrip);
             }
             catch (Exception Ex)
             {
-                Notificar("Error de carga de cursos", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notificar("Error de conexión", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void CursosInscrip_Load(object sender, EventArgs e)
         {
             this.Listar();
-            lbMateria.Text = "Inscribirse a " + Mat.Descripcion;
+            lbMateria.Text = "Inscribirse a " + Mate.Descripcion;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -66,8 +87,11 @@ namespace UI.Desktop
         {
             if (this.dgvCursosInscrip.SelectedRows.Count > 0)
             {
-                int idCur = ((Curso)this.dgvCursosInscrip.SelectedRows[0].DataBoundItem).IdCurso;
-                int idCom = ((Curso)this.dgvCursosInscrip.SelectedRows[0].DataBoundItem).IdComision;
+                int sri = dgvCursosInscrip.SelectedCells[0].RowIndex;
+                DataGridViewRow sr = dgvCursosInscrip.Rows[sri];
+                int idCur = Convert.ToInt32(sr.Cells["ID"].Value.ToString());
+                int idCom = Convert.ToInt32(sr.Cells["IdComision"].Value.ToString());
+
                 string nomCom;
                 try
                 {
@@ -79,39 +103,53 @@ namespace UI.Desktop
                     nomCom = "¿?";
                 }
 
-                string msj = "¿Está seguro que desea inscribirse a " + Mat.Descripcion + " en la comisión " + nomCom + "?";
+                string msj = "¿Está seguro que desea inscribirse a " + Mate.Descripcion + " en la comisión " + nomCom + "?";
                 DialogResult resultado = MessageBox.Show(msj, "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resultado == DialogResult.Yes)
                 {
-                    bool agregado;
+                    CursoLogic cur = new CursoLogic();
+                    int cupo = cur.GetOne(idCur).Cupo;
+
+                    bool hayCupo = true;
                     if (Usu.IdTipoUsuario == 2)
                     {
                         AlumnoCurso alCur = new AlumnoCurso();
                         alCur.IdCurso = idCur;
                         alCur.IdUsuario = Usu.ID;
                         alCur.Condicion = "inscripto";
-                        agregado = new AlumnoCursoLogic().Save(alCur);
+                        AlumnoCursoLogic acl = new AlumnoCursoLogic();
+                        if (acl.getCantAlumnos(idCur) < cupo)
+                        {
+                            acl.Save(alCur);
+                        }
+                        else
+                        {
+                            hayCupo = false;
+                        }
+                            
                     }
-                    else
+                    else if (Usu.IdTipoUsuario == 3)
                     {
                         DocenteCurso doCur = new DocenteCurso();
                         doCur.IdCurso = idCur;
                         doCur.IdUsuario = Usu.ID;
                         doCur.Cargos = 1;
-                        agregado = new DocenteCursoLogic().Save(doCur);
+                        DocenteCursoLogic dcl = new DocenteCursoLogic();
+                        dcl.Save(doCur);
                     }
 
-                    if (!agregado)
+
+                    if (!hayCupo)
                     {
-                        MessageBox.Show("Ya se encuentra inscripto en este curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El cupo está lleno, intente en otra comisión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         MessageBox.Show("Inscripción realizada con éxito", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
 
                     this.Listar();
-                    this.Close();
                 }
             }
         }

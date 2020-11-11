@@ -141,7 +141,7 @@ namespace UI.Desktop
 
         private void inscribirmeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MateriasInscrip ABMMateriasInscrip = new MateriasInscrip(IdUsu);
+            MateriasInscrip ABMMateriasInscrip = new MateriasInscrip(IdUsu, Tipo);
             ABMMateriasInscrip.ShowDialog();
         }
     }

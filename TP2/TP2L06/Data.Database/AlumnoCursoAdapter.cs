@@ -213,5 +213,10 @@ namespace Data.Database
                 this.CloseConnection();
             }
         }
+
+        public int getCantAlumnos(int idCurso)
+        {
+            return GetAll().Where(x => x.IdCurso == idCurso).ToList().Count();
+        }
     }
 }

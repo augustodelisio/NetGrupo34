@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using UI.Desktop.FormsInscripciones;
 
 namespace UI.Desktop
 {
@@ -42,9 +43,16 @@ namespace UI.Desktop
                 miPerfilToolStripMenuItem.Visible = false;
                 inscribirmeToolStripMenuItem.Enabled = false;
                 inscribirmeToolStripMenuItem.Visible = false;
+                cargarNotasToolStripMenuItem.Enabled = false;
+                cargarNotasToolStripMenuItem.Visible = false;
             }
             else //Alumno o Docente
             {
+                if (Tipo == 2)
+                {
+                    cargarNotasToolStripMenuItem.Enabled = false;
+                    cargarNotasToolStripMenuItem.Visible = false;
+                }
                 usuariosToolStripMenuItem.Enabled = false;
                 usuariosToolStripMenuItem.Visible = false;
                 especialidadesToolStripMenuItem.Enabled = false;
@@ -61,8 +69,6 @@ namespace UI.Desktop
                 verCursosToolStripMenuItem.Visible = false;
                 alumnosInscriptosToolStripMenuItem.Enabled = false;
                 alumnosInscriptosToolStripMenuItem.Visible = false;
-                docentesInscriptosToolStripMenuItem.Enabled = false;
-                docentesInscriptosToolStripMenuItem.Visible = false;
                 comisionesToolStripMenuItem.Enabled = false;
                 comisionesToolStripMenuItem.Visible = false;
             }
@@ -128,11 +134,6 @@ namespace UI.Desktop
             editarPerfil.ShowDialog();
         }
 
-        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void inscribirmeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MateriasInscrip ABMMateriasInscrip = new MateriasInscrip(IdUsu, Tipo);
@@ -143,6 +144,12 @@ namespace UI.Desktop
         {
             NotasCursos ABMNotasCursos = new NotasCursos(IdUsu);
             ABMNotasCursos.ShowDialog();
+        }
+
+        private void alumnosInscriptosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminInscribe ABMAdminInsc = new AdminInscribe();
+            ABMAdminInsc.ShowDialog();
         }
     }
 }

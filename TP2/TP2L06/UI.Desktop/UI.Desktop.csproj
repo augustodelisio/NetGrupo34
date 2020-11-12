@@ -127,6 +127,12 @@
     <Compile Include="FormsEspecialidades\EspecialidadDesktop.Designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsInscripciones\AdminInscribe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsInscripciones\AdminInscribe.Designer.cs">
+      <DependentUpon>AdminInscribe.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsInscripciones\CursosInscrip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEspecialidades\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsInscripciones\AdminInscribe.resx">
+      <DependentUpon>AdminInscribe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsInscripciones\CursosInscrip.resx">
       <DependentUpon>CursosInscrip.cs</DependentUpon>

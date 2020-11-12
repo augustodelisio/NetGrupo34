@@ -94,12 +94,12 @@
 
                     <Columns>
                         <asp:CommandField SelectText="-->" ShowSelectButton="True" />
-                        <asp:BoundField HeaderText="id_materia" DataField="id_materia" InsertVisible="False" ReadOnly="True" SortExpression="id_materia" />
-                        <asp:BoundField DataField="desc_materia" HeaderText="desc_materia" SortExpression="desc_materia" />
-                        <asp:BoundField DataField="hs_semanales" HeaderText="hs_semanales" SortExpression="hs_semanales" />
-                        <asp:CheckBoxField DataField="habilitado" HeaderText="habilitado" SortExpression="habilitado" />
-                        <asp:BoundField DataField="hs_totales" HeaderText="hs_totales" SortExpression="hs_totales" />
-                        <asp:BoundField DataField="id_plan" HeaderText="id_plan" SortExpression="id_plan" />
+                        <asp:BoundField HeaderText="Id Materia" DataField="id_materia" InsertVisible="False" ReadOnly="True" SortExpression="id_materia" />
+                        <asp:BoundField DataField="desc_materia" HeaderText="Descripcion" SortExpression="desc_materia" />
+                        <asp:BoundField DataField="hs_semanales" HeaderText="Hs Semanales" SortExpression="hs_semanales" />
+                        <asp:CheckBoxField DataField="habilitado" HeaderText="Habilitado" SortExpression="habilitado" />
+                        <asp:BoundField DataField="hs_totales" HeaderText="Hs Totales" SortExpression="hs_totales" />
+                        <asp:BoundField DataField="id_plan" HeaderText="Id Plan" SortExpression="id_plan" />
                     </Columns>
 
                     <HeaderStyle Height="40px" />

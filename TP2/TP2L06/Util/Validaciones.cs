@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Util
 {
@@ -47,6 +43,13 @@ namespace Util
         public static bool minAlcanzado(string campo, int min)
         {
             if (campo.Length >= min)
+                return true;
+            else return false;
+        }
+
+        public static bool validaNota(float nota)
+        {
+            if (nota >= 0 && nota <= 10)
                 return true;
             else return false;
         }

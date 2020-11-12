@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -57,7 +50,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvPlanes.SelectedRows.Count>0)
+            if (this.dgvPlanes.SelectedRows.Count > 0)
             {
                 int ID = ((Plan)this.dgvPlanes.SelectedRows[0].DataBoundItem).IdPlan;
                 PlanDesktop formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.Modificacion);
@@ -73,9 +66,9 @@ namespace UI.Desktop
 
             PlanDesktop formPlan;
             if (hab == true)
-                { formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.Baja); }
+            { formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.Baja); }
             else
-                { formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
+            { formPlan = new PlanDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
 
             formPlan.ShowDialog();
             this.Listar();

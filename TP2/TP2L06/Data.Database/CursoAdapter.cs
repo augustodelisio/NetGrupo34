@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    public class CursoAdapter:Adapter
+    public class CursoAdapter : Adapter
     {
         public List<Curso> GetAll()
         {

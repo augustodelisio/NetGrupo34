@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class CursoDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'CursoDesktop._CursoActual' nunca se usa
         private Curso _CursoActual;
+#pragma warning restore CS0169 // El campo 'CursoDesktop._CursoActual' nunca se usa
         public Curso CursoActual { set; get; }
 
         public CursoDesktop()
@@ -27,7 +20,7 @@ namespace UI.Desktop
         public CursoDesktop(ModoForm modo) : this()
         {
         }
-        public CursoDesktop(int ID, ModoForm modo) : this()    
+        public CursoDesktop(int ID, ModoForm modo) : this()
         {
             CursoLogic cl = new CursoLogic();
             this.Modo = modo;
@@ -42,7 +35,7 @@ namespace UI.Desktop
             this.txtAnioCalendario.Text = this.CursoActual.AnioCalendario.ToString();
             this.txtDescripcion.Text = this.CursoActual.Descripcion;
             //El combobox persona se rellena despues, en el load del formulario
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -66,13 +59,13 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.CursoActual.IdCurso = int.Parse(this.txtID.Text);
                         CursoActual.State = BusinessEntity.States.Modified;
 
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Notificar("Error de conversion de ID", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -84,16 +77,16 @@ namespace UI.Desktop
                     CursoActual.State = BusinessEntity.States.New;
                     CursoActual.Habilitado = true;
                 }
-                
+
                 this.CursoActual.Cupo = Convert.ToInt32(this.txtCupo.Text);
-                
+
                 int fid;
                 fid = Convert.ToInt32(cbComision.SelectedValue.GetHashCode());
                 this.CursoActual.IdComision = fid;
 
                 fid = Convert.ToInt32(cbMateria.SelectedValue.GetHashCode());
                 this.CursoActual.IdMateria = fid;
-                
+
                 this.CursoActual.Descripcion = this.txtDescripcion.Text;
                 this.CursoActual.AnioCalendario = Convert.ToInt32(this.txtAnioCalendario.Text);
 
@@ -110,7 +103,7 @@ namespace UI.Desktop
             {
                 CursoActual.State = BusinessEntity.States.Unmodified;
             }
-            
+
         }
         public override void GuardarCambios()
         {
@@ -199,5 +192,5 @@ namespace UI.Desktop
             CargarCombobox();//Vuelve a cargar el combo por si se creo la persona.
         }
     }
-    
+
 }

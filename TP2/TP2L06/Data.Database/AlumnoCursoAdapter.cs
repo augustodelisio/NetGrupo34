@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 
 namespace Data.Database
@@ -195,7 +193,7 @@ namespace Data.Database
                     "INSERT INTO alumnos_cursos (id_curso, id_usuario, condicion, nota)" +
                     "values(@idcurso, @idusuario, @condicion, @nota)" +
                     "select @@identity", SqlConn);
-               
+
                 cmdSave.Parameters.Add("@idcurso", SqlDbType.Int).Value = curso.IdCurso;
                 cmdSave.Parameters.Add("@idusuario", SqlDbType.Int).Value = curso.IdUsuario;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = curso.Condicion;

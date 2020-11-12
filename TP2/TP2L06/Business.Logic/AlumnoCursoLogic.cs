@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
+﻿using Business.Entities;
 using Data.Database;
+using System;
+using System.Collections.Generic;
 
 
 namespace Business.Logic
@@ -62,16 +59,24 @@ namespace Business.Logic
         }
         public bool Save(AlumnoCurso cur)
         {
-            
+
             try
             {
-                var curso = AlumnoCursoData.GetOneDictado(cur.IdUsuario, cur.IdCurso);
-                if (curso.IdCurso == 0)
+                if (cur.State == BusinessEntity.States.Modified)
                 {
                     AlumnoCursoData.Save(cur);
                     return true;
                 }
-                return false;
+                else
+                {
+                    var curso = AlumnoCursoData.GetOneDictado(cur.IdUsuario, cur.IdCurso);
+                    if (curso.IdCurso == 0)
+                    {
+                        AlumnoCursoData.Save(cur);
+                        return true;
+                    }
+                    return false;
+                }
             }
             catch (Exception Ex)
             {

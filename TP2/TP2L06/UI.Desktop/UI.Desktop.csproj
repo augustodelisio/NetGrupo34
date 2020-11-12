@@ -103,6 +103,24 @@
     <Compile Include="FormsComision\Comisiones.designer.cs">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsCurso\ModifCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCurso\ModifCurso.Designer.cs">
+      <DependentUpon>ModifCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsCurso\ModificarEstadoAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCurso\ModificarEstadoAlumno.Designer.cs">
+      <DependentUpon>ModificarEstadoAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsCurso\NotasCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCurso\NotasCursos.Designer.cs">
+      <DependentUpon>NotasCursos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsEspecialidades\EspecialidadDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +232,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ucCondiciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucCondiciones.Designer.cs">
+      <DependentUpon>ucCondiciones.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +252,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsComision\Comisiones.resx">
       <DependentUpon>Comisiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCurso\ModifCurso.resx">
+      <DependentUpon>ModifCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCurso\ModificarEstadoAlumno.resx">
+      <DependentUpon>ModificarEstadoAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCurso\NotasCursos.resx">
+      <DependentUpon>NotasCursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEspecialidades\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
@@ -294,6 +327,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ucCondiciones.resx">
+      <DependentUpon>ucCondiciones.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="AcademiaDataSet.xsc">
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
     </None>

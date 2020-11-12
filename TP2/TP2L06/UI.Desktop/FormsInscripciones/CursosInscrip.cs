@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -30,7 +25,7 @@ namespace UI.Desktop
                 Mate = new MateriaLogic().GetOne(idMat);
                 Usu = new UsuarioLogic().GetOne(idUsu);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Notificar("Error de carga de materia y usuario", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
@@ -55,7 +50,7 @@ namespace UI.Desktop
                     {
                         IdCurso = Cur.IdCurso,
                         IdComision = Cur.IdComision,
-                        IdMateria= Cur.IdMateria,
+                        IdMateria = Cur.IdMateria,
                         Habilitado = Cur.Habilitado,
                         Cupo = Cur.Cupo,
                         Anio = Cur.AnioCalendario,
@@ -63,7 +58,7 @@ namespace UI.Desktop
                         NumeroCom = Com.Descripcion
                     }).ToList();
 
-                this.dgvCursosInscrip.DataSource = cursosDisp.Where( x => x.IdMateria == Mate.IdMateria && x.Habilitado == true).ToList();
+                this.dgvCursosInscrip.DataSource = cursosDisp.Where(x => x.IdMateria == Mate.IdMateria && x.Habilitado == true).ToList();
                 FormatoDGV.ActualizaColor(dgvCursosInscrip);
             }
             catch (Exception Ex)
@@ -126,7 +121,7 @@ namespace UI.Desktop
                         {
                             hayCupo = false;
                         }
-                            
+
                     }
                     else if (Usu.IdTipoUsuario == 3)
                     {

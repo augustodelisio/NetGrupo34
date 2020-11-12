@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
+using System;
+using System.Windows.Forms;
 using Util;
 
 namespace UI.Desktop
 {
-    
+
     public partial class PersonaDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'PersonaDesktop._PersonaActual' nunca se usa
         private Persona _PersonaActual;
+#pragma warning restore CS0169 // El campo 'PersonaDesktop._PersonaActual' nunca se usa
         public Persona PersonaActual { set; get; }
 
         public PersonaDesktop()
@@ -27,7 +21,7 @@ namespace UI.Desktop
         public PersonaDesktop(ModoForm modo) : this()
         {
         }
-        public PersonaDesktop(int ID, ModoForm modo) : this()    
+        public PersonaDesktop(int ID, ModoForm modo) : this()
         {
             PersonaLogic pl = new PersonaLogic();
             this.Modo = modo;
@@ -44,7 +38,7 @@ namespace UI.Desktop
             this.txtApellido.Text = this.PersonaActual.Apellido;
             this.txtDireccion.Text = this.PersonaActual.Direccion;
             this.txtFechaNac.Text = this.PersonaActual.FechaNacimiento.ToString();
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -68,17 +62,17 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.PersonaActual.IdPersona = int.Parse(this.txtID.Text);
                         PersonaActual.State = BusinessEntity.States.Modified;
 
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
                     }
-                    
+
 
                 }
                 else
@@ -109,7 +103,7 @@ namespace UI.Desktop
             {
                 PersonaActual.State = BusinessEntity.States.Unmodified;
             }
-            
+
         }
         public override void GuardarCambios()
         {
@@ -151,5 +145,5 @@ namespace UI.Desktop
             FormBorderStyle = FormBorderStyle.FixedDialog;
         }
     }
-    
+
 }

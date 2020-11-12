@@ -144,7 +144,9 @@
 
         #endregion
 
+#pragma warning disable CS0169 // El campo 'ComisionDesktop.tableLayoutPanel1' nunca se usa
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+#pragma warning restore CS0169 // El campo 'ComisionDesktop.tableLayoutPanel1' nunca se usa
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtIdComision;
         private System.Windows.Forms.Label lbIdComision;

@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class MateriaDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'MateriaDesktop._MateriaActual' nunca se usa
         private Materia _MateriaActual;
+#pragma warning restore CS0169 // El campo 'MateriaDesktop._MateriaActual' nunca se usa
         public Materia MateriaActual { set; get; }
 
         public MateriaDesktop()
@@ -27,7 +20,7 @@ namespace UI.Desktop
         public MateriaDesktop(ModoForm modo) : this()
         {
         }
-        public MateriaDesktop(int ID, ModoForm modo) : this()    
+        public MateriaDesktop(int ID, ModoForm modo) : this()
         {
             MateriaLogic el = new MateriaLogic();
             this.Modo = modo;                               //Setea el valor en el que se encuentra el formulario (A/B/M/C)   
@@ -42,7 +35,7 @@ namespace UI.Desktop
             this.txtHsSemanales.Text = this.MateriaActual.HsSemanales.ToString();
             this.txtHsTotales.Text = this.MateriaActual.HsTotales.ToString();
             //El combobox persona se rellena despues, en el load del formulario
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -83,7 +76,7 @@ namespace UI.Desktop
                     MateriaActual.State = BusinessEntity.States.New;
                     MateriaActual.Habilitado = true;
                 }
-                
+
                 this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                 this.MateriaActual.HsSemanales = Convert.ToInt32(this.txtHsSemanales.Text);
                 this.MateriaActual.HsTotales = Convert.ToInt32(this.txtHsTotales.Text);
@@ -104,7 +97,7 @@ namespace UI.Desktop
             {
                 MateriaActual.State = BusinessEntity.States.Unmodified;
             }
-            
+
         }
         public override void GuardarCambios()
         {
@@ -171,7 +164,7 @@ namespace UI.Desktop
                 }
                 catch
                 {
-                    Notificar("Error de carga","No se ha podido recuperar el plan actual.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Notificar("Error de carga", "No se ha podido recuperar el plan actual.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

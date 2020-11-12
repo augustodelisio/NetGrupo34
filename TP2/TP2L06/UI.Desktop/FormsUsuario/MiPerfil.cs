@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
 
     public partial class MiPerfil : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'MiPerfil._UsuarioActual' nunca se usa
         private Usuario _UsuarioActual;
+#pragma warning restore CS0169 // El campo 'MiPerfil._UsuarioActual' nunca se usa
         public Usuario UsuarioActual { set; get; }
 
         public MiPerfil()

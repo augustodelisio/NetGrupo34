@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
-using System.Windows.Forms.VisualStyles;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class ComisionDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'ComisionDesktop._ComisionActual' nunca se usa
         private Comision _ComisionActual;
+#pragma warning restore CS0169 // El campo 'ComisionDesktop._ComisionActual' nunca se usa
         public Comision ComisionActual { set; get; }
 
         public ComisionDesktop()
@@ -28,7 +20,7 @@ namespace UI.Desktop
         public ComisionDesktop(ModoForm modo) : this()
         {
         }
-        public ComisionDesktop(int ID, ModoForm modo) : this()    
+        public ComisionDesktop(int ID, ModoForm modo) : this()
         {
             ComisionLogic cl = new ComisionLogic();
             this.Modo = modo;
@@ -43,7 +35,7 @@ namespace UI.Desktop
             this.txtAnioEsp.Text = this.ComisionActual.AnioEspecialidad.ToString();
 
 
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -63,17 +55,17 @@ namespace UI.Desktop
 
         public override void MapearADatos()
         {
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)         
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.ComisionActual.IdComision = int.Parse(this.txtIdComision.Text);
                         ComisionActual.State = BusinessEntity.States.Modified;
 
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Notificar("Error de conversion de ID", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -85,7 +77,7 @@ namespace UI.Desktop
                     ComisionActual.State = BusinessEntity.States.New;
                     ComisionActual.Habilitado = true;
                 }
-                
+
                 this.ComisionActual.Descripcion = this.txtDescripcion.Text;
                 this.ComisionActual.AnioEspecialidad = Convert.ToInt32(this.txtAnioEsp.Text);
 
@@ -101,7 +93,7 @@ namespace UI.Desktop
             else if (Modo == ModoForm.Consulta)
             {
                 ComisionActual.State = BusinessEntity.States.Unmodified;
-            }           
+            }
         }
         public override void GuardarCambios()
         {

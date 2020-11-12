@@ -261,7 +261,9 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridView dgvComisiones;
+#pragma warning disable CS0169 // El campo 'Comisiones.descripcion' nunca se usa
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+#pragma warning restore CS0169 // El campo 'Comisiones.descripcion' nunca se usa
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumna;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripciom;

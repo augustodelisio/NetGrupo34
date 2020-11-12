@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
 using Util;
 
 namespace UI.Web
@@ -314,7 +309,7 @@ namespace UI.Web
                 fechaNacimientoValidator.Text = "*";
             }
             else { fechaNacimientoValidator.Text = ""; }
-            
+
             return correcto;
         }
         private void LimpiarCampos()

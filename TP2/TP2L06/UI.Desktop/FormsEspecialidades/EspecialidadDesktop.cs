@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class EspecialidadDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'EspecialidadDesktop._EspecialidadActual' nunca se usa
         private Especialidad _EspecialidadActual;
+#pragma warning restore CS0169 // El campo 'EspecialidadDesktop._EspecialidadActual' nunca se usa
         public Especialidad EspecialidadActual { set; get; }
 
         public EspecialidadDesktop()
@@ -27,7 +20,7 @@ namespace UI.Desktop
         public EspecialidadDesktop(ModoForm modo) : this()
         {
         }
-        public EspecialidadDesktop(int ID, ModoForm modo) : this()    
+        public EspecialidadDesktop(int ID, ModoForm modo) : this()
         {
             EspecialidadLogic el = new EspecialidadLogic();
             this.Modo = modo;
@@ -39,7 +32,7 @@ namespace UI.Desktop
         {
             this.txtID.Text = this.EspecialidadActual.IdEspecialidad.ToString();
             this.txtDescripcion.Text = this.EspecialidadActual.Descripcion;
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -63,12 +56,12 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.EspecialidadActual.IdEspecialidad = int.Parse(this.txtID.Text);
                         EspecialidadActual.State = BusinessEntity.States.Modified;
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
                     }
@@ -80,7 +73,7 @@ namespace UI.Desktop
                     EspecialidadActual.State = BusinessEntity.States.New;
                     EspecialidadActual.Habilitado = true;
                 }
-                
+
                 this.EspecialidadActual.Descripcion = this.txtDescripcion.Text;
             }
             else if (Modo == ModoForm.Baja)
@@ -95,7 +88,7 @@ namespace UI.Desktop
             {
                 EspecialidadActual.State = BusinessEntity.States.Unmodified;
             }
-            
+
         }
         public override void GuardarCambios()
         {
@@ -135,5 +128,5 @@ namespace UI.Desktop
             FormBorderStyle = FormBorderStyle.FixedDialog;
         }
     }
-    
+
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using Business.Entities;
 using Business.Logic;
-using Business.Entities;
+using System;
 using Util;
 
 namespace UI.Web
@@ -25,7 +20,9 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'PagUsuarios._EntityUsuario' nunca se usa
         Usuario _EntityUsuario;
+#pragma warning restore CS0169 // El campo 'PagUsuarios._EntityUsuario' nunca se usa
 
         private Usuario EntityUsuario
         {

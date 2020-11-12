@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
+﻿using Business.Entities;
 using Data.Database;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
     public class MateriaLogic : BusinessLogic
     {
+#pragma warning disable CS0169 // El campo 'MateriaLogic._MateriaData' nunca se usa
         private MateriaAdapter _MateriaData;
+#pragma warning restore CS0169 // El campo 'MateriaLogic._MateriaData' nunca se usa
         public MateriaAdapter MateriaData { get; set; }
         public MateriaLogic()
         {

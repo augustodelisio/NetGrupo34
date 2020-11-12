@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using Business.Entities;
 using Business.Logic;
-using Business.Entities;
+using System;
+using System.Web.UI;
 using Util;
 
 namespace UI.Web
@@ -25,14 +21,16 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'PagCursos._EntityCurso' nunca se usa
         Curso _EntityCurso;
+#pragma warning restore CS0169 // El campo 'PagCursos._EntityCurso' nunca se usa
 
         private Curso EntityCurso
         {
             get;
             set;
         }
-        protected void Page_Load(object sender, EventArgs e)    
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
             {

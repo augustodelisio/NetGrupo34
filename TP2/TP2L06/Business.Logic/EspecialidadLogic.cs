@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
+﻿using Business.Entities;
 using Data.Database;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
     public class EspecialidadLogic : BusinessLogic
     {
+#pragma warning disable CS0169 // El campo 'EspecialidadLogic._EspecialidadData' nunca se usa
         private EspecialidadAdapter _EspecialidadData;
+#pragma warning restore CS0169 // El campo 'EspecialidadLogic._EspecialidadData' nunca se usa
         public EspecialidadAdapter EspecialidadData { get; set; }
         public EspecialidadLogic()
         {

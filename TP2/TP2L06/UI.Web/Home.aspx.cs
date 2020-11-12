@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace UI.Web
 {
@@ -17,14 +12,14 @@ namespace UI.Web
             }
             else
             {
-                if(Session["tipoUsu"].ToString() == "1") //Admin
+                if (Session["tipoUsu"].ToString() == "1") //Admin
                 {
-                    
+
                 }
 
                 else if (Session["tipoUsu"].ToString() == "2") //Alumno
                 {
-                    
+
                 }
 
                 else if (Session["tipoUsu"].ToString() == "3") //Docente

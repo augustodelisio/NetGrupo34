@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -27,7 +20,7 @@ namespace UI.Desktop
                 this.dgvPersonas.DataSource = pl.GetAll();
                 FormatoDGV.ActualizaColor(dgvPersonas);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Notificar("Error de carga de usuarios", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -57,7 +50,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvPersonas.SelectedRows.Count>0)
+            if (this.dgvPersonas.SelectedRows.Count > 0)
             {
                 int ID = ((Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).IdPersona;
                 PersonaDesktop formPersona = new PersonaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
@@ -73,10 +66,10 @@ namespace UI.Desktop
 
             PersonaDesktop formPersona;
             if (hab == true)
-                { formPersona = new PersonaDesktop(ID, ApplicationForm.ModoForm.Baja); }
+            { formPersona = new PersonaDesktop(ID, ApplicationForm.ModoForm.Baja); }
             else
-                { formPersona = new PersonaDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
-            
+            { formPersona = new PersonaDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
+
             formPersona.ShowDialog();
             this.Listar();
         }

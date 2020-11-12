@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.Entities
+﻿namespace Business.Entities
 {
-    public class AlumnoCurso:BusinessEntity
+    public class AlumnoCurso : BusinessEntity
     {
         private int _IdInscripcion;
         public int IdInscripcion
@@ -42,6 +36,5 @@ namespace Business.Entities
             get { return _IdUsuario; }
             set { _IdUsuario = value; }
         }
-
     }
 }

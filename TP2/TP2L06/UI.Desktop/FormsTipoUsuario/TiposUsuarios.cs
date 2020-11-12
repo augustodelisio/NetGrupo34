@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -58,7 +51,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvTiposUsuarios.SelectedRows.Count>0)
+            if (this.dgvTiposUsuarios.SelectedRows.Count > 0)
             {
                 int ID = ((TipoUsuario)this.dgvTiposUsuarios.SelectedRows[0].DataBoundItem).IdTipoUsuario;
                 TipoUsuarioDesktop formTipoUsuario = new TipoUsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion);
@@ -74,10 +67,10 @@ namespace UI.Desktop
 
             TipoUsuarioDesktop formTipoUsuario;
             if (hab == true)
-                { formTipoUsuario = new TipoUsuarioDesktop(ID, ModoForm.Baja); }
+            { formTipoUsuario = new TipoUsuarioDesktop(ID, ModoForm.Baja); }
             else
-                { formTipoUsuario = new TipoUsuarioDesktop(ID, ModoForm.CancelaBaja); }
-            
+            { formTipoUsuario = new TipoUsuarioDesktop(ID, ModoForm.CancelaBaja); }
+
             formTipoUsuario.ShowDialog();
             this.Listar();
         }

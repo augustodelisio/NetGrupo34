@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class PlanDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'PlanDesktop._PlanActual' nunca se usa
         private Plan _PlanActual;
+#pragma warning restore CS0169 // El campo 'PlanDesktop._PlanActual' nunca se usa
         public Plan PlanActual { set; get; }
 
         public PlanDesktop()
@@ -27,7 +20,7 @@ namespace UI.Desktop
         public PlanDesktop(ModoForm modo) : this()
         {
         }
-        public PlanDesktop(int ID, ModoForm modo) : this()    
+        public PlanDesktop(int ID, ModoForm modo) : this()
         {
             PlanLogic el = new PlanLogic();
             this.Modo = modo;
@@ -40,7 +33,7 @@ namespace UI.Desktop
             this.txtID.Text = this.PlanActual.IdPlan.ToString();
             this.txtDescripcion.Text = this.PlanActual.Descripcion;
             //El combobox persona se rellena despues, en el load del formulario
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -64,13 +57,13 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.PlanActual.ID = int.Parse(this.txtID.Text);
                         PlanActual.State = BusinessEntity.States.Modified;
 
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Notificar("Error de conversion de ID", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -82,7 +75,7 @@ namespace UI.Desktop
                     PlanActual.State = BusinessEntity.States.New;
                     PlanActual.Habilitado = true;
                 }
-                
+
                 this.PlanActual.Descripcion = this.txtDescripcion.Text;
 
                 int fid;
@@ -101,7 +94,7 @@ namespace UI.Desktop
             {
                 PlanActual.State = BusinessEntity.States.Unmodified;
             }
-            
+
         }
         public override void GuardarCambios()
         {

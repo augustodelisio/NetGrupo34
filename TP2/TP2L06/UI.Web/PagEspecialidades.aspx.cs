@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
 using Util;
 
 namespace UI.Web
@@ -24,10 +19,12 @@ namespace UI.Web
                 }
                 return _logic;
             }
-           
+
         }
 
+#pragma warning disable CS0169 // El campo 'PagEspecialidades._EntityEspecialidad' nunca se usa
         Especialidad _EntityEspecialidad;
+#pragma warning restore CS0169 // El campo 'PagEspecialidades._EntityEspecialidad' nunca se usa
 
         private Especialidad EntityEspecialidad
         {
@@ -122,11 +119,11 @@ namespace UI.Web
             this.EntityEspecialidad = this.Logic.GetOne(idEsp);
             this.idEspecialidadTextBox.Text = Convert.ToString(this.EntityEspecialidad.IdEspecialidad);
             this.descripcionTextBox.Text = this.EntityEspecialidad.Descripcion;
-            
+
         }
         private void LoadEntity(Especialidad especialidad)
         {
-          especialidad.Descripcion = this.descripcionTextBox.Text;
+            especialidad.Descripcion = this.descripcionTextBox.Text;
         }
         private void SaveEntity(Especialidad especialidad)
         {
@@ -141,49 +138,49 @@ namespace UI.Web
 
                 switch (this.FormMode)
                 {
-                case FormModes.Alta:
-                    this.EntityEspecialidad = new Especialidad();
-                    this.LoadEntity(this.EntityEspecialidad);
-                    this.EntityEspecialidad.Habilitado = true;
-                    this.SaveEntity(this.EntityEspecialidad);
-                    this.LoadGrid();
-                    break;
+                    case FormModes.Alta:
+                        this.EntityEspecialidad = new Especialidad();
+                        this.LoadEntity(this.EntityEspecialidad);
+                        this.EntityEspecialidad.Habilitado = true;
+                        this.SaveEntity(this.EntityEspecialidad);
+                        this.LoadGrid();
+                        break;
 
-                case FormModes.Baja:
-                    this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
-                    this.LoadEntity(this.EntityEspecialidad);
-                    this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Deleted);
-                    this.LoadGrid();
-                    this.cambiaNombreBtn();
-                    break;
+                    case FormModes.Baja:
+                        this.EntityEspecialidad = new Especialidad();
+                        this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
+                        this.LoadEntity(this.EntityEspecialidad);
+                        this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Deleted);
+                        this.LoadGrid();
+                        this.cambiaNombreBtn();
+                        break;
 
-                case FormModes.CancelaBaja:
-                    this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
-                    this.LoadEntity(this.EntityEspecialidad);
-                    this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Undeleted);
-                    this.LoadGrid();
-                    this.cambiaNombreBtn();
-                    break;
+                    case FormModes.CancelaBaja:
+                        this.EntityEspecialidad = new Especialidad();
+                        this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
+                        this.LoadEntity(this.EntityEspecialidad);
+                        this.DeleteEntity(EntityEspecialidad, BusinessEntity.States.Undeleted);
+                        this.LoadGrid();
+                        this.cambiaNombreBtn();
+                        break;
 
-                case FormModes.Modificacion:
-                    this.EntityEspecialidad = new Especialidad();
-                    this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
-                    this.EntityEspecialidad.State = BusinessEntity.States.Modified;
-                    this.LoadEntity(this.EntityEspecialidad);
-                    //Guardo hab según el valor que tiene en el grid view
-                    this.EntityEspecialidad.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[3].Text);
-                    this.SaveEntity(this.EntityEspecialidad);
-                    this.LoadGrid();
-                    break;
+                    case FormModes.Modificacion:
+                        this.EntityEspecialidad = new Especialidad();
+                        this.EntityEspecialidad.IdEspecialidad = this.SelectedID;
+                        this.EntityEspecialidad.State = BusinessEntity.States.Modified;
+                        this.LoadEntity(this.EntityEspecialidad);
+                        //Guardo hab según el valor que tiene en el grid view
+                        this.EntityEspecialidad.Habilitado = Convert.ToBoolean(this.gridView.SelectedRow.Cells[3].Text);
+                        this.SaveEntity(this.EntityEspecialidad);
+                        this.LoadGrid();
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
                 }
-                
-            this.formPanel.Visible = false;
-            this.formActionPanel.Visible = false;
+
+                this.formPanel.Visible = false;
+                this.formActionPanel.Visible = false;
             }
         }
         private void EnableForm(bool enable, bool en2)
@@ -282,9 +279,9 @@ namespace UI.Web
         {
             idEspecialidadValidator.Text = "";
             descripcionValidator.Text = "";
-            
+
         }
 
-       
+
     }
 }

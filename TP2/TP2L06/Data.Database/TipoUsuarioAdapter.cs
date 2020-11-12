@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -90,9 +87,9 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = tipo_usuario.IdTipoUsuario;
                 cmdSave.Parameters.Add("@descripcion", SqlDbType.VarChar, 50).Value = tipo_usuario.Descripcion;
                 if (estado == BusinessEntity.States.Deleted)
-                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
                 else
-                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)

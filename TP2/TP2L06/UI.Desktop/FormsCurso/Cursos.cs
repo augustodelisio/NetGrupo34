@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -27,7 +20,7 @@ namespace UI.Desktop
                 this.dgvCursos.DataSource = ul.GetAll();
                 FormatoDGV.ActualizaColor(dgvCursos);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Notificar("Error de carga de cursos", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -57,7 +50,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvCursos.SelectedRows.Count>0)
+            if (this.dgvCursos.SelectedRows.Count > 0)
             {
                 int ID = ((Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).IdCurso;
                 CursoDesktop formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.Modificacion);
@@ -73,10 +66,10 @@ namespace UI.Desktop
 
             CursoDesktop formCurso;
             if (hab == true)
-                { formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.Baja); }
+            { formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.Baja); }
             else
-                { formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
-            
+            { formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
+
             formCurso.ShowDialog();
             this.Listar();
         }

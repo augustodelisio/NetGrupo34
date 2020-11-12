@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class TipoUsuarioDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'TipoUsuarioDesktop._TipoUsuarioActual' nunca se usa
         private TipoUsuario _TipoUsuarioActual;
+#pragma warning restore CS0169 // El campo 'TipoUsuarioDesktop._TipoUsuarioActual' nunca se usa
         public TipoUsuario TipoUsuarioActual { set; get; }
 
         public TipoUsuarioDesktop()
@@ -27,7 +20,7 @@ namespace UI.Desktop
         public TipoUsuarioDesktop(ModoForm modo) : this()
         {
         }
-        public TipoUsuarioDesktop(int ID, ModoForm modo) : this()    
+        public TipoUsuarioDesktop(int ID, ModoForm modo) : this()
         {
             TipoUsuarioLogic tul = new TipoUsuarioLogic();
             this.Modo = modo;
@@ -39,7 +32,7 @@ namespace UI.Desktop
         {
             this.txtID.Text = this.TipoUsuarioActual.IdTipoUsuario.ToString();
             this.txtDescripcion.Text = this.TipoUsuarioActual.Descripcion.ToString();
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -63,17 +56,17 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.TipoUsuarioActual.ID = int.Parse(this.txtID.Text);
                         TipoUsuarioActual.State = BusinessEntity.States.Modified;
 
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Console.WriteLine(Ex.Message); //Modificar esta excepcion para que tire un error mas especifico y haga un throw
                     }
-                    
+
 
                 }
                 else
@@ -83,9 +76,9 @@ namespace UI.Desktop
                     TipoUsuarioActual.State = BusinessEntity.States.New;
                     TipoUsuarioActual.Habilitado = true;
                 }
-                
+
                 this.TipoUsuarioActual.Descripcion = this.txtDescripcion.Text;
-                
+
             }
             else if (Modo == ModoForm.Baja)
             {
@@ -99,7 +92,7 @@ namespace UI.Desktop
             {
                 TipoUsuarioActual.State = BusinessEntity.States.Unmodified;
             }
-            
+
         }
         public override void GuardarCambios()
         {
@@ -134,7 +127,7 @@ namespace UI.Desktop
             this.Close();
         }
 
-        
+
 
         private void TipoUsuarioDesktop_Load(object sender, EventArgs e)
         {
@@ -142,5 +135,5 @@ namespace UI.Desktop
         }
 
     }
-    
+
 }

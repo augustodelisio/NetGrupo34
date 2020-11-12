@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -57,7 +50,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvMaterias.SelectedRows.Count>0)
+            if (this.dgvMaterias.SelectedRows.Count > 0)
             {
                 int ID = ((Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).IdMateria;
                 MateriaDesktop formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
@@ -73,9 +66,9 @@ namespace UI.Desktop
 
             MateriaDesktop formMateria;
             if (hab == true)
-                { formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Baja); }
+            { formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Baja); }
             else
-                { formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
+            { formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
 
             formMateria.ShowDialog();
             this.Listar();

@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
-using Util;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
-    
+
     public partial class UsuarioDesktop : ApplicationForm
     {
+#pragma warning disable CS0169 // El campo 'UsuarioDesktop._UsuarioActual' nunca se usa
         private Usuario _UsuarioActual;
+#pragma warning restore CS0169 // El campo 'UsuarioDesktop._UsuarioActual' nunca se usa
         public Usuario UsuarioActual { set; get; }
 
         public UsuarioDesktop()
@@ -27,7 +20,7 @@ namespace UI.Desktop
         public UsuarioDesktop(ModoForm modo) : this()
         {
         }
-        public UsuarioDesktop(int ID, ModoForm modo) : this()    
+        public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
             UsuarioLogic ul = new UsuarioLogic();
             this.Modo = modo;                               //Setea el valor en el que se encuentra el formulario (A/B/M/C)   
@@ -38,12 +31,12 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
-            this.txtLegajo.Text = this.UsuarioActual.Legajo.ToString();          
+            this.txtLegajo.Text = this.UsuarioActual.Legajo.ToString();
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;
             this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
             //El combobox persona se rellena despues, en el load del formulario
-            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion) 
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
             }
@@ -67,13 +60,13 @@ namespace UI.Desktop
             {
                 if (Modo == ModoForm.Modificacion)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         this.UsuarioActual.ID = int.Parse(this.txtID.Text);
                         UsuarioActual.State = BusinessEntity.States.Modified;
 
                     }
-                    catch(Exception Ex)
+                    catch (Exception Ex)
                     {
                         Notificar("Error de conversion de ID", Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -85,16 +78,16 @@ namespace UI.Desktop
                     UsuarioActual.State = BusinessEntity.States.New;
                     UsuarioActual.Habilitado = true;
                 }
-                
+
                 this.UsuarioActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
-                
+
                 int fid;
                 fid = Convert.ToInt32(cbPersonas.SelectedValue.GetHashCode());
                 this.UsuarioActual.IdPersona = fid;
 
                 fid = Convert.ToInt32(cbTipoUsuario.SelectedValue.GetHashCode());
                 this.UsuarioActual.IdTipoUsuario = fid;
-                
+
                 this.UsuarioActual.NombreUsuario = this.txtUsuario.Text;
                 this.UsuarioActual.Clave = this.txtClave.Text;
 
@@ -121,7 +114,7 @@ namespace UI.Desktop
         public override bool Validar()
         {
             bool correcto = true;
-            if (String.IsNullOrEmpty(this.txtLegajo.Text) || this.txtClave.Text.Length <8 || String.IsNullOrEmpty(this.txtUsuario.Text))
+            if (String.IsNullOrEmpty(this.txtLegajo.Text) || this.txtClave.Text.Length < 8 || String.IsNullOrEmpty(this.txtUsuario.Text))
                 correcto = false;
             if (this.txtClave.Text != this.txtConfirmarClave.Text)
                 correcto = false;
@@ -201,5 +194,5 @@ namespace UI.Desktop
             CargarCombobox();//Vuelve a cargar el combo por si se creo la persona.
         }
     }
-    
+
 }

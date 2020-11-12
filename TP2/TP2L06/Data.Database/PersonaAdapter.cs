@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    public class PersonaAdapter:Adapter
+    public class PersonaAdapter : Adapter
     {
         public List<Persona> GetAll()
         {
@@ -27,7 +24,7 @@ namespace Data.Database
                     Persona per = new Persona();
 
                     per.IdPersona = (int)drPersonas["id_persona"];
-                    per.Nombre= (string)drPersonas["nombre"];
+                    per.Nombre = (string)drPersonas["nombre"];
                     per.Apellido = (string)drPersonas["apellido"];
                     per.Habilitado = (bool)drPersonas["habilitado"];
                     per.Direccion = (string)drPersonas["direccion"];

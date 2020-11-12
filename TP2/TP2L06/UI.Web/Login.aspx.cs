@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Collections.Generic;
+using System.Web.UI;
 
 namespace Login
 {
@@ -73,7 +70,9 @@ namespace Login
                 }
                 return (null, true);
             }
+#pragma warning disable CS0168 // La variable 'Ex' se ha declarado pero nunca se usa
             catch (Exception Ex)
+#pragma warning restore CS0168 // La variable 'Ex' se ha declarado pero nunca se usa
             {
                 Page.Response.Write("Error de conexion con la BD.");
                 return (null, false);

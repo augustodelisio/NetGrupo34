@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.Entities;
 using Data.Database;
-using Business.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
-    public class PersonaLogic:BusinessLogic
+    public class PersonaLogic : BusinessLogic
     {
         private PersonaAdapter _PersonaData;
         public PersonaAdapter PersonaData

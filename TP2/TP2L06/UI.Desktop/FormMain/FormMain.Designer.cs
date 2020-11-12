@@ -46,13 +46,14 @@
             this.verCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosInscriptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.docentesInscriptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscribirmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verComisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inscribirmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,7 +182,8 @@
             this.verCursosToolStripMenuItem,
             this.alumnosInscriptosToolStripMenuItem,
             this.docentesInscriptosToolStripMenuItem,
-            this.inscribirmeToolStripMenuItem});
+            this.inscribirmeToolStripMenuItem,
+            this.cargarNotasToolStripMenuItem});
             this.cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
             this.cursosToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.cursosToolStripMenuItem.Text = "Cursos";
@@ -206,6 +208,13 @@
             this.docentesInscriptosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.docentesInscriptosToolStripMenuItem.Text = "Docentes Inscriptos";
             // 
+            // inscribirmeToolStripMenuItem
+            // 
+            this.inscribirmeToolStripMenuItem.Name = "inscribirmeToolStripMenuItem";
+            this.inscribirmeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.inscribirmeToolStripMenuItem.Text = "Inscribirme";
+            this.inscribirmeToolStripMenuItem.Click += new System.EventHandler(this.inscribirmeToolStripMenuItem_Click);
+            // 
             // comisionesToolStripMenuItem
             // 
             this.comisionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -217,7 +226,7 @@
             // verComisionesToolStripMenuItem
             // 
             this.verComisionesToolStripMenuItem.Name = "verComisionesToolStripMenuItem";
-            this.verComisionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verComisionesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.verComisionesToolStripMenuItem.Text = "Ver Comisiones";
             this.verComisionesToolStripMenuItem.Click += new System.EventHandler(this.verComisionesToolStripMenuItem_Click);
             // 
@@ -251,12 +260,12 @@
             this.configurarToolStripMenuItem.Text = "Configurar";
             this.configurarToolStripMenuItem.Click += new System.EventHandler(this.configurarToolStripMenuItem_Click);
             // 
-            // inscribirmeToolStripMenuItem
+            // cargarNotasToolStripMenuItem
             // 
-            this.inscribirmeToolStripMenuItem.Name = "inscribirmeToolStripMenuItem";
-            this.inscribirmeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.inscribirmeToolStripMenuItem.Text = "Inscribirme";
-            this.inscribirmeToolStripMenuItem.Click += new System.EventHandler(this.inscribirmeToolStripMenuItem_Click);
+            this.cargarNotasToolStripMenuItem.Name = "cargarNotasToolStripMenuItem";
+            this.cargarNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarNotasToolStripMenuItem.Text = "Cargar Notas";
+            this.cargarNotasToolStripMenuItem.Click += new System.EventHandler(this.cargarNotasToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -305,5 +314,6 @@
         private System.Windows.Forms.ToolStripMenuItem miPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inscribirmeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarNotasToolStripMenuItem;
     }
 }

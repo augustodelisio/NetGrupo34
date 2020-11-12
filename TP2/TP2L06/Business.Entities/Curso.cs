@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.Entities
+﻿namespace Business.Entities
 {
-    public class Curso:BusinessEntity
+    public class Curso : BusinessEntity
     {
         private int _IdCurso;
         public int IdCurso

@@ -1,7 +1,6 @@
+using Business.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -38,7 +37,7 @@ namespace Data.Database
                 drUsuarios.Close();
 
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
                 throw ExcepcionManejada;
@@ -47,7 +46,7 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-            
+
             return usuarios;
         }
 
@@ -57,7 +56,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                
+
                 SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where id_usuario = @id", SqlConn);
                 cmdUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
@@ -73,7 +72,7 @@ namespace Data.Database
                 }
                 drUsuarios.Close();
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar datos del usuario", Ex);
                 throw ExcepcionManejada;
@@ -101,9 +100,9 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@id_tipo_usuario", SqlDbType.Int).Value = usuario.IdTipoUsuario;
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
                 if (estado == BusinessEntity.States.Deleted)
-                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = false; }
                 else
-                    { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
+                { cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = true; }
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)

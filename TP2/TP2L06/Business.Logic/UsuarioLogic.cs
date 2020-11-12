@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
+﻿using Business.Entities;
 using Data.Database;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
-    public class UsuarioLogic:BusinessLogic
+    public class UsuarioLogic : BusinessLogic
     {
         private UsuarioAdapter _UsuarioData;
-        public UsuarioAdapter UsuarioData 
+        public UsuarioAdapter UsuarioData
         {
             get { return _UsuarioData; }
-            set { _UsuarioData = value; } 
-        }  
+            set { _UsuarioData = value; }
+        }
 
         public UsuarioLogic()
         {
-            UsuarioData = new UsuarioAdapter();               
+            UsuarioData = new UsuarioAdapter();
         }
         public List<Usuario> GetAll()
         {
@@ -27,7 +24,7 @@ namespace Business.Logic
             {
                 return UsuarioData.GetAll();
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;
@@ -40,7 +37,7 @@ namespace Business.Logic
             {
                 return UsuarioData.GetOne(id);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;
@@ -65,7 +62,7 @@ namespace Business.Logic
             {
                 UsuarioData.Save(usu);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;

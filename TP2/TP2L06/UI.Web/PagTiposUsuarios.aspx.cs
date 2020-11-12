@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
 using Util;
 
 namespace UI.Web
@@ -25,7 +20,9 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'PagTiposUsuarios._EntityTipoUsuario' nunca se usa
         TipoUsuario _EntityTipoUsuario;
+#pragma warning restore CS0169 // El campo 'PagTiposUsuarios._EntityTipoUsuario' nunca se usa
 
         private Business.Entities.TipoUsuario EntityTipoUsuario
         {
@@ -271,7 +268,7 @@ namespace UI.Web
             }
             else { descripcionValidator.Text = ""; }
 
-           
+
             return correcto;
         }
         private void LimpiarCampos()

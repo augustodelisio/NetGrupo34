@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -24,7 +21,7 @@ namespace Data.Database
 
                 while (drPlanes.Read())
                 {
-                    Plan  pl = new Plan();
+                    Plan pl = new Plan();
 
                     pl.IdPlan = (int)drPlanes["id_plan"];
                     pl.Descripcion = (string)drPlanes["desc_plan"];

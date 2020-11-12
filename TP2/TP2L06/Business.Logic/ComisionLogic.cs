@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
+﻿using Business.Entities;
 using Data.Database;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
     public class ComisionLogic : BusinessLogic
     {
+#pragma warning disable CS0169 // El campo 'ComisionLogic._ComisionData' nunca se usa
         private ComisionAdapter _ComisionData;
+#pragma warning restore CS0169 // El campo 'ComisionLogic._ComisionData' nunca se usa
         public ComisionAdapter ComisionData { get; set; }
         public ComisionLogic()
         {
@@ -49,7 +48,7 @@ namespace Business.Logic
             {
                 return ComisionData.GetComisionesPorCurso(idCurso);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de Comisiones", Ex);
                 throw ExcepcionManejada;
@@ -79,7 +78,7 @@ namespace Business.Logic
             {
                 Exception ExcepcionManejada = new Exception("Error de conexión con la base de datos. Consulte a su proveedor de servicios.", Ex);
                 throw ExcepcionManejada;
-            } 
+            }
         }
     }
 }

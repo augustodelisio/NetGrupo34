@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.Entities
+﻿namespace Business.Entities
 {
-    public class Comision:BusinessEntity
+    public class Comision : BusinessEntity
     {
         private int _IdComision;
         public int IdComision

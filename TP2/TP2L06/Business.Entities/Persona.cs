@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class Persona:BusinessEntity
+    public class Persona : BusinessEntity
     {
         private int _IdPersona;
         public int IdPersona
@@ -25,8 +21,8 @@ namespace Business.Entities
         private string _Direccion;
         public string Direccion
         {
-            get { return _Direccion;}
-            set { _Direccion = value;}
+            get { return _Direccion; }
+            set { _Direccion = value; }
         }
 
         private string _Email;
@@ -66,7 +62,9 @@ namespace Business.Entities
             get { return _Habilitado; }
             set { _Habilitado = value; }
         }
+#pragma warning disable CS0169 // El campo 'Persona._NombreYApellido' nunca se usa
         private string _NombreYApellido;
+#pragma warning restore CS0169 // El campo 'Persona._NombreYApellido' nunca se usa
         public string NombreYApellido
         {
             get

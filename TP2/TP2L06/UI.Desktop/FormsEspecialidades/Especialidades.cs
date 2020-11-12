@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -57,7 +50,7 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (this.dgvEspecialidades.SelectedRows.Count>0)
+            if (this.dgvEspecialidades.SelectedRows.Count > 0)
             {
                 int ID = ((Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).IdEspecialidad;
                 EspecialidadDesktop formEspecialidad = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.Modificacion);
@@ -73,10 +66,10 @@ namespace UI.Desktop
 
             EspecialidadDesktop formEspecialidad;
             if (hab == true)
-                { formEspecialidad = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.Baja); }
+            { formEspecialidad = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.Baja); }
             else
-                { formEspecialidad = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
-            
+            { formEspecialidad = new EspecialidadDesktop(ID, ApplicationForm.ModoForm.CancelaBaja); }
+
             formEspecialidad.ShowDialog();
             this.Listar();
         }

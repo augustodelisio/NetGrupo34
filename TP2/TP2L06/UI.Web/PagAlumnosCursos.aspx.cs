@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using Business.Entities;
 using Business.Logic;
-using Business.Entities;
-using System.Security.Cryptography.X509Certificates;
+using System;
+using System.Web.UI;
 
 namespace UI.Web
 {
@@ -61,7 +56,9 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'AlumnosCursos._EntityDocenteCurso' nunca se usa
         AlumnoCurso _EntityDocenteCurso;
+#pragma warning restore CS0169 // El campo 'AlumnosCursos._EntityDocenteCurso' nunca se usa
 
         private DocenteCurso EntityDocenteCurso
         {
@@ -85,7 +82,9 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'AlumnosCursos._EntityCurso' nunca se usa
         Curso _EntityCurso;
+#pragma warning restore CS0169 // El campo 'AlumnosCursos._EntityCurso' nunca se usa
 
         private Curso EntityCurso
         {
@@ -109,7 +108,9 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'AlumnosCursos._EntityMateria' nunca se usa
         AlumnoCurso _EntityMateria;
+#pragma warning restore CS0169 // El campo 'AlumnosCursos._EntityMateria' nunca se usa
 
         private MateriaLogic EntityMateria
         {
@@ -132,7 +133,9 @@ namespace UI.Web
             }
         }
 
+#pragma warning disable CS0169 // El campo 'AlumnosCursos._EntityComision' nunca se usa
         AlumnoCurso _EntityComision;
+#pragma warning restore CS0169 // El campo 'AlumnosCursos._EntityComision' nunca se usa
 
         private ComisionLogic EntityComision
         {
@@ -142,7 +145,7 @@ namespace UI.Web
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected void Page_Load(object sender, EventArgs e)            
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)         //Si no estas logueado te saca
             {
@@ -161,23 +164,23 @@ namespace UI.Web
                     {
 
                     }
-                                                 
+
                 }
 
                 else if (Session["tipoUsu"].ToString() == "2")  //Si sos alumno
                 {
                     if (!this.IsPostBack)
                     {
-                        LoadGridMaterias();       
+                        LoadGridMaterias();
                     }
-                    
+
                 }
                 else if (Session["tipoUsu"].ToString() == "3")  //Si sos docente
                 {
                     if (!this.IsPostBack)
                     {
-                        LoadGridMaterias();       
-                    }                   
+                        LoadGridMaterias();
+                    }
                 }
                 else
                 {
@@ -249,10 +252,10 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)        //Indice del grid que muestra las materias
         {
-            this.SelectedIdMateria = (int)this.gridView.SelectedValue;           
+            this.SelectedIdMateria = (int)this.gridView.SelectedValue;
         }
 
-        
+
         protected void seleccionarMateriaLinkButton_Click(object sender, EventArgs e)      //Seleccionar materia inscribirseLinkButton
         {
             if (this.IsEntityMateriaSelected)
@@ -261,7 +264,9 @@ namespace UI.Web
                 this.FormMode = FormModes.Alta;
                 this.LoadForm(this.SelectedIdMateria);
 
+#pragma warning disable CS0252 // Posible comparación de referencias no intencionada; para obtener una comparación de valores, convierta el lado de la izquierda en el tipo 'string'
                 if (Session["tipoUsuario"] == "3")
+#pragma warning restore CS0252 // Posible comparación de referencias no intencionada; para obtener una comparación de valores, convierta el lado de la izquierda en el tipo 'string'
                 {
                     this.showCargosDDL();
                 }
@@ -283,8 +288,8 @@ namespace UI.Web
                 limpiarVariables();
                 Response.Redirect("Home.aspx");
             }
-                
-                
+
+
         }
 
         private void hideMateriasPage()
@@ -317,7 +322,7 @@ namespace UI.Web
 
             this.gridActionsPanel.Visible = true;
             this.gridActionsPanel.Enabled = true;
-    
+
         }
 
 
@@ -348,7 +353,7 @@ namespace UI.Web
 
 
 
-        private void LoadGridComision()                                     
+        private void LoadGridComision()
         {
             this.gridComision.DataSource = this.ComisionLogic.GetComisionesPorCurso(this.SelectedIdMateria);
             this.gridComision.DataBind();
@@ -366,9 +371,9 @@ namespace UI.Web
             {
 
                 this.showCargosDDL();
-     
+
             }
-            else if(Session["tipoUsu"].ToString() == "3")
+            else if (Session["tipoUsu"].ToString() == "3")
             {
                 this.showCargosDDL();
             }
@@ -432,7 +437,7 @@ namespace UI.Web
                 if (Session["tipoUsu"].ToString() == "1")           //Admin
                 {
 
-                    if(Session["tipoUsuarioAModificar"].ToString() == "2")
+                    if (Session["tipoUsuarioAModificar"].ToString() == "2")
                     {
                         this.EntityAlumnoCurso = new AlumnoCurso();
 
@@ -453,12 +458,12 @@ namespace UI.Web
                 }
                 else if (Session["tipoUsu"].ToString() == "2")              //Alumno
                 {
-                    
-                    
+
+
                     this.EntityCurso = this.Curso.BuscarCursoPorMateriaComision(SelectedIdMateria, SelectedIdComision);
 
                     this.AlumnoCurso = new AlumnoCursoLogic();
-                    
+
                     this.EntityAlumnoCurso.IdCurso = this.EntityCurso.IdCurso;
                     this.EntityAlumnoCurso.IdUsuario = Convert.ToInt32(Session["idUsuario"]);
                 }
@@ -490,7 +495,7 @@ namespace UI.Web
         private void LoadForm(int idMateria)                //Carga form comision
         {
 
-            if(this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)      //Muestra el grid de comision
+            if (this.IsEntityMateriaSelected && !this.IsEntityComisionSelected)      //Muestra el grid de comision
             {
                 this.hideMateriasPage();
                 LoadGridComision();
@@ -500,7 +505,7 @@ namespace UI.Web
             {
                 //Muestra un formulario modal (a hacer) que diga que salió todo ok y preguntar si quiere volver a inscribirse
             }
-                   
+
         }
 
 
@@ -672,7 +677,7 @@ namespace UI.Web
         }
 
 
-        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e) 
+        protected void ingresarUsuarioLinkButton_Click(object sender, EventArgs e)
         {
             this.SelectedIdUsuario = Convert.ToInt32(this.AlumnosDDL.SelectedValue);
 
@@ -686,7 +691,7 @@ namespace UI.Web
             {
 
             }
-            
+
         }
 
         private int SelectedIdUsuario
@@ -711,11 +716,11 @@ namespace UI.Web
             get { return (this.SelectedIdUsuario != 0); }
         }
 
-        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e) 
+        protected void cancelarUsuarioLinkButton_Click(object sender, EventArgs e)
         {
             this.showAdminSelectionPage();
             this.hideDDLs();
-           
+
         }
     }
 }

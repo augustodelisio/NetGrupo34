@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Entities;
+﻿using Business.Entities;
 using Data.Database;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Logic
 {
     public class PlanLogic : BusinessLogic
     {
+#pragma warning disable CS0169 // El campo 'PlanLogic._PlandData' nunca se usa
         private PlanAdapter _PlandData;
+#pragma warning restore CS0169 // El campo 'PlanLogic._PlandData' nunca se usa
         public PlanAdapter PlanData { get; set; }
         public PlanLogic()
         {

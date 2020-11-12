@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using UI.Desktop;
 
 namespace UI.Desktop
 {
@@ -76,7 +68,7 @@ namespace UI.Desktop
             }
         }
 
-    private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Usuarios ABMUsuarios = new Usuarios();
             ABMUsuarios.ShowDialog();
@@ -145,6 +137,12 @@ namespace UI.Desktop
         {
             MateriasInscrip ABMMateriasInscrip = new MateriasInscrip(IdUsu, Tipo);
             ABMMateriasInscrip.ShowDialog();
+        }
+
+        private void cargarNotasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotasCursos ABMNotasCursos = new NotasCursos(IdUsu);
+            ABMNotasCursos.ShowDialog();
         }
     }
 }

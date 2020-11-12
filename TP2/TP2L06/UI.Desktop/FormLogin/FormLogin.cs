@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Business.Entities;
+﻿using Business.Entities;
 using Business.Logic;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace UI.Desktop
 {
@@ -50,7 +44,7 @@ namespace UI.Desktop
                 }
                 return (null, true);
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Notificar(Ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return (null, false);

@@ -45,15 +45,14 @@
             this.cursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verCursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosInscriptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.docentesInscriptosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inscribirmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verComisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cargarNotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,13 +180,11 @@
             this.cursosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verCursosToolStripMenuItem,
             this.alumnosInscriptosToolStripMenuItem,
-            this.docentesInscriptosToolStripMenuItem,
             this.inscribirmeToolStripMenuItem,
             this.cargarNotasToolStripMenuItem});
             this.cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
             this.cursosToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.cursosToolStripMenuItem.Text = "Cursos";
-            this.cursosToolStripMenuItem.Click += new System.EventHandler(this.cursosToolStripMenuItem_Click);
             // 
             // verCursosToolStripMenuItem
             // 
@@ -200,13 +197,8 @@
             // 
             this.alumnosInscriptosToolStripMenuItem.Name = "alumnosInscriptosToolStripMenuItem";
             this.alumnosInscriptosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.alumnosInscriptosToolStripMenuItem.Text = "Alumnos Inscriptos";
-            // 
-            // docentesInscriptosToolStripMenuItem
-            // 
-            this.docentesInscriptosToolStripMenuItem.Name = "docentesInscriptosToolStripMenuItem";
-            this.docentesInscriptosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.docentesInscriptosToolStripMenuItem.Text = "Docentes Inscriptos";
+            this.alumnosInscriptosToolStripMenuItem.Text = "Realizar Inscripcion";
+            this.alumnosInscriptosToolStripMenuItem.Click += new System.EventHandler(this.alumnosInscriptosToolStripMenuItem_Click);
             // 
             // inscribirmeToolStripMenuItem
             // 
@@ -214,6 +206,13 @@
             this.inscribirmeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.inscribirmeToolStripMenuItem.Text = "Inscribirme";
             this.inscribirmeToolStripMenuItem.Click += new System.EventHandler(this.inscribirmeToolStripMenuItem_Click);
+            // 
+            // cargarNotasToolStripMenuItem
+            // 
+            this.cargarNotasToolStripMenuItem.Name = "cargarNotasToolStripMenuItem";
+            this.cargarNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarNotasToolStripMenuItem.Text = "Cargar Notas";
+            this.cargarNotasToolStripMenuItem.Click += new System.EventHandler(this.cargarNotasToolStripMenuItem_Click);
             // 
             // comisionesToolStripMenuItem
             // 
@@ -260,13 +259,6 @@
             this.configurarToolStripMenuItem.Text = "Configurar";
             this.configurarToolStripMenuItem.Click += new System.EventHandler(this.configurarToolStripMenuItem_Click);
             // 
-            // cargarNotasToolStripMenuItem
-            // 
-            this.cargarNotasToolStripMenuItem.Name = "cargarNotasToolStripMenuItem";
-            this.cargarNotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cargarNotasToolStripMenuItem.Text = "Cargar Notas";
-            this.cargarNotasToolStripMenuItem.Click += new System.EventHandler(this.cargarNotasToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,7 +300,6 @@
         private System.Windows.Forms.ToolStripMenuItem cursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verCursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alumnosInscriptosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem docentesInscriptosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comisionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verComisionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miPerfilToolStripMenuItem;

@@ -101,6 +101,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="PagAlumnosCursos.aspx" />
+    <Content Include="PagBajaInscripcion.aspx" />
     <Content Include="PagCursos.aspx" />
     <Content Include="PagEspecialidades.aspx" />
     <Content Include="PagPersonas.aspx" />
@@ -258,6 +259,13 @@
     </Compile>
     <Compile Include="PagAlumnosCursos.aspx.designer.cs">
       <DependentUpon>PagAlumnosCursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagBajaInscripcion.aspx.cs">
+      <DependentUpon>PagBajaInscripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagBajaInscripcion.aspx.designer.cs">
+      <DependentUpon>PagBajaInscripcion.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagCursos.aspx.cs">
       <DependentUpon>PagCursos.aspx</DependentUpon>
